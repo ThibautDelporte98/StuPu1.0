@@ -68,6 +68,85 @@ app.post('/api/authenticate', async (req, res) => {
   }
 });
 
+// app.post('/api/signup', async (req, res) => {
+//   try {
+//     const { firstName, lastName, email, phone , dateOfBirth, address, postalCode, city, studentNr, school, education } = req.body;
+
+//     // Hash the password
+//     const hashedPassword = await hashPassword(password);
+
+//     // Basic user data
+//     const userData = {
+//       email: email.toLowerCase(),
+//       firstName,
+//       lastName,
+//       password: hashedPassword,
+//       role
+//     };
+
+//     // Add additional fields for tutors
+//     if (role === 'tutor') {
+//       if (!phone || dateOfBirth || !address || !postalCode || !city || !studentNr || !school || !education) {
+//         return res.status(400).json({ message: 'All tutor fields are required.' });
+//       }
+//       userData.phone = phone
+//       userData.dateOfBirth = dateOfBirth;
+//       userData.address = address;
+//       userData.postalCode = postalCode;
+//       userData.city = city;
+//       userData.studentNr = studentNr;
+//       userData.school = school;
+//       userData.education = education;
+//     }
+
+//     // Check if the email already exists
+//     const existingEmail = await User.findOne({ email: userData.email }).lean();
+
+//     if (existingEmail) {
+//       return res.status(400).json({ message: 'Email already exists' });
+//     }
+
+//     // Create and save the new user
+//     const newUser = new User(userData);
+//     const savedUser = await newUser.save();
+
+//     if (savedUser) {
+//       const token = createToken(savedUser);
+//       const decodedToken = jwtDecode(token);
+//       const expiresAt = decodedToken.exp;
+
+//       const { firstName, lastName, email, phone , dateOfBirth, address, postalCode, city, studentNr, school, education } = savedUser;
+
+//       const userInfo = {
+//         firstName,
+//         lastName,
+//         email,
+//         role,
+//         phone: phone || null,
+//         dateOfBirth: dateOfBirth || null,
+//         address: address || null,
+//         postalCode: postalCode || null,
+//         city: city || null,
+//         studentNr: studentNr || null,
+//         school: school || null,
+//         education: education || null
+//       };
+
+//       return res.json({
+//         message: 'User created!',
+//         token,
+//         userInfo,
+//         expiresAt
+//       });
+//     } else {
+//       return res.status(400).json({ message: 'There was a problem creating your account' });
+//     }
+//   } catch (err) {
+//     return res.status(400).json({ message: 'There was a problem creating your account' });
+//   }
+// });
+
+
 app.post('/api/signup', async (req, res) => {
   try {
     const { email, firstName, lastName, role } = req.body;
@@ -190,7 +269,7 @@ app.get('/api/dashboard-data', requireAuth, (req, res) =>
 app.patch('/api/user-role', async (req, res) => {
   try {
     const { role } = req.body;
-    const allowedRoles = ['user', 'admin', 'teacher'];
+    const allowedRoles = ['student', 'admin', 'tutor'];
 
     if (!allowedRoles.includes(role)) {
       return res
@@ -346,7 +425,7 @@ async function connect() {
     console.log('Mongoose error', err);
   }
   app.listen(3002);
-  console.log('API listening on localhost:3001');
+  console.log('API listening on localhost:3002');
 }
 
 connect();

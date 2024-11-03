@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../hooks/AuthContext";
 import { publicFetch } from "../utils/fetch";
-import SignUpForm from "../layouts/SignUp";
+import SignUpForm from "../layouts/SignUpStudent";
 
 
 

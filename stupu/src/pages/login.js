@@ -23,7 +23,7 @@ const Login = () => {
     
       // Update auth context state
       authContext.setAuthState(data); 
-      navigate("/dashboard")
+      navigate("/")
       console.log("Logged in successfully");
     } catch (error) {
       setLoginError(error.response?.data?.message || "Login failed");

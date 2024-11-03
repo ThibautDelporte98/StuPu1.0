@@ -10,6 +10,7 @@ const Home = lazy(() => import("./pages/home"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Login = lazy(() => import("./pages/login"));
 const Signup = lazy(() => import("./pages/signup"));
+const SignUpTutor = lazy(() => import("./pages/signupTutor"))
 
 const LoadingFallback = () => (
   <AppShell>
@@ -19,6 +20,7 @@ const LoadingFallback = () => (
 
 const UnauthenticatedRoutes = () => (
   <Routes>
+    <Route path='/signup-tutor' element={<SignUpTutor />} />
     <Route path="/login" element={<Login />} />
     <Route path="/signup" element={<Signup />} />
     <Route path="/" element={<Home />} />
