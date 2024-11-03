@@ -9,7 +9,7 @@ import "./styles/index.css";
 const Home = lazy(() => import("./pages/home"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Login = lazy(() => import("./pages/login"));
-const Signup = lazy(() => import("./pages/signup"));
+const Signup = lazy(() => import("./pages/signupStudent"));
 const SignUpTutor = lazy(() => import("./pages/signupTutor"))
 const SignUpChoice = lazy(() => import("./pages/signupChoice"))
 

@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../hooks/AuthContext";
 import { publicFetch } from "../utils/fetch";
-import LoginForm from "../layouts/LoginForm";
+import LoginForm from "../layouts/SignIn";
 import { useNavigate } from "react-router-dom";
 import Nav from "layouts/Navigation";
 
