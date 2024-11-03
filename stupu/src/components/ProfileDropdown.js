@@ -4,42 +4,32 @@ import { AuthContext } from "hooks/AuthContext";
 
 const ProfileDropdown = ({ userData, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const auth = useContext(AuthContext);
-  const { authState } = auth;
+  const { authState, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleNavigateToDashboard = () => {
-    navigate("/dashboard", { replace: true }); // Replace current history entry
-    
+    navigate("/dashboard", { replace: true });
   };
 
   const handleNavigateToHome = () => {
-    navigate("/", { replace: true }); // Replace current history entry
-    
+    navigate("/", { replace: true });
   };
 
   const handleSignOut = () => {
-    // Clear the token (or any authentication data) from local storage
-    localStorage.removeItem('token'); // or sessionStorage.removeItem('token')
-    
-    // Redirect the user to the login page
-    navigate('/login');
-};
-
+    logout();
+  };
 
   return (
     <div className="profile-dropdown">
       <div className="username" onClick={toggleDropdown}>
-        {authState.userInfo.firstName} {authState.userInfo.lastName}
-
+        {authState.userInfo?.firstName} {authState.userInfo?.lastName}
       </div>
       {isOpen && (
         <div className="dropdown-menu">
-            <button onClick={handleNavigateToDashboard}>Go to Dashboard</button>
-            <button onClick={handleNavigateToHome}>Go to Home</button>
-
+          <button onClick={handleNavigateToDashboard}>Go to Dashboard</button>
+          <button onClick={handleNavigateToHome}>Go to Home</button>
           <button
             className="custom-button button-logout"
             onClick={handleSignOut}
@@ -51,6 +41,7 @@ const ProfileDropdown = ({ userData, onLogout }) => {
     </div>
   );
 };
+
 
 
 export default ProfileDropdown;

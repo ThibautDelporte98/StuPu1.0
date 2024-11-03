@@ -4,6 +4,7 @@ import { AuthContext } from "../hooks/AuthContext";
 import { publicFetch } from "../utils/fetch";
 import LoginForm from "../layouts/LoginForm";
 import { useNavigate } from "react-router-dom";
+import Nav from "layouts/Navigation";
 
 const Login = () => {
   const authContext = useContext(AuthContext);
@@ -37,6 +38,7 @@ const Login = () => {
     <div className="Login">
       <div className="Login-header">
         <div className="cstm-container">
+          <Nav />
           {loginError && <p className="error">{loginError}</p>}
           <LoginForm 
             email={email} 

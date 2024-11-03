@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../hooks/AuthContext";
 import { publicFetch } from "../utils/fetch";
 import SignUpForm from "../layouts/SignUpTutor";
+import Nav from "layouts/Navigation";
 
 const Login = () => {
   const authContext = useContext(AuthContext);
@@ -55,9 +56,10 @@ const Login = () => {
   };
 
   return (
-    <div className="Login">
-      <div className="Login-header">
-        <div className="cstm-container">
+    <div className="cstm-container">
+      <Nav />
+      <div className="Login">
+        <div className="Login-header">
           {loginError && <p className="error">{loginError}</p>}
           <SignUpForm
             firstName={firstName}

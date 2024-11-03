@@ -11,6 +11,7 @@ const Dashboard = lazy(() => import("./pages/dashboard"));
 const Login = lazy(() => import("./pages/login"));
 const Signup = lazy(() => import("./pages/signup"));
 const SignUpTutor = lazy(() => import("./pages/signupTutor"))
+const SignUpChoice = lazy(() => import("./pages/signupChoice"))
 
 const LoadingFallback = () => (
   <AppShell>
@@ -20,28 +21,29 @@ const LoadingFallback = () => (
 
 const UnauthenticatedRoutes = () => (
   <Routes>
-    <Route path='/signup-tutor' element={<SignUpTutor />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/signup" element={<Signup />} />
+    <Route path='/registratie' element={<SignUpChoice />} />
+    <Route path='/registratie-lesgever' element={<SignUpTutor />} />
+    <Route path="/aanmelden" element={<Login />} />
+    <Route path="/registratie-lesvolger" element={<Signup />} />
     <Route path="/" element={<Home />} />
   </Routes>
 );
 
 const AuthenticatedRoute = ({ children }) => {
   const auth = useContext(AuthContext);
-  return auth.isAuthenticated() ? (
+  return auth ? (
     <AppShell>{children}</AppShell>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/aanmelden" />
   );
 };
 
 const AdminRoute = ({ children }) => {
   const auth = useContext(AuthContext);
-  return auth.isAuthenticated() && auth.isAdmin() ? (
+  return auth && auth.isAdmin() ? (
     <AppShell>{children}</AppShell>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/aanmelden" />
   );
 };
 

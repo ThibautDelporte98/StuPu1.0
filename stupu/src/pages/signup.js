@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../hooks/AuthContext";
 import { publicFetch } from "../utils/fetch";
 import SignUpForm from "../layouts/SignUpStudent";
+import Nav from "layouts/Navigation";
 
 
 
@@ -37,6 +38,7 @@ const Login = () => {
     <div className="Login">
       <div className="Login-header">
         <div className="cstm-container">
+          <Nav />
           {loginError && <p className="error">{loginError}</p>}
           <SignUpForm
             firstName={firstname}

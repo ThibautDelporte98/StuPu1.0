@@ -9,7 +9,7 @@ import padlockUnlock from "../assets/img/padlock-unlock.png"
 
 
 const LoginForm = ({ email, password, setEmail, setPassword, onSubmit }) => {
-    const { passwordType, togglePassword } = usePasswordToggler();
+  const { passwordType, togglePassword } = usePasswordToggler();
 
   return (
     <div className="login-box">

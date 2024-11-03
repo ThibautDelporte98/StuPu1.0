@@ -1,9 +1,7 @@
-// src/pages/Home.js
-import { useContext } from 'react';
-import { AuthContext } from '../hooks/AuthContext';
-import ProfileDropdown from 'components/ProfileDropdown';
+
 import Nav from 'layouts/Navigation';
 import Head from 'components/header/HeadHome';
+import SignUpChoice from 'layouts/SignUpChoice';
 
 
 const Home = () => {
@@ -12,9 +10,8 @@ const Home = () => {
       <>
       <div className='cstm-container'>
         <Nav/>
-        <Head/>
+        <SignUpChoice />
       </div>
-
       </> 
     );
 

@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 
 const AuthContext = createContext();
@@ -9,6 +10,7 @@ const AuthProvider = ({ children }) => {
   const token = localStorage.getItem('token');
   const userInfo = localStorage.getItem('userInfo');
   const expiresAt = localStorage.getItem('expiresAt');
+  const navigate = useNavigate();
   const [authState, setAuthState] = useState({
     token,
     expiresAt,
@@ -35,7 +37,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('expiresAt');
     setAuthState({});
-    // history.push('/login');
+    navigate('/aanmelden');
   };
 
   const isAuthenticated = () => {
@@ -66,9 +68,10 @@ const AuthProvider = ({ children }) => {
         authState,
         setAuthState: authInfo => setAuthInfo(authInfo),
         logout,
-        isAuthenticated,
+        isAuthenticated: isAuthenticated(), // Ensure this is called to get the latest value
         isAdmin,
-        isStudent
+        isStudent,
+        isTeacher,
       }}
     >
       {children}
