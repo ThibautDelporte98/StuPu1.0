@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap");
+@import "./utilities.css";
+@import "./typography.css";
+@import "./checkbox.css";
+@import "./LoginForm.css";
+@import "./error-message.css";
+
+
+:root {
+  --primary-color: #468275;
+  --secondary-color: #59b2a5;
+  --secondary-color2-opacity: rgb(89, 178, 165, 0.9);
+  --font-size: 16px;
+  --padding: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Fredoka", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.cstm-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+
+
+@media (max-width: 768px) {
+    .cstm-container {
+      padding: 0 10px;
+    }
+  }
+

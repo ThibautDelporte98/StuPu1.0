@@ -1,0 +1,28 @@
+
+h1 {
+    font-size: 3.5rem;
+  }
+  
+  .subtitle h2 {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    font-size: 2.5rem;
+  }
+  
+  .subtitle-dark {
+    color: var(--primary-color);
+  }
+  
+  
+  p {
+    font-weight: 200;
+  }
+  
+
+  @media screen and (max-width:992px) {
+    .subtitle h2 {
+        font-size: 2rem;
+      }
+
+}

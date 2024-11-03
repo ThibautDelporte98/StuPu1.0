@@ -1,0 +1,59 @@
+
+.custom-button{
+    font-family: "Fredoka", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    height: auto;
+    padding: .7rem 3rem;
+    color: white;
+    background-color: transparent;
+    border: 3.5px solid white;
+    border-radius: 7.5px;
+    cursor: pointer;
+
+}
+
+.button-choiceSec{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+}
+
+
+.button-icon{
+    display: none;
+    width: 2rem;
+    height: auto;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .button-login,
+    .button-registration {
+        width: auto;
+        padding: .7rem;
+    }
+
+    .button-login .button-text,
+    .button-registration .button-text {
+        display: none;
+    }
+
+    .button-icon{
+        display: flex;
+    }
+    
+
+}
+
+
+@media screen and (max-width: 992px) {
+
+    .button-desktop {
+        display: none;
+    }
+
+
+
+}
