@@ -24,7 +24,10 @@ function Nav() {
       <div className={`navbar-mobile ${isOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <a onClick={(e) => handleScrollTo(e, "hoewerktstupu")} href="#hoewerktstupu">
+            <a
+              onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
+              href="#hoewerktstupu"
+            >
               Hoe werkt StuPu?
             </a>
           </li>
@@ -34,7 +37,10 @@ function Nav() {
             </a>
           </li>
           <li>
-            <a onClick={(e) => handleScrollTo(e, "formulier")} href="#formulier">
+            <a
+              onClick={(e) => handleScrollTo(e, "formulier")}
+              href="#formulier"
+            >
               Schrijf je in!
             </a>
           </li>
@@ -81,7 +87,10 @@ function Nav() {
           <div className="navbar-menu">
             <ul>
               <li>
-                <a onClick={(e) => handleScrollTo(e, "hoewerktstupu")} href="word-lesvolger">
+                <a
+                  onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
+                  href="word-lesvolger"
+                >
                   Word Lesvolger!
                 </a>
               </li>
@@ -91,12 +100,18 @@ function Nav() {
                 </a>
               </li>
               <li>
-                <a onClick={(e) => handleScrollTo(e, "formulier")} href="word-lesgever">
+                <a
+                  onClick={(e) => handleScrollTo(e, "formulier")}
+                  href="word-lesgever"
+                >
                   Bijles zoeken
                 </a>
               </li>
               <li>
-                <a onClick={(e) => handleScrollTo(e, "contact")} href="#contact">
+                <a
+                  onClick={(e) => handleScrollTo(e, "contact")}
+                  href="#contact"
+                >
                   Contact & Socials
                 </a>
               </li>
@@ -104,26 +119,27 @@ function Nav() {
           </div>
         </div>
         <div className="navbar-signup flex">
-        {isAuthenticated ? (  // Check if the user is authenticated
-    <ProfileDropdown />  // Show the dropdown if authenticated
-  ) : (  // If not authenticated
-    <>
-      <Button
-        className="custom-button button-login button-desktop m-05"
-        type="button"
-        text="aanmelden"
-        onClick={handleLoginClick}
-        icon={LoginAva}
-      />
-      <Button
-        className="custom-button button-registration button-choiceSec button-desktop m05"
-        type="button"
-        text="registreer"
-        onClick={handleSignUpClick}
-        icon={RegistrationIcon}
-      />
-    </>
-  )}
+          {isAuthenticated ? ( // Check if the user is authenticated
+            <ProfileDropdown /> // Show the dropdown if authenticated
+          ) : (
+            // If not authenticated
+            <>
+              <Button
+                className="custom-button button-login button-desktop m-05"
+                type="button"
+                text="aanmelden"
+                onClick={handleLoginClick}
+                icon={LoginAva}
+              />
+              <Button
+                className="custom-button button-registration button-choiceSec button-desktop m05"
+                type="button"
+                text="registreer"
+                onClick={handleSignUpClick}
+                icon={RegistrationIcon}
+              />
+            </>
+          )}
         </div>
         <div className="navbar-toggle">
           <div className="navbar-ham" onClick={toggleMenu}>
