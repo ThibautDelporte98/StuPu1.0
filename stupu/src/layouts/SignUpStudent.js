@@ -16,6 +16,8 @@ const SignUpForm = ({firstName, lastName , email, password, setName, setLastname
       <h1 className="title">Meld u aan!</h1>
       <form className="login-form" onSubmit={onSubmit}>
       <div className="input">
+                    <label>Voornaam</label>
+
         <input
             type="text"
             id="user-name"
@@ -27,6 +29,8 @@ const SignUpForm = ({firstName, lastName , email, password, setName, setLastname
           />
         </div>
         <div className="input">
+            <label>Achternaam</label>
+
         <input
             type="text"
             id="user-lastname"
@@ -38,6 +42,7 @@ const SignUpForm = ({firstName, lastName , email, password, setName, setLastname
           />
         </div>
         <div className="input">
+        <label>Email:</label>
         <input
             type="email"
             id="user-email"

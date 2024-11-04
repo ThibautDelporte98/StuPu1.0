@@ -56,10 +56,10 @@ const Login = () => {
   };
 
   return (
-    <div className="cstm-container">
-      <Nav />
       <div className="Login">
         <div className="Login-header">
+        <div className="cstm-container">
+        <Nav /> 
           {loginError && <p className="error">{loginError}</p>}
           <SignUpForm
             firstName={firstName}

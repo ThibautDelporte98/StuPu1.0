@@ -12,13 +12,14 @@ const ProfileDropdown = ({ userData, onLogout }) => {
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
+
   const handleSignOut = () => {
     logout();
     if (onLogout) onLogout();
   };
 
   return (
-    <div className="dropdown" onClick={toggleDropdown}>
+    <div className="dropdown" >
       <div className="user">
         <img
           className="user-img"
@@ -30,9 +31,9 @@ const ProfileDropdown = ({ userData, onLogout }) => {
         <div className="user-name">
           {authState.userInfo?.firstName} {authState.userInfo?.lastName}
         </div>
-        <div className="dropdown-menu-toggle">
+        <div className={`dropdown-menu-toggle ${isOpen ? "close" : ""}`} onClick={toggleDropdown}>
           <svg
-            width="24"
+            width="18"
             height="14"
             viewBox="0 0 24 14"
             fill="none"

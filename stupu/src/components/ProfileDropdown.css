@@ -3,7 +3,7 @@
     position: relative;
     border: 3.5px solid white;
     border-radius: 5px;
-    padding: .5rem;
+    padding: .5rem 1rem;
     z-index: 999;
 }
 .user {
@@ -17,7 +17,7 @@
 }
 
 .user-name{
-    padding: 0 .75rem;
+    padding: 0 1.5rem 0 0.75rem;
 }
 
 .dropdown-menu {
@@ -32,7 +32,18 @@
     transition: all 0.3s ease;
     opacity: 0;
   }
-  
+  .dropdown-menu-toggle{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transform: rotate(0) scale(1);
+    transition: all .1s ease-in;
+
+  }
+  .dropdown-menu-toggle.close{
+    transform: rotate(180deg) scale(.8);
+    transition: all .1s ease-in;
+  }
   .dropdown-menu.open {
     padding: 1rem;
     border: 3.5px solid white;
