@@ -3,6 +3,7 @@
     font-family: "Fredoka", sans-serif;
     font-size: 1rem;
     font-weight: 300;
+    white-space: nowrap;
     width: 100%;
     height: auto;
     padding: .7rem 3rem;
@@ -20,6 +21,19 @@
     background-color: var(--secondary-color);
 }
 
+.button-search{
+    display: flex;
+    padding: .7rem;
+    width: auto !important;
+    height: 100%;
+}
+
+.button-delete{
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 
 .button-icon{
     display: none;

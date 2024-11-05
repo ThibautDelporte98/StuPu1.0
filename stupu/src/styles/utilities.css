@@ -18,7 +18,7 @@
   }
 
   .justify-content-end{
-    justify-content: end;
+    justify-content: end !important;
   }
   
   
@@ -36,6 +36,14 @@
   
   .mt-2{
       margin-top: 2rem;
+  }
+
+  .p-2{
+    padding: 2rem;
+  }
+
+  .p-3{
+    padding: 3rem;
   }
   
   

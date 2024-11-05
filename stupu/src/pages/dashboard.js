@@ -1,14 +1,13 @@
-import ProfileDropdown from 'components/ProfileDropdown';
+import DashNav from 'layouts/DashboardNav';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
 
     return (
-        <div>
-            <h1>Dashboard Page - Protected</h1>
-            <ProfileDropdown />
+        <div className='cstm-container'>
+            <DashNav />
+            <h1>Welcome User </h1>
         </div>
     );
 };

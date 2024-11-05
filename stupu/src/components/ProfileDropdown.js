@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "hooks/AuthContext";
 import Avatar from "assets/img/login-avatar.png";
 import "./ProfileDropdown.css";
-import DropDownIcon from "assets/svg/dropdown-icon.svg";
 
-const ProfileDropdown = ({ userData, onLogout }) => {
+const ProfileDropdown = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { authState, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -34,7 +32,7 @@ const ProfileDropdown = ({ userData, onLogout }) => {
         <div className={`dropdown-menu-toggle ${isOpen ? "close" : ""}`} onClick={toggleDropdown}>
           <svg
             width="18"
-            height="14"
+            height="18"
             viewBox="0 0 24 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +47,31 @@ const ProfileDropdown = ({ userData, onLogout }) => {
           </svg>
         </div>
       </div>
-
       <div className={`dropdown-menu ${isOpen ? "open" : ""}`}>
+      <button className="button-delete flex justify-content-end w-100 mobile-close" onClick={toggleDropdown}>
+            <svg
+              width="37"
+              height="37"
+              viewBox="0 0 37 37"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.01562 9.01562L27.0468 27.0468"
+                stroke="white"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M9.01562 27.0469L27.0468 9.01565"
+                stroke="white"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         <ul>
           <li>
             <Link to="/dashboard" onClick={() => setIsOpen(false)}>
@@ -72,7 +93,12 @@ const ProfileDropdown = ({ userData, onLogout }) => {
               Zoek bijles
             </Link>
           </li>
-          <li className="flex justify-content-end">
+          <li>
+            <Link to="/zoek-bijles" onClick={() => setIsOpen(false)}>
+                Contact
+            </Link>
+          </li>
+          <li className="flex justify-content-end mobile-logout">
             <Link to="/" onClick={handleSignOut}>
               Logout
             </Link>

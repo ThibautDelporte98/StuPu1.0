@@ -1,5 +1,5 @@
 // src/pages/SignUpTutor.js
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/LoginForm.css";
 import "./SignUp.css";
 import usePasswordToggler from "../hooks/usePasswordToggler";
@@ -7,6 +7,9 @@ import padlock from "../assets/img/padlock.png";
 import padlockUnlock from "../assets/img/padlock-unlock.png";
 import { useState } from "react";
 import Button from "components/common/Button";
+import UploadComponent from "components/UploadComponent";
+import { handleImageChange, handleDeleteImage } from 'utils/uploadImage.js';
+
 
 const SignUpTutor = ({
   firstName,
@@ -37,15 +40,23 @@ const SignUpTutor = ({
 }) => {
   const { passwordType, togglePassword } = usePasswordToggler();
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageFront, setSelectedImageFront] = useState(null);
+  const [imgFrontId, setImgFrontId] = useState("");
+  const [selectedImageBack, setSelectedImageBack] = useState(null);
+  const [imgBackId, setImgBackId] = useState("");
 
-  // Handle file input change
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImage(URL.createObjectURL(file));
-    }
+  const hiddenFileInputFront = useRef(null);
+  const hiddenFileInputBack = useRef(null);
+
+
+  const handleClickFront = () => {
+    hiddenFileInputFront.current.click();
   };
+
+  const handleClickBack = () => {
+    hiddenFileInputBack.current.click();
+  };
+
 
   return (
     <div className="login-box">
@@ -205,24 +216,34 @@ const SignUpTutor = ({
           />
         </div>
         <div className="upload">
-          <label htmlFor="uploadId">Voorkant ID toevoegen</label>
-          <input
-            type="file"
-            id="imageUpload"
-            name="imageUpload"
-            accept="image/*"
-            onChange={handleImageChange}
+        <UploadComponent
+            label={"Voorkant ID toevoegen:"}
+            handleClick={handleClickFront}
+            handleImageChange={(event) =>
+              handleImageChange(event, setSelectedImageFront, setImgFrontId)
+            }
+            handleDeleteImage={() =>
+              handleDeleteImage(setSelectedImageFront, setImgFrontId, hiddenFileInputFront)
+            }
+            hiddenFileInput={hiddenFileInputFront}
+            fileName={imgFrontId}
+            selectedImage={selectedImageFront}
           />
-          <label htmlFor="uploadId">Achterkant ID toevoegen</label>
-          <input
-            type="file"
-            id="imageUpload"
-            name="imageUpload"
-            accept="image/*"
-            onChange={handleImageChange}
+          <UploadComponent
+            label={"Achterkant ID toevoegen: "}
+            handleClick={handleClickBack}
+            handleImageChange={(event) =>
+              handleImageChange(event, setSelectedImageBack, setImgBackId)
+            }
+            handleDeleteImage={() =>
+              handleDeleteImage(setSelectedImageBack, setImgBackId, hiddenFileInputBack)
+            }
+            hiddenFileInput={hiddenFileInputBack}
+            fileName={imgBackId}
+            selectedImage={selectedImageBack}
           />
         </div>
-        <Button type={"submit"}  text={"Verzenden"}/>
+        <Button type={"submit"} text={"Verzenden"} />
       </form>
     </div>
   );

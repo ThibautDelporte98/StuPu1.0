@@ -1,6 +1,5 @@
 
 import Nav from 'layouts/Navigation';
-import Head from 'components/header/HeadHome';
 import SignUpChoice from 'layouts/SignUpChoice';
 
 

@@ -1,7 +1,4 @@
 // src/pages/Home.js
-import { useContext } from 'react';
-import { AuthContext } from '../hooks/AuthContext';
-import ProfileDropdown from 'components/ProfileDropdown';
 import Nav from 'layouts/Navigation';
 import Head from 'components/header/HeadHome';
 

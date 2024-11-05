@@ -7,9 +7,22 @@
 .upload{
     display: flex;
     flex-direction: column;
-    padding: .5rem 0 1rem 0;
-    
+    padding: 0 0 1rem 0;
 }
-input[type="file" ]{
-    padding:.5rem 0;
+
+.upload-item{
+    width: 100%;
 }
+
+.upload-item label{
+    display: flex;
+    margin: .5rem 0;
+}
+
+.upload-file{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: .5rem 0;
+}
+

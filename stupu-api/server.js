@@ -237,9 +237,9 @@ app.use(attachUser);
 
 const requireAuth = expressjwt({
   secret: process.env.JWT_SECRET,
-  algorithms: ['HS256'], // Ensure this matches your token's signing algorithm
-  audience: 'api.orbit',
-  issuer: 'api.orbit'
+  algorithms: ['HS256'], 
+  audience: 'api.stupu',
+  issuer: 'api.stupu'
 });
 
 const requireAdmin = (req, res, next) => {

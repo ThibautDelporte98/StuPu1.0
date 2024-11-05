@@ -8,6 +8,7 @@ import RegistrationIcon from "assets/img/registration.png";
 import scrollToElement from "utils/scrollTo";
 import Button from "components/common/Button";
 import ProfileDropdown from "components/ProfileDropdown";
+import SearchInput from "components/common/SearchInput";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,62 +22,62 @@ function Nav() {
 
   return (
     <nav className="navbar">
-      <div className={`navbar-mobile ${isOpen ? "active" : ""}`}>
-        <ul>
-          <li>
-            <a
-              onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
-              href="#hoewerktstupu"
-            >
-              Hoe werkt StuPu?
-            </a>
-          </li>
-          <li>
-            <a onClick={(e) => handleScrollTo(e, "hoe")} href="#hoe">
-              Hoe meld ik mij aan?
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={(e) => handleScrollTo(e, "formulier")}
-              href="#formulier"
-            >
-              Schrijf je in!
-            </a>
-          </li>
-          <li>
-            <a onClick={(e) => handleScrollTo(e, "contact")} href="#contact">
-              Contact & Socials
-            </a>
-          </li>
-          <div className="flex">
-            {isAuthenticated ? (
-              <ProfileDropdown />
-            ) : (
-              <>
-                <li>
-                  <Button
-                    className="custom-button button-login button-mobile"
-                    type="button"
-                    text="aanmelden"
-                    onClick={handleLoginClick}
-                    icon={LoginAva}
-                  />
-                </li>
-                <li>
-                  <Button
-                    className="custom-button button-registration button-mobile"
-                    type="button"
-                    text="registreer"
-                    onClick={handleSignUpClick}
-                    icon={RegistrationIcon}
-                  />
-                </li>
-              </>
-            )}
-          </div>
-        </ul>
-      </div>
+      {isAuthenticated ? (
+        <></>
+      ) : (
+        // If not authenticated
+        <div className={`navbar-mobile ${isOpen ? "active" : ""}`}>
+          <ul>
+            <li>
+              <a
+                onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
+                href="#hoewerktstupu"
+              >
+                Hoe werkt StuPu?
+              </a>
+            </li>
+            <li>
+              <a onClick={(e) => handleScrollTo(e, "hoe")} href="#hoe">
+                Hoe meld ik mij aan?
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={(e) => handleScrollTo(e, "formulier")}
+                href="#formulier"
+              >
+                Schrijf je in!
+              </a>
+            </li>
+            <li>
+              <a onClick={(e) => handleScrollTo(e, "contact")} href="#contact">
+                Contact & Socials
+              </a>
+            </li>
+            <div className="flex">
+              <li>
+                <Button
+                  className="custom-button button-login button-mobile"
+                  type="button"
+                  text="aanmelden"
+                  onClick={handleLoginClick}
+                  icon={LoginAva}
+                />
+              </li>
+              <li>
+                <Button
+                  className="custom-button button-registration button-mobile"
+                  type="button"
+                  text="registreer"
+                  onClick={handleSignUpClick}
+                  icon={RegistrationIcon}
+                />
+              </li>
+            </div>
+          </ul>
+        </div>
+      )}
+
       <div className="navbar-flex">
         <div className="navbar-links flex">
           <div className="navbar-logo">
@@ -85,37 +86,42 @@ function Nav() {
             </a>
           </div>
           <div className="navbar-menu">
-            <ul>
-              <li>
-                <a
-                  onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
-                  href="word-lesvolger"
-                >
-                  Word Lesvolger!
-                </a>
-              </li>
-              <li>
-                <a onClick={(e) => handleScrollTo(e, "hoe")} href="#hoe">
-                  Word Lesgever
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={(e) => handleScrollTo(e, "formulier")}
-                  href="word-lesgever"
-                >
-                  Bijles zoeken
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={(e) => handleScrollTo(e, "contact")}
-                  href="#contact"
-                >
-                  Contact & Socials
-                </a>
-              </li>
-            </ul>
+            {isAuthenticated ? (
+              <SearchInput />
+            ) : (
+              // If not authenticated
+              <ul>
+                <li>
+                  <a
+                    onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
+                    href="word-lesvolger"
+                  >
+                    Word Lesvolger!
+                  </a>
+                </li>
+                <li>
+                  <a onClick={(e) => handleScrollTo(e, "hoe")} href="#hoe">
+                    Word Lesgever
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={(e) => handleScrollTo(e, "formulier")}
+                    href="word-lesgever"
+                  >
+                    Bijles zoeken
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={(e) => handleScrollTo(e, "contact")}
+                    href="#contact"
+                  >
+                    Contact & Socials
+                  </a>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
         <div className="navbar-signup flex">
@@ -141,13 +147,17 @@ function Nav() {
             </>
           )}
         </div>
-        <div className="navbar-toggle">
-          <div className="navbar-ham" onClick={toggleMenu}>
-            <div className="bar"></div>
-            <div className="bar"></div>
-            <div className="bar"></div>
+        {isAuthenticated ? (
+          <></>
+        ) : (
+          <div className="navbar-toggle">
+            <div className="navbar-ham" onClick={toggleMenu}>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
