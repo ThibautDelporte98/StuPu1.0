@@ -7,7 +7,7 @@ import padlock from "../assets/img/padlock.png"
 import padlockUnlock from "../assets/img/padlock-unlock.png"
 
 
-const LoginForm = ({ email, password, setEmail, setPassword, onSubmit }) => {
+const SignIn = ({ email, password, setEmail, setPassword, onSubmit }) => {
   const { passwordType, togglePassword } = usePasswordToggler();
 
   return (
@@ -57,4 +57,4 @@ const LoginForm = ({ email, password, setEmail, setPassword, onSubmit }) => {
 };
 
 
-export default LoginForm;
+export default SignIn;

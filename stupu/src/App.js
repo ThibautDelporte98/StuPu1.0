@@ -4,6 +4,7 @@ import { AuthProvider, AuthContext } from "./hooks/AuthContext";
 import AppShell from './AppShell';
 import { FetchProvider } from './hooks/FetchContext';
 import "./styles/index.css";
+import SignIn from 'layouts/SignIn';
 
 
 const Home = lazy(() => import("./pages/home"));
@@ -26,6 +27,7 @@ const UnauthenticatedRoutes = () => (
     <Route path='/registratie-lesgever' element={<SignUpTutor />} />
     <Route path="/aanmelden" element={<Login />} />
     <Route path="/registratie-lesvolger" element={<Signup />} />
+    <Route path='/aanmelden' element={<SignIn />} />
     <Route path="/" element={<Home />} />
   </Routes>
 );
