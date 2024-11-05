@@ -90,7 +90,7 @@ function Nav() {
               <SearchInput />
             ) : (
               // If not authenticated
-              <ul>
+              <ul className="navbar-desktop">
                 <li>
                   <a
                     onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
