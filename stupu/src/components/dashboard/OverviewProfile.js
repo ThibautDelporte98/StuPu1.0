@@ -1,4 +1,3 @@
-import Avatar from "assets/img/login-avatar.png";
 import Avatar2 from "assets/img/defaultprofile.webp";
 import Verified from "assets/img/verified.png";
 
@@ -29,10 +28,10 @@ const OverviewProfile = () => {
       </div>
       <div className="box-img">
         <span className="verified">
-          <img className="verified-img" src={Verified} alt="default image" />
+          <img className="verified-img" src={Verified} alt="default" />
         </span>
         <div className="picture">
-          <img className="picture-img" src={Avatar2} alt="default image" />
+          <img className="picture-img" src={Avatar2} alt="default" />
         </div>
       </div>
       <div className="box-info">
