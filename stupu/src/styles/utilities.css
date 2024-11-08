@@ -4,15 +4,20 @@
     align-items: center;
   }
 
+.flex-colomn{
+  display: flex;
+  flex-direction: column;
+}
+
 .flex-wrap{
   flex-wrap: wrap;
   gap: 1;
 }
   
-  @media screen and (max-width: 992px) {
+@media screen and (max-width: 992px) {
     .mobile-direction-column{
       flex-direction: column;
-    }
+}
   
   }
   .justify-content-center{
@@ -44,12 +49,24 @@
       margin-top: 2rem;
   }
 
+  .p-1{
+    padding: 1rem !important;
+  }
+
   .p-2{
     padding: 2rem;
   }
 
   .p-3{
     padding: 3rem;
+  }
+
+  .ptb-05{
+    padding: .5rem 0;
+  }
+
+  .ptb-1{
+    padding: 1rem 0;
   }
   
   

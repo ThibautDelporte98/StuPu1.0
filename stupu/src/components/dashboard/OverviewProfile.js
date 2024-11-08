@@ -1,14 +1,13 @@
 import Avatar2 from "assets/img/defaultprofile.webp";
 import Verified from "assets/img/verified.png";
-
 import "./OverviewProfile.css";
 
 const OverviewProfile = () => {
   return (
-    <section className="overview-box box-1 overview-box-profile w-100">
+    <section className="box box-1 w-100">
       <div className="box-top flex">
         <h2>Profiel</h2>
-        <button className="button-edit">
+        <button className="button">
           <svg
             width="36"
             height="36"
@@ -26,7 +25,7 @@ const OverviewProfile = () => {
           </svg>
         </button>
       </div>
-      <div className="box-img">
+      <div className="profile-img">
         <span className="verified">
           <img className="verified-img" src={Verified} alt="default" />
         </span>
@@ -34,14 +33,14 @@ const OverviewProfile = () => {
           <img className="picture-img" src={Avatar2} alt="default" />
         </div>
       </div>
-      <div className="box-info">
+      <div className="profile-info">
         <h3>Persoonlijke info</h3>
         <p>
           Passie voor lesgeven | Hulp bij studie | Persoonlijke bijlessen op
           maat | Flexibel en geduldig | Samen leren, samen groeien
         </p>
       </div>
-      <div className="box-info">
+      <div className="profile-info">
         <h3>student gegevens</h3>
         <p>
           Categorie :6de ASO Latijn-Wiskunde School: Sint-Amands college

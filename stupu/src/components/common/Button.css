@@ -15,6 +15,15 @@
 
 }
 
+.button{
+    font-family: "Fredoka", sans-serif;
+    font-size: 1rem;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .button-choiceSec{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-color: var(--secondary-color);
@@ -41,10 +50,8 @@
     height: auto;
 }
 
-.button-edit{
-    background-color: transparent;
-    border: none;
-}
+
+
 
 @media screen and (max-width: 1200px) {
 

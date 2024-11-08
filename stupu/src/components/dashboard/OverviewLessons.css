@@ -1,0 +1,8 @@
+.lessons{
+    margin-left: -0.5rem;
+}
+
+.lessons-item{
+    width: calc(100% / 3 ); 
+    margin-left:0.5rem;
+}
