@@ -32,14 +32,14 @@ const UnauthenticatedRoutes = () => (
   </Routes>
 );
 
-const AuthenticatedRoute = ({ children }) => {
-  const auth = useContext(AuthContext);
-  return auth ? (
-    <AppShell>{children}</AppShell>
-  ) : (
-    <Navigate to="/aanmelden" />
-  );
-};
+// const AuthenticatedRoute = ({ children }) => {
+//   const auth = useContext(AuthContext);
+//   return auth ? (
+//     <AppShell>{children}</AppShell>
+//   ) : (
+//     <Navigate to="/aanmelden" />
+//   );
+// };
 
 const AdminRoute = ({ children }) => {
   const auth = useContext(AuthContext);

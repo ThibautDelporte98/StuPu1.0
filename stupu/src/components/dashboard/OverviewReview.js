@@ -1,19 +1,13 @@
 // OverviewLessons.js
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Avatar from "assets/img/defaultprofile.webp";
 import Slider from "components/common/Slider";
 import "./OverviewReview.css";
 import Button from "components/common/Button";
 
 const OverviewReview = () => {
-    const navigate = useNavigate(); // Initialize useNavigate
 
   const reviews = [{ tutor: "John" }, { tutor: "Lisa" }, { tutor: "Karen" }];
-
-  const handleDetails = () => {
-    navigate("/details"); // Redirect to the student sign-up path
-  };
 
   return (
     <section className="box box-2 w-100 ">
