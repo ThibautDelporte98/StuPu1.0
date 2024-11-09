@@ -1,0 +1,10 @@
+.quick-item {
+  height: 80px; /* Adjust the height to ensure each item fits properly */
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.scroll-container {
+  max-height: calc(2 * 80px + 2rem); /* Adjust height to fit 2 items */
+  overflow-y: auto;
+}

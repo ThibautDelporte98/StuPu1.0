@@ -79,7 +79,7 @@ const ProfileDropdown = ({ onLogout }) => {
             </Link>
           </li>
           <li>
-            <Link to="/mijn-lessen" onClick={() => setIsOpen(false)}>
+            <Link to="/" onClick={() => setIsOpen(false)}>
               Mijn Lessen
             </Link>
           </li>

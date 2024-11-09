@@ -49,6 +49,10 @@
       margin-top: 2rem;
   }
 
+  .mtb-1{
+    margin: 1rem 0;
+  }
+
   .p-1{
     padding: 1rem !important;
   }
@@ -59,6 +63,13 @@
 
   .p-3{
     padding: 3rem;
+  }
+
+  .pb-1{
+    padding-bottom: 1rem;
+  }
+  .pb-2{
+    padding-bottom: 2rem;
   }
 
   .ptb-05{

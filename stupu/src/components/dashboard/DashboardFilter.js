@@ -2,7 +2,7 @@ import React from "react";
 
 const DashFilter = ({title }) => {
   return (
-    <div className="box-top flex ptb-1-05">
+    <div className="box-top flex">
     <h2>{title}</h2>
     <div className="filter">
       <label htmlFor="filter-options">Filter op:</label>

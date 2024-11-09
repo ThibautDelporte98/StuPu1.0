@@ -13,8 +13,8 @@ const OverviewLessons = () => {
   ];
 
   return (
-    <section className="box box-2 w-100">
-      <div className="box-top flex">
+    <section className="box box-2 w-100 ">
+      <div className="box-top flex pb-2">
         <h2>Mijn lessen</h2>
         <button className="button">Bekijk al mijn lessen</button>
       </div>
