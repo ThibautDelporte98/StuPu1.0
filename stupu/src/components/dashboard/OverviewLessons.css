@@ -1,8 +1,6 @@
-.lessons{
-    margin-left: -0.5rem;
-}
+.lessons-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-.lessons-item{
-    width: calc(100% / 3 ); 
-    margin-left:0.5rem;
-}
+  }

@@ -20,7 +20,7 @@
 
 .picture-img, img{
     position: relative;
-    width: 15rem;
+    width: 10rem;
     height: auto;
     object-fit: cover;
     border-radius: 50%;

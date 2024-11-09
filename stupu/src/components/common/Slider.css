@@ -1,0 +1,29 @@
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .lessons {
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    margin-left: 0;
+    gap: .5rem;
+  }
+
+  .slide-item{
+    min-width: calc(50% - 0.5rem); /* Shows 3 items at a time */
+    min-height: 17.5rem;
+    box-sizing: border-box;
+}
+  
+
+
+
+  
+
+  
