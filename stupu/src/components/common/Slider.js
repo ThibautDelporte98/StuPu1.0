@@ -19,7 +19,7 @@ const Slider = ({ items, itemsToShow }) => {
   const maxPosition = items.length - itemsToShow;
 
   return (
-    <div className="slider-container ptb-1-05">
+    <div className="slider-container pt-1">
       <div
         ref={sliderRef}
         className="lessons"

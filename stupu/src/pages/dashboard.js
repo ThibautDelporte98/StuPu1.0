@@ -6,6 +6,7 @@ import "./dashboard.css";
 import"components/dashboard/Overview.css";
 import OverviewLessons from "components/dashboard/OverviewLessons";
 import OverviewRebook from "components/dashboard/OverviewRebook";
+import OverviewReview from "components/dashboard/OverviewReview";
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext);
@@ -17,9 +18,7 @@ const Dashboard = () => {
       <div className="dash-overview flex-wrap">
         <OverviewProfile />
         <OverviewLessons />
-        <section className="box box-2">
-          {authState.userInfo?.firstName} {authState.userInfo?.lastName}
-        </section>
+        <OverviewReview />
         <OverviewRebook />
       </div>
     </div>

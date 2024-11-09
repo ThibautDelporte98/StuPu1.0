@@ -8,6 +8,9 @@ const OverviewRebook = () => {
     { title: "Nederlands", date: "7/11/2024", time: "16:00 - 18:00" },
     { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
     { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
+    { title: "Nederlands", date: "7/11/2024", time: "16:00 - 18:00" },
+    { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
+    { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
   ];
 
   return (
