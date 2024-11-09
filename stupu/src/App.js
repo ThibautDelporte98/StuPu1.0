@@ -54,7 +54,7 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
-        <Route path="/dashboard" element={<AuthenticatedRoute><Dashboard /></AuthenticatedRoute>} />
+        <Route path="/dashboard" element={<AdminRoute ><Dashboard /></AdminRoute>} />
         <Route path="/admin" element={<AdminRoute>hello</AdminRoute>} />
         <Route path="/*" element={<UnauthenticatedRoutes />} /> 
       </Routes>

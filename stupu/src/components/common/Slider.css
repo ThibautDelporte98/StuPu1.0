@@ -21,6 +21,12 @@
     box-sizing: border-box;
 }
   
+@media screen and (max-width:768px) {
+  .slide-item{
+    min-width: calc(100% - 0.5rem); /* Shows 3 items at a time */
+
+}
+}
 
 
 

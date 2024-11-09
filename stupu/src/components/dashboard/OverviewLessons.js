@@ -1,16 +1,22 @@
 // OverviewLessons.js
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Slider from "components/common/Slider";
 import DashFilter from "./DashboardFilter";
 import "./OverviewLessons.css";
 
 const OverviewLessons = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const lessons = [
     { title: "Wiskunde", date: "7/11/2024", time: "17:00 - 19:00" },
     { title: "Nederlands", date: "7/11/2024", time: "16:00 - 18:00" },
     { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
     { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
   ];
+
+  const handleDetails = () => {
+    navigate("/details"); // Redirect to the student sign-up path
+  };
 
   return (
     <section className="box box-2 w-100 ">
@@ -36,7 +42,7 @@ const OverviewLessons = () => {
                 </ul>
               </div>
               <div className="box-top">
-                <button className="button">Bekijk details</button>
+                <button className="button" onClick={handleDetails} >Bekijk details</button>
                 <button className="button">Annuleer</button>
               </div>
             </div>

@@ -30,6 +30,18 @@
   .justify-content-end{
     justify-content: end !important;
   }
+  .justify-space-between{
+    justify-content: space-between;
+  }
+  .align-items-start{
+    align-items: end;
+  }
+  .align-items-center{
+    align-items: end;
+  }
+  .align-items-end{
+    align-items: end;
+  }
   
 
   

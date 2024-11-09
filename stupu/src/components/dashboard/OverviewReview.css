@@ -1,0 +1,12 @@
+.review-tutor h3{
+    margin-left: 1rem;
+}
+
+.score{
+    width: 5rem !important;
+}
+
+.input input,
+.textarea textarea {
+  pointer-events: auto;
+}

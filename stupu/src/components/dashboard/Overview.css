@@ -1,3 +1,12 @@
+.dash-overview{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-flow: dense;
+    gap: 10px; 
+    padding: 2rem 0;
+}
+
+
 .box{
     height: 100%;
     padding: 1.5rem;
@@ -10,27 +19,82 @@
 }
 
 
+
 .box-1 {
-    grid-column: span 2; /* This box will take up 2 columns */
+    grid-column: span 2;
 }
 .box-2 {
-    grid-column: span 5; /* This box will take up 3 columns */
+    grid-column: span 5;
 }
-.box-3{
-    grid-column: span 7;
+.box-3 {
+    grid-column: span 2;
 }
 
 
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
     .box-1{
-        grid-column: span 1;
+        grid-column: span 3;
+    }
+    .box-2{
+        grid-column: span 6;
+    }
+    .box-3{
+        grid-column: span 3;
+    }
+    
+
+}
+
+@media screen and (max-width: 1290px) {
+    .box-1{
+        grid-column: span 2;
+    }
+    .box-2{
+        grid-column: span 5;
+    }
+    .box-3{
+        grid-column: span 3;
+    }
+    
+
+}
+
+
+@media screen and (max-width: 992px) {
+    .box-1{
+        grid-column: span 4;
+    }
+    .box-2{
+        grid-column: span 4;
+    }
+    .box-3{
+        grid-column: span 4;
     }
 
 }
-@media screen and (max-width: 992px) {
-    .box{
-        grid-column: span 6 !important;
+@media screen and (max-width: 768px) {
+    .box-1{
+        grid-column: span 3;
     }
+    .box-2{
+        grid-column: span 3;
+    }
+    .box-3{
+        grid-column: span 3;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .box-1{
+        grid-column: span 2;
+    }
+    .box-2{
+        grid-column: span 2;
+    }
+    .box-3{
+        grid-column: span 2;
+    }
+
 }
 

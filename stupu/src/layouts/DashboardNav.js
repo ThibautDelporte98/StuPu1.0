@@ -5,7 +5,6 @@ import ProfileDropdown from "components/ProfileDropdown";
 import SearchInput from "components/common/SearchInput";
 
 function DashNav() {
-
   return (
     <nav className="navbar">
       <div className="navbar-flex">

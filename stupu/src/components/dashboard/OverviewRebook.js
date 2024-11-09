@@ -14,22 +14,27 @@ const OverviewRebook = () => {
   ];
 
   return (
-    <section className="box box-1 w-100">
-      <DashFilter title={"voltooide lessen"} />
-      <div className="scroll-container mtb-1">
-        {lessons.map((lesson, index) => (
-          <div key={index} className="box quick-item w-100 ">
-            <div className="box-top">
-              <h3>{lesson.title}</h3>
-              <div className="date">{lesson.date}</div>
-            </div>
-            <div className="box-top">
-              <div className="tutor">Docent: John Doe</div>
-              <button className="button">Annuleer</button>
-            </div>
-          </div>
-        ))}
+    <section className="box-3 w-100">
+      <div className="flex-colomn">
+        <div className="box">
+          <DashFilter title={"voltooide lessen"} />
+          <div className="scroll-container mtb-1">
+            {lessons.map((lesson, index) => (
+              <div key={index} className="box flex-colomn justify-space-between w-100  quick-item  ">
+                <div className="box-top">
+                  <h3>{lesson.title}</h3>
+                  <div className="date">{lesson.date}</div>
+                </div>
+                <div className="box-top">
+                  <div className="tutor">Docent: John Doe</div>
+                  <button className="button">Herboeken</button>
+                </div>
+              </div>
+            ))}
+          </div>          
+        </div>
       </div>
+
     </section>
   );
 };

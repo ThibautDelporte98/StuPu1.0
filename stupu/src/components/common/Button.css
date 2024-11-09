@@ -32,7 +32,7 @@
 
 .button-search{
     display: flex;
-    padding: .7rem;
+    padding: .75rem;
     width: auto !important;
     height: 100%;
 }
