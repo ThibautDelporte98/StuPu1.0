@@ -10,14 +10,13 @@ const ProfileDropdown = ({ onLogout }) => {
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-
   const handleSignOut = () => {
     logout();
     if (onLogout) onLogout();
   };
 
   return (
-    <div className="dropdown" >
+    <div className="dropdown">
       <div className="user">
         <img
           className="user-img"
@@ -40,44 +39,52 @@ const ProfileDropdown = ({ onLogout }) => {
             <path
               d="M2 2L11.5 12L21.5 2"
               stroke="white"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
       </div>
       <div className={`dropdown-menu ${isOpen ? "open" : ""}`}>
-      <button className="button-delete flex justify-content-end w-100 mobile-close" onClick={toggleDropdown}>
-            <svg
-              width="37"
-              height="37"
-              viewBox="0 0 37 37"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9.01562 9.01562L27.0468 27.0468"
-                stroke="white"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9.01562 27.0469L27.0468 9.01565"
-                stroke="white"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+        <button className="button-delete flex justify-content-end w-100 mobile-close" onClick={toggleDropdown}>
+          <svg
+            width="37"
+            height="37"
+            viewBox="0 0 37 37"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.01562 9.01562L27.0468 27.0468"
+              stroke="white"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M9.01562 27.0469L27.0468 9.01565"
+              stroke="white"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
         <ul>
-          <li>
-            <Link to="/dashboard" onClick={() => setIsOpen(false)}>
-              Dashboard
-            </Link>
-          </li>
+          {authState.userInfo?.role === "admin" ? (
+            <li>
+              <Link to="/admin" onClick={() => setIsOpen(false)}>
+                Admin Dashboard
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/dashboard" onClick={() => setIsOpen(false)}>
+                Dashboard
+              </Link>
+            </li>
+          )}
           <li>
             <Link to="/" onClick={() => setIsOpen(false)}>
               Mijn Lessen
@@ -94,8 +101,8 @@ const ProfileDropdown = ({ onLogout }) => {
             </Link>
           </li>
           <li>
-            <Link to="/zoek-bijles" onClick={() => setIsOpen(false)}>
-                Contact
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              Contact
             </Link>
           </li>
           <li className="flex justify-content-end mobile-logout">

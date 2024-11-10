@@ -6,7 +6,7 @@ const userModel = new Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  role: { type: String, required: true, default: 'user' },
+  role: { type: String, required: true, default: 'student' },
   bio: { type: String, required: false }
 });
 

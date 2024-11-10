@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState,startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 
@@ -18,17 +18,16 @@ const AuthProvider = ({ children }) => {
   });
 
   const setAuthInfo = ({ token, userInfo, expiresAt }) => {
-    localStorage.setItem('token', token);
-    localStorage.setItem(
-      'userInfo',
-      JSON.stringify(userInfo)
-    );
-    localStorage.setItem('expiresAt', expiresAt);
-
-    setAuthState({
-      token,
-      userInfo,
-      expiresAt
+    startTransition(() => {
+      localStorage.setItem('token', token);
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      localStorage.setItem('expiresAt', expiresAt);
+  
+      setAuthState({
+        token,
+        userInfo,
+        expiresAt
+      });
     });
   };
 
@@ -55,7 +54,7 @@ const AuthProvider = ({ children }) => {
   
 
   const isStudent = () => {
-    return authState.userInfo.role === 'student'
+    return authState.userInfo.role === 'student';
   }
 
   const isTeacher = () => {
@@ -68,7 +67,7 @@ const AuthProvider = ({ children }) => {
         authState,
         setAuthState: authInfo => setAuthInfo(authInfo),
         logout,
-        isAuthenticated: isAuthenticated(), // Ensure this is called to get the latest value
+        isAuthenticated,
         isAdmin,
         isStudent,
         isTeacher,

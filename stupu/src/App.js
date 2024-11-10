@@ -5,6 +5,7 @@ import AppShell from './AppShell';
 import { FetchProvider } from './hooks/FetchContext';
 import "./styles/index.css";
 import SignIn from 'layouts/SignIn';
+import Admin from 'pages/admin';
 
 
 const Home = lazy(() => import("./pages/home"));
@@ -41,9 +42,18 @@ const UnauthenticatedRoutes = () => (
 //   );
 // };
 
+const StudentRoute = ({ children }) => {
+  const auth = useContext(AuthContext);
+  return auth.isAuthenticated() && auth.isStudent() ? (
+    <AppShell>{children}</AppShell>
+  ) : (
+    <Navigate to="/aanmelden" />
+  );
+};
+
 const AdminRoute = ({ children }) => {
   const auth = useContext(AuthContext);
-  return auth && auth.isAdmin() ? (
+  return auth.isAuthenticated() && auth.isAdmin() ? (
     <AppShell>{children}</AppShell>
   ) : (
     <Navigate to="/aanmelden" />
@@ -54,8 +64,8 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
-        <Route path="/dashboard" element={<AdminRoute ><Dashboard /></AdminRoute>} />
-        <Route path="/admin" element={<AdminRoute>hello</AdminRoute>} />
+        <Route path="/dashboard" element={<StudentRoute><Dashboard /></StudentRoute>} />
+        <Route path="/admin" element={<AdminRoute><Admin/></AdminRoute>} />
         <Route path="/*" element={<UnauthenticatedRoutes />} /> 
       </Routes>
     </Suspense>

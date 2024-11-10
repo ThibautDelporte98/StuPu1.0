@@ -12,7 +12,7 @@ import SearchInput from "components/common/SearchInput";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext); // Get isAuthenticated function from context
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -22,10 +22,9 @@ function Nav() {
 
   return (
     <nav className="navbar">
-      {isAuthenticated ? (
+      {isAuthenticated() ? (  // Call isAuthenticated as a function
         <></>
       ) : (
-        // If not authenticated
         <div className={`navbar-mobile ${isOpen ? "active" : ""}`}>
           <ul>
             <li>
@@ -86,10 +85,9 @@ function Nav() {
             </a>
           </div>
           <div className="navbar-menu">
-            {isAuthenticated ? (
+            {isAuthenticated() ? (  // Call isAuthenticated as a function
               <SearchInput />
             ) : (
-              // If not authenticated
               <ul className="navbar-desktop">
                 <li>
                   <a
@@ -125,10 +123,9 @@ function Nav() {
           </div>
         </div>
         <div className="navbar-signup flex">
-          {isAuthenticated ? ( // Check if the user is authenticated
-            <ProfileDropdown /> // Show the dropdown if authenticated
+          {isAuthenticated() ? ( // Call isAuthenticated as a function
+            <ProfileDropdown />
           ) : (
-            // If not authenticated
             <>
               <Button
                 className="custom-button button-login button-desktop m-05"
@@ -147,7 +144,7 @@ function Nav() {
             </>
           )}
         </div>
-        {isAuthenticated ? (
+        {isAuthenticated() ? (  // Call isAuthenticated as a function
           <></>
         ) : (
           <div className="navbar-toggle">
