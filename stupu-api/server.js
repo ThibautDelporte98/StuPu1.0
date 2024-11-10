@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { expressjwt } = require('express-jwt');
+const cookieParser = require("cookie-parser");
 const jwtDecode = require('jwt-decode');
 const mongoose = require('mongoose');
 const dashboardData = require('./data/dashboard');
@@ -20,6 +21,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.post('/api/authenticate', async (req, res) => {
   try {
@@ -49,6 +51,10 @@ app.post('/api/authenticate', async (req, res) => {
       const decodedToken = jwtDecode(token);
       const expiresAt = decodedToken.exp;
 
+      res.cookie('token', token, {
+        httpOnly: true
+      })
+
       res.json({
         message: 'Authentication successful!',
         token,
@@ -68,83 +74,6 @@ app.post('/api/authenticate', async (req, res) => {
   }
 });
 
-// app.post('/api/signup', async (req, res) => {
-//   try {
-//     const { firstName, lastName, email, phone , dateOfBirth, address, postalCode, city, studentNr, school, education } = req.body;
-
-//     // Hash the password
-//     const hashedPassword = await hashPassword(password);
-
-//     // Basic user data
-//     const userData = {
-//       email: email.toLowerCase(),
-//       firstName,
-//       lastName,
-//       password: hashedPassword,
-//       role
-//     };
-
-//     // Add additional fields for tutors
-//     if (role === 'tutor') {
-//       if (!phone || dateOfBirth || !address || !postalCode || !city || !studentNr || !school || !education) {
-//         return res.status(400).json({ message: 'All tutor fields are required.' });
-//       }
-//       userData.phone = phone
-//       userData.dateOfBirth = dateOfBirth;
-//       userData.address = address;
-//       userData.postalCode = postalCode;
-//       userData.city = city;
-//       userData.studentNr = studentNr;
-//       userData.school = school;
-//       userData.education = education;
-//     }
-
-//     // Check if the email already exists
-//     const existingEmail = await User.findOne({ email: userData.email }).lean();
-
-//     if (existingEmail) {
-//       return res.status(400).json({ message: 'Email already exists' });
-//     }
-
-//     // Create and save the new user
-//     const newUser = new User(userData);
-//     const savedUser = await newUser.save();
-
-//     if (savedUser) {
-//       const token = createToken(savedUser);
-//       const decodedToken = jwtDecode(token);
-//       const expiresAt = decodedToken.exp;
-
-//       const { firstName, lastName, email, phone , dateOfBirth, address, postalCode, city, studentNr, school, education } = savedUser;
-
-//       const userInfo = {
-//         firstName,
-//         lastName,
-//         email,
-//         role,
-//         phone: phone || null,
-//         dateOfBirth: dateOfBirth || null,
-//         address: address || null,
-//         postalCode: postalCode || null,
-//         city: city || null,
-//         studentNr: studentNr || null,
-//         school: school || null,
-//         education: education || null
-//       };
-
-//       return res.json({
-//         message: 'User created!',
-//         token,
-//         userInfo,
-//         expiresAt
-//       });
-//     } else {
-//       return res.status(400).json({ message: 'There was a problem creating your account' });
-//     }
-//   } catch (err) {
-//     return res.status(400).json({ message: 'There was a problem creating your account' });
-//   }
-// });
 
 
 app.post('/api/signup', async (req, res) => {
@@ -195,6 +124,10 @@ app.post('/api/signup', async (req, res) => {
         role
       };
 
+      res.cookie('token', token, {
+        httpOnly: true
+      })
+
       return res.json({
         message: 'User created!',
         token,
@@ -215,13 +148,13 @@ app.post('/api/signup', async (req, res) => {
 
 
 const attachUser = (req, res, next) => {
-  const token = req.headers.authorization;
+  const token = req.cookies.token;
   if (!token) {
     return res
       .status(401)
       .json({ message: 'Authentication invalid' });
   }
-  const decodedToken = jwtDecode(token.slice(7));
+  const decodedToken = jwtDecode(token);
 
   if (!decodedToken) {
     return res.status(401).json({
@@ -239,7 +172,8 @@ const requireAuth = expressjwt({
   secret: process.env.JWT_SECRET,
   algorithms: ['HS256'], 
   audience: 'api.stupu',
-  issuer: 'api.stupu'
+  issuer: 'api.stupu',
+  getToken: req => req.cookies.token
 });
 
 const requireAdmin = (req, res, next) => {
