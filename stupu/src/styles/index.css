@@ -6,6 +6,7 @@
 @import "./error-message.css";
 @import "./scrollbar.css";
 @import "./avatar.css";
+@import "./animations.css";
 
 
 :root {
@@ -24,12 +25,18 @@
 
 body {
   margin: 0;
-  font-family: "Fredoka", sans-serif !important;
+  font-family: "Fredoka", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   color: white;
   background-color: var(--primary-color);
 }
+
+.dashboard-background {
+  background-color: var(--secondary-color) !important; 
+}
+
+
 
 .cstm-container {
   max-width: 1512px;

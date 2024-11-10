@@ -7,9 +7,11 @@ import"components/dashboard/Overview.css";
 import OverviewLessons from "components/dashboard/OverviewLessons";
 import OverviewRebook from "components/dashboard/OverviewRebook";
 import OverviewReview from "components/dashboard/OverviewReview";
+import useChangeBackground from "utils/changeBackground";
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext);
+  useChangeBackground("/dashboard", "#59b2a5");
 
   return (
     <div className="cstm-container">

@@ -1,7 +1,9 @@
 const DRAG_THRESHOLD = 50;
 
 export const handleDragStart = (e, setIsDragging, setStartPosition) => {
-  e.preventDefault();
+  if (!e.touches) {
+    e.preventDefault();
+  }
   setIsDragging(true);
   setStartPosition(e.clientX || e.touches[0].clientX);
 };

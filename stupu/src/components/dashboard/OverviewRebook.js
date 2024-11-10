@@ -18,9 +18,9 @@ const OverviewRebook = () => {
       <div className="flex-colomn">
         <div className="box">
           <DashFilter title={"voltooide lessen"} />
-          <div className="scroll-container mtb-1">
+          <div className="scroll-container p-1 mtb-1">
             {lessons.map((lesson, index) => (
-              <div key={index} className="box flex-colomn justify-space-between w-100  quick-item  ">
+              <div key={index} className="box box-shadow flex-colomn justify-space-between w-100  quick-item  ">
                 <div className="box-top">
                   <h3>{lesson.title}</h3>
                   <div className="date">{lesson.date}</div>

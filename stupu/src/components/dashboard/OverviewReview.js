@@ -10,14 +10,14 @@ const OverviewReview = () => {
   const reviews = [{ tutor: "John" }, { tutor: "Lisa" }, { tutor: "Karen" }];
 
   return (
-    <section className="box box-2 w-100 ">
+    <section className="box box-border box-2 w-100 ">
       <div className="flex-colomn pb-2">
         <h2>Beoordeel jouw docent!</h2>
         <span>Geef jouw docenten een score op 5.</span>
       </div>
       <Slider
         items={reviews.map((review, index) => (
-          <div className="review-item w-100 p-1" key={index}>
+          <div className="review-item  w-100 p-1" key={index}>
             <div className="box-top ptb-1">
               <div className="flex review-tutor">
                 <img className="avatar-small" src={Avatar} alt={"tutor"} />
@@ -50,7 +50,7 @@ const OverviewReview = () => {
             </div>
             <div className=" ptb-1">
               <div className="input flex-colomn align-items-end  ">
-                <label for="number">Score:</label>
+                <label htmlFor="number">Score:</label>
                 <input
                 className="score"
                   type="number"
@@ -62,7 +62,7 @@ const OverviewReview = () => {
                 />
               </div>
               <div className="input textarea flex-colomn">
-                <label for="comments">Bericht:</label>
+                <label htmlFor="comments">Bericht:</label>
                 <textarea
                   id="comments"
                   name="comments"

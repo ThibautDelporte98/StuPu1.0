@@ -1,11 +1,12 @@
 import React from "react";
+import "./DashboardFilter.css";
 
 const DashFilter = ({title }) => {
   return (
     <div className="box-top flex">
     <h2>{title}</h2>
-    <div className="filter">
-      <label htmlFor="filter-options">Filter op:</label>
+    <div className="filter flex">
+      <label htmlFor="filter-options"></label>
       <select id="filter-options">
         <option value="all">Alle</option>
         <option value="popular">Wiskunde</option>

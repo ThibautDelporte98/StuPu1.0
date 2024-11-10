@@ -51,6 +51,7 @@
 }
 
 .button-slide{
+    color: var(--primary-color);
     margin: 1rem;
 }
 

@@ -27,7 +27,7 @@ const OverviewLessons = () => {
       <DashFilter title={"Alle lessen"} />
       <Slider
           items={lessons.map((lesson, index) => (
-            <div className="box lessons-item w-100 p-1" key={index}>
+            <div className="box box-shadow box-primairy-color lessons-item w-100 p-1" key={index}>
               <div className="box-top">
                 <h3 className="flex-colomn">
                   {lesson.title} <span className="date">{lesson.date}</span>
@@ -36,13 +36,13 @@ const OverviewLessons = () => {
               </div>
               <div className="box-info ptb-1">
                 <ul>
-                  <li>Onderwerp</li>
-                  <li>Docent</li>
-                  <li>Onderwerp</li>
+                  <li>Onderwerp: Vierkants wortels</li>
+                  <li>Docent: John Doe</li>
+                  <li>Vorm: Online</li>
                 </ul>
               </div>
               <div className="box-top">
-                <button className="button" onClick={handleDetails} >Bekijk details</button>
+                <button className="button " onClick={handleDetails} >Bekijk details</button>
                 <button className="button">Annuleer</button>
               </div>
             </div>

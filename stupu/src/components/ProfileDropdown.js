@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "hooks/AuthContext";
 import Avatar from "assets/img/login-avatar.png";
 import "./ProfileDropdown.css";
@@ -7,7 +7,9 @@ import "./ProfileDropdown.css";
 const ProfileDropdown = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { authState, logout } = useContext(AuthContext);
-
+  
+  const location = useLocation(); // Get current route location
+  
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSignOut = () => {
@@ -15,15 +17,19 @@ const ProfileDropdown = ({ onLogout }) => {
     if (onLogout) onLogout();
   };
 
+  // Determine if we're on the dashboard
+  const isDashboard = location.pathname === "/dashboard"; // Adjust the path accordingly
+
+  // Class name logic based on current page
+  const backgroundClass = isDashboard ? " dashboard-background" : "default-background";
+
   return (
     <div className="dropdown">
       <div className="user">
         <img
           className="user-img"
           src={Avatar}
-          alt={`user: ${authState.userInfo?.firstName || ""} ${
-            authState.userInfo?.lastName || ""
-          }`}
+          alt={`user: ${authState.userInfo?.firstName || ""} ${authState.userInfo?.lastName || ""}`}
         />
         <div className="user-name">
           {authState.userInfo?.firstName} {authState.userInfo?.lastName}
@@ -46,7 +52,7 @@ const ProfileDropdown = ({ onLogout }) => {
           </svg>
         </div>
       </div>
-      <div className={`dropdown-menu ${isOpen ? "open" : ""}`}>
+      <div className={`dropdown-menu  ${isOpen ? "open" : ""} ${backgroundClass}`}>
         <button className="button-delete flex justify-content-end w-100 mobile-close" onClick={toggleDropdown}>
           <svg
             width="37"

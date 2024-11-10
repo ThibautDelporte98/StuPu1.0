@@ -37,7 +37,7 @@ const Slider = ({ items, initialItemsToShow = 2, draggable = true }) => {
   }, [currentPosition, maxPosition]);
 
   return (
-    <div className="slider-container pt-1">
+    <div className="slider-container p-1 pt-1">
       <div
         ref={sliderRef}
         className="lessons"
@@ -63,7 +63,7 @@ const Slider = ({ items, initialItemsToShow = 2, draggable = true }) => {
         <button onClick={prevSlide} disabled={currentPosition === 0} className="button button-slide">
           Vorige
         </button>
-        <button onClick={nextSlide} disabled={currentPosition === maxPosition} className="button">
+        <button onClick={nextSlide} disabled={currentPosition === maxPosition} className="button button-slide">
           Volgende
         </button>
       </div>
