@@ -19,6 +19,8 @@ function Nav() {
   const handleScrollTo = (e, id) => scrollToElement(e, id, setIsOpen);
   const handleLoginClick = () => navigate("/aanmelden");
   const handleSignUpClick = () => navigate("/registratie");
+  const handleHomeClick = () => navigate("/");
+
 
   return (
     <nav className="navbar">
@@ -80,7 +82,7 @@ function Nav() {
       <div className="navbar-flex">
         <div className="navbar-links flex">
           <div className="navbar-logo">
-            <a href="/">
+            <a href={handleHomeClick}>
               <img src={Logo} alt="Logo StuPu" />
             </a>
           </div>

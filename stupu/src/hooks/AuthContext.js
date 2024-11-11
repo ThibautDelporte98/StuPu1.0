@@ -1,5 +1,6 @@
-import React, { createContext, useState, useEffect, startTransition } from 'react';
+import React, { createContext, useState, useEffect, useCallback, startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Helper function to parse cookies
 const getCookie = (name) => {
@@ -19,11 +20,13 @@ const AuthProvider = ({ children }) => {
   const storedUserInfo = getCookie('userInfo');
   const storedExpiresAt = getCookie('expiresAt');
 
+
   const [authState, setAuthState] = useState({
     token: token || null,
     expiresAt: storedExpiresAt ? parseInt(storedExpiresAt) : null,
     userInfo: storedUserInfo ? JSON.parse(storedUserInfo) : {},
   });
+
 
   useEffect(() => {
     if (authState.token && authState.expiresAt) {
@@ -37,7 +40,9 @@ const AuthProvider = ({ children }) => {
     return new Date().getTime() / 1000 < authState.expiresAt;
   };
 
-  const setAuthInfo = ({ token, userInfo, expiresAt }) => {
+  
+  // Memoize setAuthInfo to prevent unnecessary re-renders
+  const setAuthInfo = useCallback(({ token, userInfo, expiresAt }) => {
     startTransition(() => {
       setAuthState({
         token,
@@ -46,9 +51,10 @@ const AuthProvider = ({ children }) => {
       });
       document.cookie = `token=${token}; path=/;`;
     });
-  };
+  }, []);
 
-  const logout = () => {
+  // Memoize logout function to prevent unnecessary re-renders
+  const logout = useCallback(() => {
     document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
     document.cookie = 'userInfo=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
     document.cookie = 'expiresAt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
@@ -58,7 +64,7 @@ const AuthProvider = ({ children }) => {
       expiresAt: null,
     });
     navigate('/aanmelden');
-  };
+  }, [navigate]);
 
   const isAdmin = () => {
     return authState.userInfo.role === 'admin';
@@ -71,6 +77,37 @@ const AuthProvider = ({ children }) => {
   const isTeacher = () => {
     return authState.userInfo.role === 'teacher';
   };
+
+  // Memoize the refreshToken function to prevent it from being redefined on every render
+  const refreshToken = useCallback(async () => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/refresh-token`, {}, {
+        withCredentials: true, // Make sure cookies are sent with the request
+      });
+      const { token, expiresAt } = response.data;
+      setAuthInfo({
+        token,
+        expiresAt,
+        userInfo: authState.userInfo,
+      });
+    } catch (err) {
+      console.error('Error refreshing token:', err);
+      logout(); // Log out user if refresh fails
+    }
+  }, [authState.userInfo, setAuthInfo, logout]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (authState.token && authState.expiresAt) {
+        const timeRemaining = authState.expiresAt - (new Date().getTime() / 1000);
+        if (timeRemaining < 60) { // Refresh token when it's about to expire (1 minute)
+          refreshToken();
+        }
+      }
+    }, 5000); // Check every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, [authState, refreshToken]); // Add refreshToken to the dependency array
 
   return (
     <Provider
