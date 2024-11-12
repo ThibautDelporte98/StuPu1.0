@@ -10,7 +10,7 @@
 .box{
     height: 100%;
     padding: 1.5rem;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: rgb(255, 255, 255);
     color: var(--secondary-color);
     border: 4px solid white;
@@ -41,15 +41,23 @@
 
 
 .box-1 {
-    grid-column: span 2;
+    grid-column: span 1;
 }
 .box-2 {
-    grid-column: span 5;
-}
-.box-3 {
     grid-column: span 2;
 }
-
+.box-3 {
+    grid-column: span 3;
+}
+.box-4 {
+    grid-column: span 4;
+}
+.box-5 {
+    grid-column: span 5;
+}
+.box-6 {
+    grid-column: span 6;
+}
 
 @media screen and (max-width: 1500px) {
     .box-1{

@@ -109,11 +109,12 @@ app.post("/api/signup", async (req, res) => {
       };
 
       res.cookie("token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // Ensure this is set in production if using HTTPS
+        httpOnly: false, // Change to true if you don’t need access in JS
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
         expires: new Date(expiresAt * 1000),
       });
-
+      
       return res.json({
         message: "User created!",
         token,
@@ -166,11 +167,13 @@ app.post("/api/refresh-token", requireAuth, async (req, res) => {
     const decodedToken = jwtDecode(newToken); // Decode the new token to get the expiration
     const expiresAt = decodedToken.exp;
 
-    res.cookie("token", newToken, {
-      httpOnly: true,
-      expires: new Date(expiresAt * 1000), // Set the expiration of the new token
+    res.cookie("token", token, {
+      httpOnly: false, // Change to true if you don’t need access in JS
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      expires: new Date(expiresAt * 1000),
     });
-
+    
     res.json({
       message: "Token refreshed successfully!",
       token: newToken,

@@ -30,6 +30,11 @@
     background-color: var(--secondary-color);
 }
 
+.button-border-sec-color{
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
 .button-search{
     display: flex;
     padding: .75rem;
@@ -42,6 +47,10 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.button-cancel{
+    color: var(--secondary-color);
 }
 
 .button-icon{
