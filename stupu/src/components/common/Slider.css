@@ -5,6 +5,7 @@
     overflow: hidden;
     width: 100%;
     max-width: 100%;
+    margin-left: 0;
   }
   
   .lessons {
@@ -12,19 +13,35 @@
     justify-content: space-between;
     transition: transform 0.3s ease;
     margin-left: 0;
-    gap: .5rem;
+    gap: 1.5rem;
   }
 
   .slide-item{
-    min-width: calc(50% - 0.5rem); /* Shows 3 items at a time */
+    min-width: calc(33% - 1.5rem); /* Shows 3 items at a time */
     min-height: 17.5rem;
     box-sizing: border-box;
+}
+
+.active{
+  transform: scale(1);
+  transition: all .3s ease-out;
+}
+
+.none-active{
+  transform: scale(.5);
+   opacity: .9;
+   transition: all .3s ease-out;
+
+}
+@media screen and (max-width:992px) {
+  .slide-item{
+    min-width: calc(50% - 1.5rem); 
+}
 }
   
 @media screen and (max-width:768px) {
   .slide-item{
-    min-width: calc(100% - 0.5rem); /* Shows 3 items at a time */
-
+    min-width: calc(100% - 1.5rem); 
 }
 }
 

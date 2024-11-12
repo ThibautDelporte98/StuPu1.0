@@ -21,6 +21,14 @@ h1 {
   p {
     font-weight: 200;
   }
+
+  .bold{
+    font-weight: bold;
+  }
+
+  .medium{
+    font-weight: 500;
+  }
   
 
   @media screen and (max-width:992px) {

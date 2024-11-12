@@ -6,7 +6,7 @@
     white-space: nowrap;
     width: 100%;
     height: auto;
-    padding: .7rem 3rem;
+    padding: 1rem 3rem;
     color: white;
     background-color: transparent;
     border: 3.5px solid white;
@@ -60,7 +60,6 @@
 }
 
 .button-slide{
-    color: var(--primary-color);
     margin: 1rem;
 }
 

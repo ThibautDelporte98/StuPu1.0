@@ -1,4 +1,29 @@
 .lesson{
-    padding: 1rem;
+    position: relative;
+    padding: 1.5rem;
     margin: 1rem;
+}
+
+.lesson-teacher p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.lesson-date-time{
+    margin-top: 1rem;
+    border-top:2px solid var(--secondary-color) ;
+    border-bottom:2px solid var(--secondary-color) ;
+}
+
+.lesson-type{
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    background-color: var(--primary-color);
 }

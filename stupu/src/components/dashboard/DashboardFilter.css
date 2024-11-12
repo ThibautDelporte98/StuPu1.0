@@ -1,14 +1,17 @@
 .filter select{
     font-family: "Fredoka", sans-serif;
-    color: var(--secondary-color);
+    color: white;
     font-size: 1.25rem;
     font-weight: bold;
     padding: .25rem 1rem;
     margin-left: 1rem;
     background-color: transparent;
     border: none;
-    border-bottom: 4px solid var(--secondary-color);
+    border-bottom: 4px solid white;
     outline: none;
 
 }
 
+.filter option{
+    color: var(--secondary-color);
+}
