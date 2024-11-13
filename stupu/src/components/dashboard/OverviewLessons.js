@@ -3,51 +3,77 @@ import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Slider from "components/common/Slider";
 import DashFilter from "./DashboardFilter";
+import Avatar from "assets/img/defaultprofile.webp";
 import "./OverviewLessons.css";
 
 const OverviewLessons = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const lessons = [
-    { title: "Wiskunde", date: "7/11/2024", time: "17:00 - 19:00" },
-    { title: "Nederlands", date: "7/11/2024", time: "16:00 - 18:00" },
-    { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
-    { title: "Wiskunde", date: "7/11/2024", time: "16:00 - 18:00" },
+    {
+      type: "online",
+      tutor: "Jan-Willem Vandenborre",
+      title: "Wiskunde",
+      date: "7/11/2024",
+      time: "17:00 - 19:00",
+      phone: "+32492447788",
+      email: "Janwillem@gmail.com",
+    },
+    {
+      type: "aan huis",
+      tutor: "Jan-Willem Vandenborre",
+      title: "Wiskunde",
+      date: "7/11/2024",
+      time: "17:00 - 19:00",
+      phone: "+32492447788",
+      email: "Janwillem@gmail.com",
+    },
+    {
+      type: "op locatie",
+      tutor: "Jan-Willem Vandenborre",
+      title: "Wiskunde",
+      date: "7/11/2024",
+      time: "17:00 - 19:00",
+      phone: "+32492447788",
+      email: "Janwillem@gmail.com",
+    },
+    { type: "online", tutor: "Jan-Willem Vandenborre", title: "Wiskunde", date: "7/11/2024", time: "17:00 - 19:00", phone: "+32492447788", email: "Janwillem@gmail.com" },
+    { type: "online", tutor: "Jan-Willem Vandenborre", title: "Wiskunde", date: "7/11/2024", time: "17:00 - 19:00", phone: "+32492447788", email: "Janwillem@gmail.com" },
   ];
 
-  const handleDetails = () => {
-    navigate("/details"); // Redirect to the student sign-up path
-  };
+
 
   return (
-    <section className="box box-2 w-100 ">
-      <div className="box-top flex pb-2">
-        <h2>Mijn lessen</h2>
-        <button className="button">Bekijk al mijn lessen</button>
-      </div>
+    <section className="box box-transparent box-5 w-100 ">
       <DashFilter title={"Alle lessen"} />
       <Slider
           items={lessons.map((lesson, index) => (
-            <div className="box box-shadow box-primairy-color lessons-item w-100 p-1" key={index}>
-              <div className="box-top">
-                <h3 className="flex-colomn">
-                  {lesson.title} <span className="date">{lesson.date}</span>
-                </h3>
-                <div className="time">{lesson.time}</div>
-              </div>
-              <div className="box-info ptb-1">
-                <ul>
-                  <li>Onderwerp: Vierkants wortels</li>
-                  <li>Docent: John Doe</li>
-                  <li>Vorm: Online</li>
-                </ul>
-              </div>
-              <div className="box-top">
-                <button className="button " onClick={handleDetails} >Bekijk details</button>
-                <button className="button">Annuleer</button>
-              </div>
+            <div className="box lesson" key={index}>
+            <div className="lesson-type box-shadow">{lesson.type}</div>
+            <div className="lesson-teacher flex pb-1">
+              <img className="avatar-small box-shadow" src={Avatar} alt="avatar" />
+              <p>{lesson.tutor}</p>
             </div>
+            <div className="lesson-date-time  flex justify-content-center ptb-1">
+              <p className="bold">
+                {lesson.date} | {lesson.time}
+              </p>
+            </div>
+            <div className="list-information ptb-1-05">
+              <ul>
+                <li className="flex ptb-05">
+                  <div className="medium mr-1">Vak:</div> {lesson.title}
+                </li>
+              </ul>
+            </div>
+            <div className="actions">
+              <button className="custom-button button-choiceSec mt-05">
+                Details
+              </button>
+              <button className="custom-button button-cancel mt-05">Annuleer</button>
+            </div>
+          </div>
           ))}
-          itemsToShow={2}
+          initialItemsToShow={3}
       />
     </section>
   );

@@ -14,7 +14,7 @@ const OverviewRebook = () => {
   ];
 
   return (
-    <section className="box-3 w-100">
+    <section className="box-2 w-100">
       <div className="flex-colomn">
         <div className="box">
           <DashFilter title={"voltooide lessen"} />

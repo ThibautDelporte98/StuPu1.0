@@ -10,7 +10,7 @@ const OverviewReview = () => {
   const reviews = [{ tutor: "John" }, { tutor: "Lisa" }, { tutor: "Karen" }];
 
   return (
-    <section className="box box-border box-2 w-100 ">
+    <section className="box box-transparent box-5 w-100 ">
       <div className="flex-colomn pb-2">
         <h2>Beoordeel jouw docent!</h2>
         <span>Geef jouw docenten een score op 5.</span>

@@ -1,3 +1,8 @@
+.my-lessons{
+    margin: 2.5rem 0;
+}
+
+
 .lesson{
     position: relative;
     padding: 1.5rem;
@@ -5,7 +10,10 @@
 }
 
 .lesson-teacher p{
-    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.25rem;
     font-weight: bold;
 }
 
@@ -26,4 +34,16 @@
     padding: 1rem 2rem;
     border-radius: 5rem;
     background-color: var(--primary-color);
+}
+.lesson-delete{
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+    padding: .5rem;
+    border-radius: 50%;
+    background-color: #8b0000;
 }

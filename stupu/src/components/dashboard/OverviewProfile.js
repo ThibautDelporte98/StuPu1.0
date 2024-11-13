@@ -4,7 +4,7 @@ import "./OverviewProfile.css";
 
 const OverviewProfile = () => {
   return (
-    <section className="box box-border box-1 w-100 ">
+    <section className="box box-border box-2 w-100 ">
       <div className="box-top flex">
         <h2>Profiel</h2>
         <button className="button">

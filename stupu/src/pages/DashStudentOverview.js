@@ -22,7 +22,7 @@ const Dashboard = () => {
         <OverviewLessons />
         <OverviewReview />
         <OverviewRebook />
-        <div className="flex-colomnn align-items-end box-support p-2">
+        <div className="box-6 flex-colomnn align-items-end box-support p-2">
             <h2>Hulp nodig?</h2>
             <div className="ptb-1">Telefoon: <a href="tel:0477889944">04 77 88 99 44 </a> </div>
             <div>Email: <a href="mailto:info@stupu.be">info@stupu.be</a> </div>
