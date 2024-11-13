@@ -29,7 +29,7 @@ function DashNav() {
             <a href="#hoe">Mijn Profiel</a>
           </li>
           <li>
-            <a href="word-lesgever">Mijn Bijlessen</a>
+            <a href="mijn-bijlessen">Mijn Bijlessen</a>
           </li>
         </ul>
       </div>

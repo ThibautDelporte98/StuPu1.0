@@ -27,8 +27,12 @@
   transition: all .3s ease-out;
 }
 
+.slide-w-50{
+  min-width: calc(50% - 1.5rem);
+}
+
 .none-active{
-  transform: scale(.5);
+  transform: scale(.75);
    opacity: .9;
    transition: all .3s ease-out;
 

@@ -10,7 +10,7 @@ const OverviewReview = () => {
   const reviews = [{ tutor: "John" }, { tutor: "Lisa" }, { tutor: "Karen" }];
 
   return (
-    <section className="box box-transparent box-5 w-100 ">
+    <section className="box box-5 w-100 ">
       <div className="flex-colomn pb-2">
         <h2>Beoordeel jouw docent!</h2>
         <span>Geef jouw docenten een score op 5.</span>
@@ -52,7 +52,7 @@ const OverviewReview = () => {
               <div className="input flex-colomn align-items-end  ">
                 <label htmlFor="number">Score:</label>
                 <input
-                className="score"
+                className="score box-shadow"
                   type="number"
                   id="age"
                   name="age"
@@ -61,9 +61,10 @@ const OverviewReview = () => {
                   placeholder="5"
                 />
               </div>
-              <div className="input textarea flex-colomn">
+              <div className="input textarea flex-colomn ">
                 <label htmlFor="comments">Bericht:</label>
                 <textarea
+                className="box-shadow"
                   id="comments"
                   name="comments"
                   rows="4"
@@ -72,10 +73,11 @@ const OverviewReview = () => {
                 ></textarea>
               </div>
             </div>
-            <Button type={"subtmit"} text={"verstuur"} />
+            <Button className={"custom-button button-choiceSec"} type={"subtmit"} text={"verstuur"} />
           </div>
         ))}
-        itemsToShow={2}
+        initialItemsToShow={2}
+        itemClassName="slide-w-50"
         draggable={false}
       />
     </section>

@@ -20,8 +20,8 @@ const Dashboard = () => {
       <div className="dash-overview flex-wrap">
         <OverviewProfile />
         <OverviewLessons />
-        <OverviewReview />
         <OverviewRebook />
+        <OverviewReview />
         <div className="box-6 flex-colomnn align-items-end box-support p-2">
             <h2>Hulp nodig?</h2>
             <div className="ptb-1">Telefoon: <a href="tel:0477889944">04 77 88 99 44 </a> </div>

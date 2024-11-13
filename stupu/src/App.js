@@ -32,6 +32,8 @@ const UnauthenticatedRoutes = () => (
     <Route path='/aanmelden' element={<SignIn />} />
     <Route path="/" element={<Home />} />
     <Route path='mijn-bijlessen' element={<MyLessonsStudent />} />
+    <Route path='dashboard' element={<Dashboard />} />
+
   </Routes>
 );
 

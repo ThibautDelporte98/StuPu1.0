@@ -9,4 +9,5 @@
 .input input,
 .textarea textarea {
   pointer-events: auto;
+  background-color: #F2F2F7;
 }

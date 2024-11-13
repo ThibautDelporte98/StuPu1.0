@@ -63,17 +63,20 @@ const OverviewLessons = () => {
                 <li className="flex ptb-05">
                   <div className="medium mr-1">Vak:</div> {lesson.title}
                 </li>
+                <li className="flex ptb-05">
+                  <div className="medium mr-1">Onderwerp:</div> {lesson.title}
+                </li>
               </ul>
             </div>
             <div className="actions">
               <button className="custom-button button-choiceSec mt-05">
                 Details
               </button>
-              <button className="custom-button button-cancel mt-05">Annuleer</button>
             </div>
           </div>
           ))}
-          initialItemsToShow={3}
+          initialItemsToShow={1}
+          itemClassName="slide-w-50"
       />
     </section>
   );

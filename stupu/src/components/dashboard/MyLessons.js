@@ -69,7 +69,7 @@ const MyLessons = () => {
         <button className="custom-button button-choiceSec mt-05">
           BEL "{lesson.tutor.split(" ")[0]}"
         </button>
-        <button className="custom-button button-cancel mt-05">Annuleer</button>
+        <button className="custom-button button-cancel mt-05">Details</button>
       </div>
     </div>
   );

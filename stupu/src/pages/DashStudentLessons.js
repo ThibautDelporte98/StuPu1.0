@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import DashNav from "layouts/DashboardNav";
-import { AuthContext } from "hooks/AuthContext";
 import "./dashboard.css";
 import"components/dashboard/Overview.css";
 import useChangeBackground from "utils/changeBackground";
@@ -8,7 +7,6 @@ import MyLessons from "components/dashboard/MyLessons";
 
 const MyLessonsStudent = () => {
   
-  const { authState } = useContext(AuthContext);
   useChangeBackground("/mijn-bijlessen", "#59b2a5");
 
   return (
