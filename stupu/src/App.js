@@ -6,17 +6,18 @@ import { FetchProvider } from './hooks/FetchContext';
 import "./styles/index.css";
 import SignIn from 'layouts/SignIn';
 import Admin from 'pages/dashboard/admin';
-import MyLessonsStudent from 'pages/dashboard/student/DashStudentLessons';
+import MyLessonsStudent from 'pages/dashboard/student/StudentLessons';
+import CompletedLessonDetail from 'pages/dashboard/student/CompletedLessonDetail';
 import LessonDetail from 'pages/dashboard/student/LessonDetail';
 
 
 const Home = lazy(() => import("./pages/home"));
-const Dashboard = lazy(() => import("./pages/dashboard/student/DashStudentOverview"));
+const Dashboard = lazy(() => import("./pages/dashboard/student/StudentOverview"));
 const Login = lazy(() => import("./pages/login"));
 const Signup = lazy(() => import("./pages/signupStudent"));
 const SignUpTutor = lazy(() => import("./pages/signupTutor"));
 const SignUpChoice = lazy(() => import("./pages/signupChoice"));
-const Loader = lazy(() => import('./components/common/Loader'));
+const Loader = lazy(() => import('./components/common/loader/Loader'));
 
 const LoadingFallback = () => (
   <AppShell>
@@ -30,10 +31,11 @@ const UnauthenticatedRoutes = () => (
     <Route path='/registratie-lesgever' element={<SignUpTutor />} />
     <Route path="/aanmelden" element={<Login />} />
     <Route path="/registratie-lesvolger" element={<Signup />} />
-    <Route path='/aanmelden' element={<SignIn />} />
+    {/* <Route path='/aanmelden' element={<SignIn />} /> */}
     <Route path="/" element={<Home />} />
-    <Route path='mijn-bijlessen' element={<MyLessonsStudent />} />
-    <Route path='mijn-bijles-detail' element={<LessonDetail />} />
+    <Route path='/mijn-bijlessen' element={<MyLessonsStudent />} />
+    <Route path='/mijn-bijles-detail' element={<LessonDetail />} />
+    <Route path='/voltooide-lessen' element={<CompletedLessonDetail />} />
     <Route path='dashboard' element={<Dashboard />} />
   </Routes>
 );

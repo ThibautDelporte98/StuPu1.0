@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import DashNav from "layouts/DashboardNav";
-import "../dashboard.css";
-import useChangeBackground from "utils/changeBackground";
 import LessonTutor from "components/common/cards/TutorCard";
 import LessonInfo from "components/common/LessonInfo";
-import LessonAbout from "components/common/LessonAbout";
-import "./LessonDetail.css";
+import "../dashboard.css";
+import useChangeBackground from "utils/changeBackground";
 
+const CompletedLessonDetail = () => {
+  useChangeBackground("/dashboard", "#59b2a5");
 
-const LessonDetail = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -21,12 +20,12 @@ const LessonDetail = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useChangeBackground("/mijn-bijles-detail", "#59b2a5");
 
   return (
     <div className="cstm-container">
       <DashNav />
       <div className="flex-wrap">
+        {/* <MyLessonDetail /> */}
         <section className="my-lesson-detail">
           <h1>Bijles Wiskunde 24/10</h1>
           <div
@@ -34,21 +33,9 @@ const LessonDetail = () => {
               isSmallScreen ? "flex-colomn" : "flex-reverse"
             }`}
           >
-            <LessonTutor buttonText={"CONTACTEER JOHN"}/>
+            <LessonTutor buttonText={"HERBOEK JOHN"} />
             <article className="my-lesson-content w-100">
               <LessonInfo />
-              <LessonAbout
-                title={"Manier van lesgeven"}
-                text={
-                  "John Doe hanteert een gestructureerde en persoonlijke aanpak in zijn lessen. Hij stemt zijn onderwijsmethode af op de behoeften enhet leervermogen van elke student. Door complexe onderwerpen opeen eenvoudige manier uit te leggen, zorgt John ervoor dat zijnstudenten stap voor stap vertrouwen opbouwen in hun vaardigheden."
-                }
-              />
-              <LessonAbout
-                title={"Ervaringen & Kwalificaties"}
-                text={
-                  "John Doe hanteert een gestructureerde en persoonlijke aanpak in zijn lessen. Hij stemt zijn onderwijsmethode af op de behoeften enhet leervermogen van elke student. Door complexe onderwerpen opeen eenvoudige manier uit te leggen, zorgt John ervoor dat zijnstudenten stap voor stap vertrouwen opbouwen in hun vaardigheden."
-                }
-              />
             </article>
           </div>
         </section>
@@ -66,4 +53,4 @@ const LessonDetail = () => {
   );
 };
 
-export default LessonDetail;
+export default CompletedLessonDetail;

@@ -1,11 +1,9 @@
-import "./LessonInfo.css";
 
 const LessonInfo = () => {
 
 
   return (
 
-        <article className="my-lesson-content w-100">
           <div className="my-lesson-info p-1">
             <h2 className="mt-2">Info over deze bijles</h2>
             <ul>
@@ -80,35 +78,6 @@ const LessonInfo = () => {
               </li>
             </ul>
           </div>
-          <div className="about">
-            <h2 className="mt-2">Manier van lesgeven</h2>
-            <p className="ptb-1">
-              John Doe hanteert een gestructureerde en persoonlijke aanpak in
-              zijn lessen. Hij stemt zijn onderwijsmethode af op de behoeften en
-              het leervermogen van elke student. Door complexe onderwerpen op
-              een eenvoudige manier uit te leggen, zorgt John ervoor dat zijn
-              studenten stap voor stap vertrouwen opbouwen in hun vaardigheden.
-            </p>
-            <p className="ptb-1">
-              Hij gelooft in interactieve lessen, waarin ruimte is voor vragen,
-              discussie en het toepassen van theorie in de praktijk. John
-              moedigt zijn studenten aan om zelfstandig te denken en problemen
-              kritisch te benaderen, terwijl hij hen met geduld en ondersteuning
-              begeleidt.
-            </p>
-          </div>
-          <div className="about">
-            <h2 className="mt-2">Ervaringen & Kwalificaties</h2>
-            <p className="ptb-1">
-              Ik ben al geruime tijd tutor en heb een sterke achtergrond in mijn
-              vakgebied. Door de jaren heen heb ik niet alleen de nodige
-              certificaten behaald, maar ook veel praktijkervaring opgedaan.
-              Hierdoor ben ik goed in staat om mijn kennis op een heldere en
-              begrijpelijke manier over te brengen. Ik kijk ernaar uit om samen
-              te werken en je te helpen jouw doelen te bereiken!
-            </p>
-          </div>
-        </article>
   );
 };
 

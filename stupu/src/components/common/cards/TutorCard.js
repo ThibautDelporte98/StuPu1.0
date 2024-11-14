@@ -1,10 +1,10 @@
 import Avatar from "assets/img/defaultprofile.webp";
 import Star from "assets/img/star.png";
 import Verified from "assets/img/verified.png";
-import "./LessonTutor.css";
-import Button from "components/common/Button";
+import "./TutorCard.css";
+import Button from "components/common/button/Button";
 
-const LessonTutor = () => {
+const TutorCard = ({buttonText}) => {
 
 
   return (
@@ -30,10 +30,10 @@ const LessonTutor = () => {
             Passie voor lesgeven | Hulp bij studie | Persoonlijke bijlessen op
             maat | Flexibel en geduldig | Samen leren, samen groeien
           </p>
-          <Button type={"submit"} text={"CONTACTEER JOHN"} className={"mt-1"} />
+          <Button type={"submit"} text={buttonText} className={"mt-1"} />
           <Button type={"submit"} text={"Annuleer"} className={" button-cancel mtb-1 white-text"} />
         </div>
   );
 };
 
-export default LessonTutor;
+export default TutorCard;

@@ -1,9 +1,9 @@
 // OverviewLessons.js
 import React from "react";
 import Avatar from "assets/img/defaultprofile.webp";
-import Slider from "components/common/Slider";
+import Slider from "components/common/slider/Slider";
 import "./OverviewReview.css";
-import Button from "components/common/Button";
+import Button from "components/common/button/Button";
 
 const OverviewReview = () => {
 

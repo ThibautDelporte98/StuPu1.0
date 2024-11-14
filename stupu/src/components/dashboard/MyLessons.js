@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import DashFilter from "./DashboardFilter";
 import Avatar from "assets/img/defaultprofile.webp";
 import "./MyLessons.css";
-import Slider from "components/common/Slider";
-import Button from "components/common/Button";
+import Slider from "components/common/slider/Slider";
+import Button from "components/common/button/Button";
 
 const MyLessons = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 // src/pages/LoginForm.js
 import React from "react";
 import "../styles/LoginForm.css";
-import Button from "../components/common/Button";
+import Button from "components/common/button/Button";
 import usePasswordToggler from "../hooks/usePasswordToggler";
 import padlock from "../assets/img/padlock.png"
 import padlockUnlock from "../assets/img/padlock-unlock.png"

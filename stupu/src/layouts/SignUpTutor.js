@@ -6,7 +6,7 @@ import usePasswordToggler from "../hooks/usePasswordToggler";
 import padlock from "../assets/img/padlock.png";
 import padlockUnlock from "../assets/img/padlock-unlock.png";
 import { useState } from "react";
-import Button from "components/common/Button";
+import Button from "components/common/button/Button";
 import UploadComponent from "components/UploadComponent";
 import { handleImageChange, handleDeleteImage } from 'utils/uploadImage.js';
 

@@ -1,6 +1,6 @@
 // OverviewLessons.js
 import React from "react";
-import Slider from "components/common/Slider";
+import Slider from "components/common/slider/Slider";
 import DashFilter from "./DashboardFilter";
 import Avatar from "assets/img/defaultprofile.webp";
 import "./OverviewLessons.css";
