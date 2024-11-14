@@ -2,7 +2,7 @@ import React from "react";
 import DashNav from "layouts/DashboardNav";
 import "../dashboard.css";
 import useChangeBackground from "utils/changeBackground";
-import MyLessonDetail from "components/dashboard/LessonDetailInfo";
+import MyLessonDetail from "components/dashboard/LessonDetail";
 
 const LessonDetail = () => {
   useChangeBackground("/dashboard", "#59b2a5");

@@ -1,49 +1,10 @@
-import React, {useState, useEffect} from "react";
-import Avatar from "assets/img/defaultprofile.webp";
-import Verified from "assets/img/verified.png";
-import "./LessonDetailInfo.css";
-import Button from "components/common/Button";
+import "./LessonInfo.css";
 
-const MyLessonDetail = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 992);
+const LessonInfo = () => {
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 992);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
-    <section className="my-lesson-detail">
-      <h1>Bijles Wiskunde 24/10</h1>
-      <div className={`flex align-items-start ${isSmallScreen ? "flex-colomn" : "flex-reverse"}`}>
-        <div className="my-lesson-tutor w-100">
-          <div className="box-top">
-            <div className="profile-img">
-              <div className="picture">
-                <span className="verified">
-                  <img className="verified-img" src={Verified} alt="default" />
-                </span>
-                <img className="picture-img" src={Avatar} alt="default" />
-              </div>
-            </div>
-            <div className="flex w-100 justify-content-center">
-              <div className="rating">4.7</div>
-            </div>
-          </div>
-          <div className="name mt-1">Dhr. John Doe</div>
-          <p className="ptb-1">
-            Passie voor lesgeven | Hulp bij studie | Persoonlijke bijlessen op
-            maat | Flexibel en geduldig | Samen leren, samen groeien
-          </p>
-          <Button type={"submit"} text={"CONTACTEER JOHN"} className={"mt-1"} />
-          <Button type={"submit"} text={"Annuleer"} className={" button-cancel mtb-1 white-text"} />
 
-        </div>
         <article className="my-lesson-content w-100">
           <div className="my-lesson-info p-1">
             <h2 className="mt-2">Info over deze bijles</h2>
@@ -148,9 +109,7 @@ const MyLessonDetail = () => {
             </p>
           </div>
         </article>
-      </div>
-    </section>
   );
 };
 
-export default MyLessonDetail;
+export default LessonInfo;

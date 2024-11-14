@@ -1,0 +1,70 @@
+
+.my-lesson-content ul{
+    margin: 2.5rem 0;
+ }
+
+.my-lesson-content ul li{
+    font-size: 1.25rem;
+   margin: 1rem;
+}
+
+.about{
+    padding: 0 1rem;
+    max-width: 750px;
+}
+
+.name{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.picture{
+    position: relative;
+    max-width: 16rem;
+}
+
+
+.picture-img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.verified{
+    position: absolute;
+    top: 0;
+    right:0 ;
+    z-index: 1000;
+}
+
+.rating img{
+    width: 3rem;
+}
+
+.rating-score {
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .my-lesson-tutor{
+        position: unset;
+        top: 0;
+        max-width: 100%;
+        max-height: unset;
+    }
+    .picture{
+        max-width: 35rem;
+    }
+    .rating-score {
+        font-size: 3rem;
+    }
+    .rating img{
+        width: 4rem;
+    }
+    .verified{
+        display: none;
+    }
+
+
+}
