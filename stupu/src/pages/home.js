@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import Nav from 'layouts/Navigation';
 import Head from 'components/header/HeadHome';
 

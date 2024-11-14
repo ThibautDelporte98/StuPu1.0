@@ -5,12 +5,13 @@ import AppShell from './AppShell';
 import { FetchProvider } from './hooks/FetchContext';
 import "./styles/index.css";
 import SignIn from 'layouts/SignIn';
-import Admin from 'pages/admin';
-import MyLessonsStudent from 'pages/DashStudentLessons';
+import Admin from 'pages/dashboard/admin';
+import MyLessonsStudent from 'pages/dashboard/student/DashStudentLessons';
+import LessonDetail from 'pages/dashboard/student/LessonDetail';
 
 
 const Home = lazy(() => import("./pages/home"));
-const Dashboard = lazy(() => import("./pages/DashStudentOverview"));
+const Dashboard = lazy(() => import("./pages/dashboard/student/DashStudentOverview"));
 const Login = lazy(() => import("./pages/login"));
 const Signup = lazy(() => import("./pages/signupStudent"));
 const SignUpTutor = lazy(() => import("./pages/signupTutor"));
@@ -32,8 +33,8 @@ const UnauthenticatedRoutes = () => (
     <Route path='/aanmelden' element={<SignIn />} />
     <Route path="/" element={<Home />} />
     <Route path='mijn-bijlessen' element={<MyLessonsStudent />} />
+    <Route path='mijn-bijles-detail' element={<LessonDetail />} />
     <Route path='dashboard' element={<Dashboard />} />
-
   </Routes>
 );
 

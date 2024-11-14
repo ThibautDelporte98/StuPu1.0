@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import DashFilter from "./DashboardFilter";
 import Avatar from "assets/img/defaultprofile.webp";
 import "./MyLessons.css";
 import Slider from "components/common/Slider";
+import Button from "components/common/Button";
 
 const MyLessons = () => {
+  const navigate = useNavigate();
+
+  const handleDetail = () => navigate("/mijn-bijles-detail");
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 992);
 
   const lessons = [
@@ -63,13 +67,9 @@ const MyLessons = () => {
         </ul>
       </div>
       <div className="actions">
-        <button className="custom-button button-border-sec-color">
-          EMAIL "{lesson.tutor.split(" ")[0]}"
-        </button>
-        <button className="custom-button button-choiceSec mt-05">
-          BEL "{lesson.tutor.split(" ")[0]}"
-        </button>
-        <button className="custom-button button-cancel mt-05">Details</button>
+        <Button type={"submit"} text={"CONTACTEER DOCENT"} className={"custom-button button-border-sec-color"} />
+        <Button type={"submit"} text={"DETAILS"} className={"custom-button button-choiceSec mt-05"} onClick={handleDetail}/>
+        <Button type={"submit"} text={"ANNULEREN"} className={"custom-button button-cancel mt-05"}/>
       </div>
     </div>
   );

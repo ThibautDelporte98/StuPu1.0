@@ -1,13 +1,11 @@
 // OverviewLessons.js
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Slider from "components/common/Slider";
 import DashFilter from "./DashboardFilter";
 import Avatar from "assets/img/defaultprofile.webp";
 import "./OverviewLessons.css";
 
 const OverviewLessons = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
   const lessons = [
     {
       type: "online",
@@ -43,7 +41,7 @@ const OverviewLessons = () => {
 
 
   return (
-    <section className="box box-transparent box-5 w-100 ">
+    <section className="box box-transparent box-4 w-100 ">
       <DashFilter title={"Alle lessen"} />
       <Slider
           items={lessons.map((lesson, index) => (

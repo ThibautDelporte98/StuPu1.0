@@ -1,0 +1,41 @@
+
+
+.my-lesson-tutor{
+    position: sticky;
+    top: 2rem;
+    max-width: 30%;
+    max-height: 25rem;
+}
+
+.my-lesson-content ul{
+    margin: 2.5rem 0;
+ }
+
+.my-lesson-content ul li{
+    font-size: 1rem;
+   margin: 1rem;
+}
+
+.about{
+    max-width: 750px;
+}
+
+.picture{
+    position: relative;
+    max-width: 10rem;
+}
+
+
+.picture-img{
+    width: 10rem;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.verified{
+    position: absolute;
+    top: 0;
+    right:0 ;
+    z-index: 1000;
+}

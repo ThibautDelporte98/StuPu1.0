@@ -54,8 +54,11 @@ const OverviewRebook = () => {
               </p>
             </div>
             <div className="actions">
+            <button className="custom-button button-border-sec-color mt-05">
+                HERBOEK
+              </button>
               <button className="custom-button button-choiceSec mt-05">
-                Details
+                DETAILS
               </button>
             </div>
           </div>

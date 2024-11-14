@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import DashNav from "layouts/DashboardNav";
 import { AuthContext } from "hooks/AuthContext";
 import OverviewProfile from "components/dashboard/OverviewProfile";
-import "./dashboard.css";
+import "../dashboard.css";
 import"components/dashboard/Overview.css";
 import OverviewLessons from "components/dashboard/OverviewLessons";
 import OverviewRebook from "components/dashboard/OverviewRebook";

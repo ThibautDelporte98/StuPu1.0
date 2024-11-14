@@ -13,6 +13,10 @@
   flex-wrap: wrap;
   gap: 1;
 }
+
+.flex-reverse{
+  flex-direction: row-reverse;
+}
   
 @media screen and (max-width: 992px) {
     .mobile-direction-column{
@@ -34,10 +38,10 @@
     justify-content: space-between;
   }
   .align-items-start{
-    align-items: end;
+    align-items: start;
   }
   .align-items-center{
-    align-items: end;
+    align-items: center;
   }
   .align-items-end{
     align-items: end;
@@ -70,6 +74,10 @@
   }
   .mr-1{
     margin-right: 1rem;
+  }
+
+  .mr-2{
+    margin-right: 2rem;
   }
 
   .p-1{

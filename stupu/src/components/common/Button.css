@@ -51,6 +51,7 @@
 
 .button-cancel{
     color: var(--secondary-color);
+    border: none;
 }
 
 .button-icon{

@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
 import DashNav from "layouts/DashboardNav";
-import "./dashboard.css";
+import "../dashboard.css";
 import"components/dashboard/Overview.css";
 import useChangeBackground from "utils/changeBackground";
 import MyLessons from "components/dashboard/MyLessons";

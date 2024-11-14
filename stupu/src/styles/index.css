@@ -41,14 +41,15 @@ body {
 
 
 .cstm-container {
-  max-width: 1512px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
 }
 
-
-
+.white-text{
+  color: white !important;
+}
 @media (max-width: 768px) {
     .cstm-container {
       padding: 0 10px;

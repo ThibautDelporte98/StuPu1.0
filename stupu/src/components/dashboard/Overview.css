@@ -31,6 +31,8 @@
     justify-content: space-between;
 }
 
+
+
 .box-top button{
     color: var(--primary-color);
 }
@@ -55,18 +57,7 @@
 .box-6 {
     grid-column: span 6;
 }
-@media screen and (max-width: 1500px) {
 
-    .box-2{
-        grid-column: span 3;
-    }
-
-    .box-5{
-        grid-column: span 6;
-    }
-
-
-}
 
 
 
