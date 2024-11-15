@@ -1,5 +1,4 @@
-import React from "react";
-import "./DashboardFilter.css";
+import "./Filter.css";
 
 const DashFilter = ({title }) => {
   return (

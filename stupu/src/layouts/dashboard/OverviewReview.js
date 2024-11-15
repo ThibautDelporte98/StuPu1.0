@@ -52,7 +52,7 @@ const OverviewReview = () => {
               <div className="input flex-colomn align-items-end  ">
                 <label htmlFor="number">Score:</label>
                 <input
-                className="score box-shadow"
+                  className="score box-shadow"
                   type="number"
                   id="age"
                   name="age"
@@ -64,7 +64,7 @@ const OverviewReview = () => {
               <div className="input textarea flex-colomn ">
                 <label htmlFor="comments">Bericht:</label>
                 <textarea
-                className="box-shadow"
+                  className="box-shadow"
                   id="comments"
                   name="comments"
                   rows="4"

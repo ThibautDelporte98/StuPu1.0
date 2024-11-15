@@ -5,7 +5,7 @@ import { publicFetch } from "../utils/fetch";
 import LoginForm from "../layouts/SignIn";
 import Nav from "layouts/Navigation";
 
-const Login = () => {
+const SignIn = () => {
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,4 +54,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navigation.css";
+import "../Navigation.css";
 import Logo from "assets/img/logo.png";
 import ProfileDropdown from "components/ProfileDropdown";
 import SearchInput from "components/common/SearchInput";
@@ -23,10 +23,10 @@ function DashNav() {
       <div className="navbar-menu flex justify-content-center p-3">
         <ul>
           <li>
-            <a href="word-lesvolger">Overview</a>
+            <a href="/dashboard">Overview</a>
           </li>
           <li>
-            <a href="#hoe">Mijn Profiel</a>
+            <a href="/mijn-profiel">Mijn Profiel</a>
           </li>
           <li>
             <a href="mijn-bijlessen">Mijn Bijlessen</a>

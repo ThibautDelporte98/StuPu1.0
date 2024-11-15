@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import DashNav from "layouts/DashboardNav";
-import LessonTutor from "components/common/cards/TutorCard";
-import LessonInfo from "components/common/LessonInfo";
-import "../dashboard.css";
+import DashNav from "layouts/dashboard/DashboardNav";
+import TutorCard from "components/common/cards/TutorCard";
+import LessonInfo from "components/dashboard/LessonInfo";
 import useChangeBackground from "utils/changeBackground";
 
 const CompletedLessonDetail = () => {
@@ -33,7 +32,7 @@ const CompletedLessonDetail = () => {
               isSmallScreen ? "flex-colomn" : "flex-reverse"
             }`}
           >
-            <LessonTutor buttonText={"HERBOEK JOHN"} />
+            <TutorCard buttonText={"HERBOEK JOHN"} />
             <article className="my-lesson-content w-100">
               <LessonInfo />
             </article>

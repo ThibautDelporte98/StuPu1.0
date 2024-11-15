@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import DashNav from "layouts/DashboardNav";
+import DashNav from "layouts/dashboard/DashboardNav";
 import { AuthContext } from "hooks/AuthContext";
-import OverviewProfile from "components/dashboard/OverviewProfile";
-import "../dashboard.css";
-import"components/dashboard/Overview.css";
-import OverviewLessons from "components/dashboard/OverviewLessons";
-import OverviewRebook from "components/dashboard/OverviewRebook";
-import OverviewReview from "components/dashboard/OverviewReview";
+import OverviewProfile from "layouts/dashboard/OverviewProfile";
+import OverviewLessons from "layouts/dashboard/OverviewLessons";
+import OverviewRebook from "layouts/dashboard/OverviewRebook";
+import OverviewReview from "layouts/dashboard/OverviewReview";
 import useChangeBackground from "utils/changeBackground";
+import"./Overview.css";
+
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext);

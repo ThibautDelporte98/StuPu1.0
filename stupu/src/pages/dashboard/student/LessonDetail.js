@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import DashNav from "layouts/DashboardNav";
-import "../dashboard.css";
+import DashNav from "layouts/dashboard/DashboardNav";
 import useChangeBackground from "utils/changeBackground";
-import LessonTutor from "components/common/cards/TutorCard";
-import LessonInfo from "components/common/LessonInfo";
-import LessonAbout from "components/common/LessonAbout";
+import TutorCard from "components/common/cards/TutorCard";
+import LessonInfo from "components/dashboard/LessonInfo";
+import LessonAbout from "components/dashboard/LessonAbout";
 import "./LessonDetail.css";
 
 
@@ -34,7 +33,7 @@ const LessonDetail = () => {
               isSmallScreen ? "flex-colomn" : "flex-reverse"
             }`}
           >
-            <LessonTutor buttonText={"CONTACTEER JOHN"}/>
+            <TutorCard buttonText={"CONTACTEER JOHN"}/>
             <article className="my-lesson-content w-100">
               <LessonInfo />
               <LessonAbout

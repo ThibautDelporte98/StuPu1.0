@@ -1,5 +1,4 @@
-import React from "react";
-import DashFilter from "./DashboardFilter";
+import DashFilter from "components/dashboard/Filter";
 import Avatar from "assets/img/defaultprofile.webp";
 import "./OverviewRebook.css";
 

@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import DashNav from "layouts/DashboardNav";
+import DashNav from "layouts/dashboard/DashboardNav";
 import { AuthContext } from "hooks/AuthContext";
-import "./dashboard.css";
-import"components/dashboard/Overview.css";
+import"./student/Overview.css";
 
 
 const Admin = () => {
