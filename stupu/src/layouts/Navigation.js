@@ -3,8 +3,6 @@ import { useNavigate, Link } from "react-router-dom"; // Import Link here
 import { AuthContext } from "hooks/AuthContext";
 import "./Navigation.css";
 import Logo from "assets/img/logo.png";
-import LoginAva from "assets/img/login-avatar.png";
-import RegistrationIcon from "assets/img/registration.png";
 import scrollToElement from "utils/scrollTo";
 import Button from "components/common/button/Button";
 import ProfileDropdown from "components/ProfileDropdown";

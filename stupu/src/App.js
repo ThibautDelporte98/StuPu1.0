@@ -36,6 +36,7 @@ const UnauthenticatedRoutes = () => (
     <Route path='/mijn-bijles-detail' element={<LessonDetail />} />
     <Route path='/voltooide-lessen' element={<CompletedLessonDetail />} />
     <Route path='/mijn-profiel' element={<MyProfile />} />
+    <Route path="*" element={<Navigate to="/" />} /> 
   </Routes>
 );
 

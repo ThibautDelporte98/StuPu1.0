@@ -8,6 +8,7 @@ import PasswordInput from "components/common/inputs/PasswordInput";
 import EmailVerification from "./EmailVerification";
 import Button from "components/common/button/Button";
 import Loader from "components/common/loader/Loader";
+import "./SignUp.css";
 
 const SignIn = () => {
   const authContext = useContext(AuthContext);
@@ -49,7 +50,7 @@ const SignIn = () => {
             <EmailVerification />
           ) : (
             <div className="login-box">
-              <h1 className="title">Registreer vandaag!</h1>
+              <h1 className="title">Meld u aan!</h1>
               <p className={loginError ? "error-message" : "hide-message"}>
                 {loginError}
               </p>
@@ -78,8 +79,10 @@ const SignIn = () => {
                 />
               </form>
               { loading ? (<Loader />) : ""}
-              <p>Heb je nog geen account?</p>
-              <Link to={"/registreer"}>Log in</Link>
+              <div>
+                <p>Heb je nog geen account?</p>
+                <Link to={"/registratie"}>Registreer</Link>                
+              </div>
             </div>
           )}
         </div>

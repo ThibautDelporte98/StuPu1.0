@@ -1,5 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, startTransition } from "react";
 import { FetchContext } from "hooks/FetchContext";
+import { useNavigate } from "react-router-dom";
+import "./EmailVerification.css";
+import InputField from "components/common/inputs/InputField";
+import Button from "components/common/button/Button";
+import Loader from "components/common/loader/Loader";
 
 const EmailVerification = ({ email }) => {
   const { authAxios } = useContext(FetchContext);
@@ -7,6 +12,9 @@ const EmailVerification = ({ email }) => {
   const [isVerified, setIsVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => navigate("/aanmelden");
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -15,42 +23,66 @@ const EmailVerification = ({ email }) => {
     setErrorMessage("");
 
     try {
-      const response = await authAxios.post("/api/Auth/EmailVerification", { email, code });
+      const response = await authAxios.post("/api/Auth/EmailVerification", {
+        email,
+        code,
+      });
       console.log("Email verified:", response.data);
-      setIsVerified(true);
+      startTransition(() => {
+        setIsVerified(true);
+        setErrorMessage("");
+      });
     } catch (error) {
-      console.error("Verification error:", error.response?.data || error.message);
-      setErrorMessage(error.response?.data?.message || "Verification failed. Please try again.");
+      console.error(
+        "Verification error:",
+        error.response?.data || error.message
+      );
+
+      startTransition(() => {
+        setErrorMessage(
+          error.response?.data?.message || "Verification failed. Please try again."
+        );
+      });
     } finally {
       setIsLoading(false);
     }
   };
 
   if (isVerified) {
-    return <p>Email verified successfully! You can now log in.</p>;
+    return (
+      <div className="popup">
+        <div className="popup-box">
+          <h1>E-mail succesvol geverifieerd! Je kan nu inloggen.</h1>
+          <Button
+            className="custom-button button-registration button-mobile mt-2"
+            type="button"
+            text="login in"
+            onClick={handleLoginClick}
+          />
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1>Email Verification</h1>
-      <p>We’ve sent a verification code to your email: {email}</p>
-      <form onSubmit={handleSubmit}>
+    <div className="popup">
+      <h1>Email Verificatie</h1>
+      <p>We hebben een verificatiecode naar je e-mail gestuurd: {email}</p>
+      {errorMessage && <p className="error-message  mt-2">{errorMessage}</p>}
+      <form className="login-form" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="code">Verification Code</label>
-          <input
+          <InputField
+            label={"verificatiecode:"}
             type="text"
             id="code"
             name="code"
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            required
           />
         </div>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Verifying..." : "Verify"}
-        </button>
+        <Button className={" mt-1"} type="submit" text="Verifeer" />
       </form>
+      {isLoading ? <Loader /> : ""}
     </div>
   );
 };

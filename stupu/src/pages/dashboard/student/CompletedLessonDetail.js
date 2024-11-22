@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import DashNav from "layouts/dashboard/DashboardNav";
 import TutorCard from "components/common/cards/TutorCard";
 import LessonInfo from "components/dashboard/LessonInfo";
-import useChangeBackground from "utils/changeBackground";
 import "./LessonDetail.css"
 
 const CompletedLessonDetail = () => {

@@ -10,19 +10,6 @@ const OverviewProfile = () => {
     { label: "Hobbies", value: "Voetbal, lezen" },
   ];
 
-  const contactDetails = [
-    { label: "Telefoon", value: "123-456-789" },
-    { label: "Email", value: "johndoe@example.com" },
-    { label: "Adres", value: "Straatnaam 123, Stad" },
-  ];
-
-  const schoolDetails = [
-    { label: "School", value: "School X" },
-    { label: "Onderwijsvorm", value: "TSO" },
-    { label: "Onderwijs Niveau", value: "Niveau Y" },
-    { label: "Studierichting", value: "Houtbewerking" },
-  ];
-
   return (
     <section className="box box-border box-2 w-100 ">
       <div className="box-top flex">

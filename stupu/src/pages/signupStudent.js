@@ -19,6 +19,7 @@ import {
   isFieldValid,
 } from "utils/validations";
 import { Link } from "react-router-dom";
+import "./SignUp.css";
 
 const Register = () => {
   // Fetch data
@@ -74,7 +75,7 @@ const Register = () => {
     } catch (err) {
       const errorMessage =
         err.response?.data?.message ||
-        "Registration failed. Please try again later.";
+        "Registratie mislukt. Probeer later opnieuw.";
       setError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -90,7 +91,7 @@ const Register = () => {
           {succes ? (
             <EmailVerification />
           ) : (
-            <div className="login-box">
+            <div className="login-box register-box">
               <h1 className="title">Registreer vandaag!</h1>
               <p className={error ? "error-message" : "hide-message"}>
                 {error}
