@@ -3,7 +3,7 @@ h1 {
     font-size: 3.5rem;
   }
 h2{
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
   
   .subtitle h2 {
@@ -35,8 +35,16 @@ h2{
   
 
   @media screen and (max-width:992px) {
+
     .subtitle h2 {
         font-size: 2rem;
       }
+
+}
+@media screen and (max-width:576px) {
+    
+  h1 {
+      font-size: 2.5rem;
+    }
 
 }

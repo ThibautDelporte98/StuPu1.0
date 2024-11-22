@@ -50,6 +50,10 @@ body {
 .white-text{
   color: white !important;
 }
+
+.primairy-color{
+  color: var(--primary-color);
+}
 @media (max-width: 768px) {
     .cstm-container {
       padding: 0 10px;

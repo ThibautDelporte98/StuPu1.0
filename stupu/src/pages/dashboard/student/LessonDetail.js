@@ -27,7 +27,7 @@ const LessonDetail = () => {
       <DashNav />
       <div className="flex-wrap">
         <section className="my-lesson-detail">
-          <h1>Bijles Wiskunde 24/10</h1>
+            <h1>Bijles Wiskunde 24/10</h1>
           <div
             className={`flex p-1 align-items-start  ${
               isSmallScreen ? "flex-colomn" : "flex-reverse"

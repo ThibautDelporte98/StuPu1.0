@@ -18,7 +18,7 @@
 
 .input{
     position: relative;
-    padding: 1.5rem 0;
+    padding: .5rem 0;
 }
 
 .input input,textarea{
@@ -31,10 +31,11 @@
 }
 
 
-.input label{
-    position: absolute;
+label{
+    display: block;
+    font-weight: 600;
+    margin-bottom: .25rem;
     font-size: 1.25rem;
-    top: -.5rem;
 }
 
 .input button{

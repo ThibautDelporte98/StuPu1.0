@@ -1,8 +1,28 @@
 import Avatar2 from "assets/img/defaultprofile.webp";
 import Verified from "assets/img/verified.png";
+import ProfileInfo from "components/dashboard/ProfileInfo";
 import "./OverviewProfile.css";
 
 const OverviewProfile = () => {
+  const personalInfo = [
+    { label: "Geslacht", value: "Man" },
+    { label: "Geboortedatum", value: "01/01/2000" },
+    { label: "Hobbies", value: "Voetbal, lezen" },
+  ];
+
+  const contactDetails = [
+    { label: "Telefoon", value: "123-456-789" },
+    { label: "Email", value: "johndoe@example.com" },
+    { label: "Adres", value: "Straatnaam 123, Stad" },
+  ];
+
+  const schoolDetails = [
+    { label: "School", value: "School X" },
+    { label: "Onderwijsvorm", value: "TSO" },
+    { label: "Onderwijs Niveau", value: "Niveau Y" },
+    { label: "Studierichting", value: "Houtbewerking" },
+  ];
+
   return (
     <section className="box box-border box-2 w-100 ">
       <div className="box-top flex">
@@ -26,26 +46,22 @@ const OverviewProfile = () => {
         </button>
       </div>
       <div className="profile-img">
-        <span className="verified">
-          <img className="verified-img" src={Verified} alt="default" />
-        </span>
         <div className="picture">
           <img className="picture-img" src={Avatar2} alt="default" />
         </div>
       </div>
-      <div className="profile-info">
-        <h3>Persoonlijke info</h3>
-        <p>
-          Passie voor lesgeven | Hulp bij studie | Persoonlijke bijlessen op
-          maat | Flexibel en geduldig | Samen leren, samen groeien
-        </p>
+      <div className="ptb-1">
+        <div className="name mt-1">
+            Dhr. John Doe
+          <span className="verified">
+            <img className="verified-img" src={Verified} alt="default" />
+          </span>
+        </div>
+        <ProfileInfo infoList={personalInfo} />
       </div>
-      <div className="profile-info">
-        <h3>student gegevens</h3>
-        <p>
-          Categorie :6de ASO Latijn-Wiskunde School: Sint-Amands college
-          Studentennummer: 10001459974 Jaar: 2023-2024
-        </p>
+      <div className="ptb-1">
+        <h2>Persoonlijke informatie:</h2>
+        <ProfileInfo infoList={personalInfo} />
       </div>
     </section>
   );

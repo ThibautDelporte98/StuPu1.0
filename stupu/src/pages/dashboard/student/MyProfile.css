@@ -1,0 +1,23 @@
+.box-edit .button-edit{
+  margin: -2.5rem 0 0 .5rem;
+}
+.profile-info p{
+  max-width: 75%;
+  padding: 1rem 0;
+}
+
+.name {
+  display: inline-flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.verified {
+  margin: -2rem 0 0 .5rem;
+}
+
+.verified img {
+  width: 2rem;
+  height: auto;
+}

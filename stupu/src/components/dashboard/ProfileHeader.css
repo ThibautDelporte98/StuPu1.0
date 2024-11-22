@@ -1,0 +1,24 @@
+.lesson-amount{
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.lesson-amount .score{
+  font-size: 2rem;
+}
+
+.picture-img{
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 992px) {
+    .lesson-amount{
+      font-size: 1.5rem;
+    }
+    .lesson-amount .score{
+      font-size: 2.5rem;
+    }
+}

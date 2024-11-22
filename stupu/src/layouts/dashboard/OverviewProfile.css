@@ -26,17 +26,21 @@
     border-radius: 50%;
 }
 
-.verified{
-    position: absolute;
-    top: 0;
-    left: 60%;
-    z-index: 1000;
-}
-
-.verified-img{
-    width: 2.5rem;
-}
 
 
-
+.name {
+    display: inline-flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .verified {
+    margin: -2rem 0 0 .5rem;
+  }
+  
+  .verified img {
+    width: 2rem;
+    height: auto;
+  }
 

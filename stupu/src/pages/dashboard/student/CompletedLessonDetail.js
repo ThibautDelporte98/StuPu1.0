@@ -3,9 +3,9 @@ import DashNav from "layouts/dashboard/DashboardNav";
 import TutorCard from "components/common/cards/TutorCard";
 import LessonInfo from "components/dashboard/LessonInfo";
 import useChangeBackground from "utils/changeBackground";
+import "./LessonDetail.css"
 
 const CompletedLessonDetail = () => {
-  useChangeBackground("/dashboard", "#59b2a5");
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
@@ -20,11 +20,11 @@ const CompletedLessonDetail = () => {
   }, []);
 
 
+  
   return (
     <div className="cstm-container">
       <DashNav />
       <div className="flex-wrap">
-        {/* <MyLessonDetail /> */}
         <section className="my-lesson-detail">
           <h1>Bijles Wiskunde 24/10</h1>
           <div

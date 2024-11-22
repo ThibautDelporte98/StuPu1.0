@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link here
 import { AuthContext } from "hooks/AuthContext";
 import "./Navigation.css";
 import Logo from "assets/img/logo.png";
@@ -12,7 +12,7 @@ import SearchInput from "components/common/SearchInput";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated } = useContext(AuthContext); // Get isAuthenticated function from context
+  const { isAuthenticated } = useContext(AuthContext); 
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -21,39 +21,44 @@ function Nav() {
   const handleSignUpClick = () => navigate("/registratie");
   const handleHomeClick = () => navigate("/");
 
-
   return (
     <nav className="navbar">
-      {isAuthenticated() ? (  // Call isAuthenticated as a function
+      {isAuthenticated() ? (  
         <></>
       ) : (
         <div className={`navbar-mobile ${isOpen ? "active" : ""}`}>
           <ul>
             <li>
-              <a
+              <Link
+                to="#hoewerktstupu" // Replace href with to
                 onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
-                href="#hoewerktstupu"
               >
                 Hoe werkt StuPu?
-              </a>
+              </Link>
             </li>
             <li>
-              <a onClick={(e) => handleScrollTo(e, "hoe")} href="#hoe">
+              <Link
+                to="#hoe" // Replace href with to
+                onClick={(e) => handleScrollTo(e, "hoe")}
+              >
                 Hoe meld ik mij aan?
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
+                to="#formulier" // Replace href with to
                 onClick={(e) => handleScrollTo(e, "formulier")}
-                href="#formulier"
               >
                 Schrijf je in!
-              </a>
+              </Link>
             </li>
             <li>
-              <a onClick={(e) => handleScrollTo(e, "contact")} href="#contact">
+              <Link
+                to="#contact" // Replace href with to
+                onClick={(e) => handleScrollTo(e, "contact")}
+              >
                 Contact & Socials
-              </a>
+              </Link>
             </li>
             <div className="flex">
               <li>
@@ -62,7 +67,6 @@ function Nav() {
                   type="button"
                   text="aanmelden"
                   onClick={handleLoginClick}
-                  icon={LoginAva}
                 />
               </li>
               <li>
@@ -71,7 +75,6 @@ function Nav() {
                   type="button"
                   text="registreer"
                   onClick={handleSignUpClick}
-                  icon={RegistrationIcon}
                 />
               </li>
             </div>
@@ -82,9 +85,9 @@ function Nav() {
       <div className="navbar-flex">
         <div className="navbar-links flex">
           <div className="navbar-logo">
-            <a href={handleHomeClick}>
+            <Link to="/" onClick={handleHomeClick}> {/* Replace a with Link */}
               <img src={Logo} alt="Logo StuPu" />
-            </a>
+            </Link>
           </div>
           <div className="navbar-menu">
             {isAuthenticated() ? (  // Call isAuthenticated as a function
@@ -92,33 +95,36 @@ function Nav() {
             ) : (
               <ul className="navbar-desktop">
                 <li>
-                  <a
+                  <Link
+                    to="#hoewerktstupu" // Replace href with to
                     onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
-                    href="word-lesvolger"
                   >
                     Word Lesvolger!
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a onClick={(e) => handleScrollTo(e, "hoe")} href="#hoe">
+                  <Link
+                    to="#hoe" // Replace href with to
+                    onClick={(e) => handleScrollTo(e, "hoe")}
+                  >
                     Word Lesgever
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
+                    to="#formulier" // Replace href with to
                     onClick={(e) => handleScrollTo(e, "formulier")}
-                    href="word-lesgever"
                   >
                     Bijles zoeken
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
+                    to="#contact" // Replace href with to
                     onClick={(e) => handleScrollTo(e, "contact")}
-                    href="#contact"
                   >
                     Contact & Socials
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
@@ -134,14 +140,12 @@ function Nav() {
                 type="button"
                 text="aanmelden"
                 onClick={handleLoginClick}
-                icon={LoginAva}
               />
               <Button
                 className="custom-button button-registration button-choiceSec button-desktop m05"
                 type="button"
                 text="registreer"
                 onClick={handleSignUpClick}
-                icon={RegistrationIcon}
               />
             </>
           )}

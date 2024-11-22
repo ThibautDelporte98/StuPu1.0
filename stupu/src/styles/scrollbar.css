@@ -17,7 +17,7 @@
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: white; 
   }
 
   .scroll-container::-webkit-scrollbar {
@@ -32,7 +32,7 @@
    
   /* Handle */
   .scroll-container::-webkit-scrollbar-thumb {
-    background: var(--secondary-color); 
+    background: var(--primary-color); 
     border-radius: 10px;
   }
   

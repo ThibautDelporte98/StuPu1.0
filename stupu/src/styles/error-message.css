@@ -1,7 +1,10 @@
 .error-message{
+    padding:0 .5rem;
     font-style: italic;
-    position: absolute;
-    bottom: -1.5rem;
-    margin-top: .5rem;
     color: white;
-    }
+}
+
+.hide-message{
+    display: none;
+  }
+  

@@ -1,10 +1,10 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ className, type, text, onClick, icon }) => {
+const Button = ({ className, type, text, onClick, disabled, icon }) => {
   return (
-    <button type={type} className={`custom-button ${className}`} onClick={onClick}>
-       {icon && <img src={icon} alt="button icon" className="button-icon" />}
+    <button type={type} className={`custom-button ${className} ${disabled ? "disabled-button" : "" }`} onClick={onClick} disabled={disabled}>
+       {icon && icon}
       <span className="button-text">{text}</span>
     </button>
   );

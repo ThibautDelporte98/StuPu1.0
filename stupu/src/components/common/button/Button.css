@@ -24,6 +24,12 @@
     cursor: pointer;
 }
 
+.disabled-button{
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .button-choiceSec{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-color: var(--secondary-color);
@@ -35,9 +41,19 @@
     border: 2px solid var(--secondary-color);
 }
 
+.button-edit{
+    width: auto;
+    padding: 0.6rem;
+    border: none;
+}
+
+.button-edit stroke{
+    color: white;
+}
+
 .button-search{
     display: flex;
-    padding: .75rem;
+    padding: .6rem;
     width: auto !important;
     height: 100%;
 }
@@ -54,11 +70,6 @@
     border: none;
 }
 
-.button-icon{
-    display: none;
-    width: 2rem;
-    height: auto;
-}
 
 .button-slide{
     margin: 1rem;
@@ -80,10 +91,6 @@
         display: none;
     }
 
-    .button-icon{
-        display: flex;
-    }
-    
 
 }
 

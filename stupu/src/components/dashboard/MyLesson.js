@@ -34,7 +34,7 @@ const LessonView = ({ index, type, date, time, title, tutor, children }) => {
         </div>
       )}
       <div className="actions">
-        {children}
+          {children}
       </div>
     </div>
   );
