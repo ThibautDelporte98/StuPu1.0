@@ -1,23 +1,27 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import Link here
 import { AuthContext } from "hooks/AuthContext";
+import useLockBodyScroll from "hooks/useLockBodyScroll";
 import "./Navigation.css";
 import Logo from "assets/img/logo.png";
 import scrollToElement from "utils/scrollTo";
 import Button from "components/common/button/Button";
 import ProfileDropdown from "components/ProfileDropdown";
 import SearchInput from "components/common/SearchInput";
+import Login from "assets/img/login-avatar.svg";
+import SignUp from "assets/img/registration.svg"
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated } = useContext(AuthContext); 
   const navigate = useNavigate();
-
   const toggleMenu = () => setIsOpen(!isOpen);
   const handleScrollTo = (e, id) => scrollToElement(e, id, setIsOpen);
   const handleLoginClick = () => navigate("/aanmelden");
   const handleSignUpClick = () => navigate("/registratie");
   const handleHomeClick = () => navigate("/");
+
+  useLockBodyScroll(isOpen);
 
   return (
     <nav className="navbar">
@@ -65,6 +69,8 @@ function Nav() {
                   type="button"
                   text="aanmelden"
                   onClick={handleLoginClick}
+                  icon={Login}
+
                 />
               </li>
               <li>
@@ -73,6 +79,7 @@ function Nav() {
                   type="button"
                   text="registreer"
                   onClick={handleSignUpClick}
+                  icon={SignUp}
                 />
               </li>
             </div>
@@ -134,16 +141,19 @@ function Nav() {
           ) : (
             <>
               <Button
-                className="custom-button button-login button-desktop m-05"
+                className="custom-button button-login button-desktop flex align-items-center m-05 "
                 type="button"
                 text="aanmelden"
                 onClick={handleLoginClick}
+                icon={Login}
               />
               <Button
-                className="custom-button button-registration button-choiceSec button-desktop m05"
+                className="custom-button button-registration button-choiceSec button-desktop flex align-items-center m05 "
                 type="button"
                 text="registreer"
                 onClick={handleSignUpClick}
+                icon={SignUp}
+
               />
             </>
           )}

@@ -27,7 +27,6 @@
 }
 
 
-
 .navbar-mobile{
     visibility: hidden;
     position: fixed;
@@ -54,6 +53,7 @@
 
 .navbar-mobile li{
     padding: 1rem 0;
+
 }
 
 .navbar-mobile li a{
@@ -72,6 +72,7 @@
 
 .navbar-menu ul li {
   margin-right: 50px;
+
 }
 
 .navbar-menu ul li a {
@@ -80,7 +81,6 @@
   font-size: 16px;
   font-weight: 600;
 }
-
 
 
 .navbar-toggle {
@@ -101,7 +101,7 @@
 
   }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
 
     .navbar-desktop{
         display: none !important;

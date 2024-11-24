@@ -16,6 +16,10 @@ h2{
   .subtitle-dark {
     color: var(--primary-color);
   }
+
+  a{
+    color: white;
+  }
   
   ul{
     list-style-type: none;

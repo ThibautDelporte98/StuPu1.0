@@ -79,7 +79,7 @@ const SignIn = () => {
                 />
               </form>
               { loading ? (<Loader />) : ""}
-              <div className="flex-colomn align-items-center">
+              <div className="director flex-colomn align-items-center">
                 <p>Heb je nog geen account?</p>
                 <Link to={"/registratie"}>Registreer</Link>                
               </div>

@@ -6,7 +6,7 @@
     white-space: nowrap;
     width: 100%;
     height: auto;
-    padding: 1rem 3rem;
+    padding: .75rem 2rem;
     color: white;
     background-color: transparent;
     border: 3.5px solid white;
@@ -39,6 +39,12 @@
 .button-border-sec-color{
     color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
+}
+
+.icon {
+    width: 2rem;
+    margin-right: .5rem;
+    height: auto;
 }
 
 .button-edit{
@@ -83,23 +89,26 @@
     .button-login,
     .button-registration {
         width: auto;
-        padding: .7rem;
+        padding: 0.7rem 0.9rem;
+        margin: .5rem;
     }
-
     .button-login .button-text,
     .button-registration .button-text {
         display: none;
     }
 
-
+    .icon {
+        margin-right: 0;
+    }
 }
 
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
 
     .button-desktop {
         display: none;
     }
+
 
 
 

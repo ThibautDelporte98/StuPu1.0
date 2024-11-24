@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "hooks/AuthContext";
-import Avatar from "assets/img/login-avatar.png";
+import Avatar from "assets/img/login-avatar.svg";
 import "./ProfileDropdown.css";
 
 const ProfileDropdown = ({ onLogout }) => {
