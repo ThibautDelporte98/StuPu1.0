@@ -4,7 +4,7 @@ import "./ProfileHeader.css";
 
 const ProfileImage = ({ lessonsCount }) => (
   <div className="profile-img">
-    <div className="picture flex">
+    <div className="picture flex justify-content-center">
       <img className="picture-img" src={Avatar2} alt="default" />
       <div className="lesson-amount flex-colomn align-items-center">
         <div>Gevolgde lessen:</div>

@@ -16,6 +16,7 @@ const TextareaField = ({
   return (
     <div className="input">
       <textarea
+        className="mt-1"
         id={id}
         value={value}
         defaultValue={defaultValue}

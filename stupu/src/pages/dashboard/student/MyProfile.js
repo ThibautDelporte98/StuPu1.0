@@ -27,7 +27,7 @@ const LessonDetail = () => {
   
   const [contactDetails, setContactDetails] = useState([
     { label: "Telefoon", value: "123-456-789" , type:"text" },
-    { label: "Email", value: "johndoe@example.com", type:"email" },
+    { label: "Email", value: "johndoe@example.com", type:"text" },
     { label: "Adres", value: "Straatnaam 123, Stad", type:"text" },
   ]);
 
@@ -97,12 +97,12 @@ const handleEditClick = (field) => {
           {selectedField.map((field, index) => (
             <div key={index} className="popup-field">
               {field.type === "text" && (
-                <InputField label={field.label} defaultValue={field.value} />
+                <InputField id="text-field" label={field.label} defaultValue={field.value} />
               )}
               {field.type === "options" && (
               <div>
                 <label>{field.label}</label>
-                <select defaultValue={field.value} name={field.label}>
+                <select id="select-field" defaultValue={field.value} name={field.label}>
                   {field.options.map((option, idx) => (
                     <option key={idx} value={option}>
                       {option}
@@ -114,7 +114,7 @@ const handleEditClick = (field) => {
               {field.type === "date" && (
               <div>
                 <InputField
-                  id="birthDate"
+                  id="date-field"
                   label={field.label}
                   defaultValue={field.value}
                   type="date"
@@ -122,7 +122,7 @@ const handleEditClick = (field) => {
               </div>
             )}
               {field.type === "textarea" && (
-                <TextareaField  defaultValue={field.value}/>
+                <TextareaField className={"mt-1"}  defaultValue={field.value}/>
               )}
             </div>
           ))}
