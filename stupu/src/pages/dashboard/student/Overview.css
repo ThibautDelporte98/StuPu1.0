@@ -1,4 +1,4 @@
-.dash-overview{
+.grid-overview{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-flow: dense;

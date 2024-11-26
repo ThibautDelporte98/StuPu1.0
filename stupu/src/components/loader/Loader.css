@@ -1,4 +1,4 @@
-.load-container{
+.overlay-container{
     position: fixed;
     display: flex;
     top: 0;
@@ -9,7 +9,7 @@
     height: 100vh;
     z-index: 100;
     background-color: rgb(255, 255, 255 , .5);
-  }
+}
   
   .loader {
     width: 10rem;

@@ -2,11 +2,11 @@ import { useState, useContext } from "react";
 import { AuthContext } from "hooks/AuthContext";
 import { FetchContext } from "hooks/FetchContext";
 import Nav from "layouts/Navigation";
-import Button from "components/common/button/Button";
+import Button from "components/button/Button";
 import EmailVerification from "./EmailVerification";
-import Loader from "components/common/loader/Loader";
-import InputField from "components/common/inputs/InputField";
-import PasswordInput from "components/common/inputs/PasswordInput";
+import Loader from "components/loader/Loader";
+import InputField from "components/inputs/InputField";
+import PasswordInput from "components/inputs/PasswordInput";
 import {
   isUsernameValid,
   isNameValid,
@@ -34,7 +34,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [street, setStreet] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [zipCode, setZipCode] = useState(0);
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
   const [municipality, setMunicipality] = useState("");
@@ -57,15 +57,15 @@ const Register = () => {
       userName: username,
       firstName: firstname,
       lastName: lastname,
-      email: email,
-      password: password,
-      street: street,
-      municipality: municipality,
+      email,
+      password,
+      street,
+      municipality,
       zipCode: isNaN(zipCodeInt) ? 0 : zipCodeInt,
-      birthPlace: birthPlace,
-      birthDate: birthDate,
-      university: university,
-      major: major,
+      birthPlace,
+      birthDate,
+      university,
+      major,
     };
 
     try {
@@ -73,6 +73,7 @@ const Register = () => {
       authContext.setAuthState(response.data);
       setSucces(true);
     } catch (err) {
+      console.error(err);
       const errorMessage =
         err.response?.data?.message ||
         "Registratie mislukt. Probeer later opnieuw.";
@@ -190,9 +191,8 @@ const Register = () => {
                   label="Postcode"
                   type="number"
                   placeholder={"9999"}
-
                   value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value)}
+                  onChange={(e) => setZipCode(e.target.value.replace(/[^0-9]/g, ""))}
                   isValid={isZipCodeValid(zipCode)}
                   validationMessage="Postcode moet 4-5 cijfer lang zijn."
                   showValidation={zipCode.length > 0}

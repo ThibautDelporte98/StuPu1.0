@@ -17,7 +17,7 @@ const Dashboard = () => {
     <div className="cstm-container">
       <DashNav />
       <h1>Welkom {authState.userInfo?.firstName}!</h1>
-      <div className="dash-overview flex-wrap">
+      <div className="grid-overview flex-wrap">
         <OverviewProfile />
         <OverviewLessons />
         <OverviewRebook />

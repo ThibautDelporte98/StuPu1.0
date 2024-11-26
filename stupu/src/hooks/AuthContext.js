@@ -15,11 +15,13 @@ const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    
     if (authState.token && authState.expiresAt) {
       Cookies.set('userInfo', JSON.stringify(authState.userInfo), { path: '/', secure: true, sameSite: 'Strict' });
       Cookies.set('expiresAt', authState.expiresAt, { path: '/', secure: true, sameSite: 'Strict' });
     }
   }, [authState]);
+
 
   const isAuthenticated = () => {
     if (!authState.token || !authState.expiresAt) return false;

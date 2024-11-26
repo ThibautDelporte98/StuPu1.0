@@ -2,9 +2,9 @@ import React, { useState, useContext, startTransition } from "react";
 import { FetchContext } from "hooks/FetchContext";
 import { useNavigate } from "react-router-dom";
 import "./EmailVerification.css";
-import InputField from "components/common/inputs/InputField";
-import Button from "components/common/button/Button";
-import Loader from "components/common/loader/Loader";
+import InputField from "components/inputs/InputField";
+import Button from "components/button/Button";
+import Loader from "components/loader/Loader";
 
 const EmailVerification = ({ email }) => {
   const { authAxios } = useContext(FetchContext);

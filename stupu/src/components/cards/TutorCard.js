@@ -2,7 +2,7 @@ import Avatar from "assets/img/defaultprofile.webp";
 import Star from "assets/img/star.png";
 import Verified from "assets/img/verified.png";
 import "./TutorCard.css";
-import Button from "components/common/button/Button";
+import Button from "components/button/Button";
 
 const TutorCard = ({ buttonText, children }) => {
   return (

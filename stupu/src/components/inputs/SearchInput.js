@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "./button/Button";
+import Button from "../button/button2";
 import "./SearchInput.css";
-import SearchIcon from "./button/SearchIcon";
+import SearchIcon from "../button/SearchIcon";
 
 
 const SearchInput = () => {

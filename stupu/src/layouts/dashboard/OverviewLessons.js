@@ -1,7 +1,7 @@
-import Slider from "components/common/slider/Slider";
+import Slider from "components/slider/Slider";
 import { useNavigate } from "react-router-dom";
 import DashFilter from "components/dashboard/Filter";
-import Button from "components/common/button/Button";
+import Button from "components/button/Button";
 import "./OverviewLessons.css";
 import LessonView from "components/dashboard/MyLesson";
 

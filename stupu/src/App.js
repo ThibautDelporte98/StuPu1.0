@@ -13,7 +13,7 @@ const SignIn = lazy(() => import("./pages/signIn"));
 const Signup = lazy(() => import("./pages/signupStudent"));
 const SignUpTutor = lazy(() => import("./pages/signupStudent"));
 const SignUpChoice = lazy(() => import("./pages/signupChoice"));
-const Loader = lazy(() => import('./components/common/loader/Loader'));
+const Loader = lazy(() => import('./components/loader/Loader'));
 const MyLessonsStudent = lazy(() => import('./pages/dashboard/student/MyLessons'));
 const CompletedLessonDetail = lazy(() => import("./pages/dashboard/student/CompletedLessonDetail"));
 const LessonDetail = lazy(() => import("./pages/dashboard/student/LessonDetail"));
@@ -36,6 +36,8 @@ const UnauthenticatedRoutes = () => (
     <Route path='/mijn-bijles-detail' element={<LessonDetail />} />
     <Route path='/voltooide-lessen' element={<CompletedLessonDetail />} />
     <Route path='/mijn-profiel' element={<MyProfile />} />
+    <Route path='/dashboard' element={<Dashboard />} />
+
     <Route path="*" element={<Navigate to="/" />} /> 
   </Routes>
 );

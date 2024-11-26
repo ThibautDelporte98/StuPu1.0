@@ -1,6 +1,6 @@
 // HeadContent.js
 import React from "react";
-import Button from "components/common/button/Button";
+import Button from "components/button/Button";
 import "./HeaderHome.css";
 
 const HeadContent = ({ title, text, className, buttonText1, buttonText2, onClickMore, onClickAction, showButton = true }) => {

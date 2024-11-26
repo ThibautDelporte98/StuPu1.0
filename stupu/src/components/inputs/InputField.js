@@ -1,20 +1,25 @@
-import React from "react";
-import usePasswordToggler from "hooks/usePasswordToggler";
 import succes from "assets/svg/check.svg";
 import error from "assets/svg/red-cross.svg";
+import "./Input.css";
 
-const PasswordInput = ({
+
+const InputField = ({
   id,
   label,
+  type = "text",
   value,
+  defaultValue,
+  placeholder,
   onChange,
   onBlur,
   isValid,
   validationMessage,
   showValidation,
+  hasPasswordToggle,
+  autoComplete,
   ...props
 }) => {
-  const { passwordType, togglePassword } = usePasswordToggler();
+
 
   return (
     <div className="input">
@@ -32,22 +37,17 @@ const PasswordInput = ({
       </label>
       <input
         id={id}
-        type={passwordType} // Dynamically set the input type
+        type={type}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
         onBlur={onBlur}
         aria-invalid={!isValid}
+        placeholder={placeholder}
         required
+        autoComplete={autoComplete}
         {...props}
       />
-      <button
-        type="button" // Correct button type
-        className="password-toggle"
-        onClick={togglePassword}
-        aria-label={passwordType === "password" ? "Verberg wachtwoord" : "Toon wachtwoord"}
-      >
-        {passwordType === "password" ? "Toon" : "Verberg"}
-      </button>
       {!isValid && showValidation && validationMessage && (
         <p className="error-message">{validationMessage}</p>
       )}
@@ -55,4 +55,4 @@ const PasswordInput = ({
   );
 };
 
-export default PasswordInput;
+export default InputField;

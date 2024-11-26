@@ -5,9 +5,9 @@ import useLockBodyScroll from "hooks/useLockBodyScroll";
 import "./Navigation.css";
 import Logo from "assets/img/logo.png";
 import scrollToElement from "utils/scrollTo";
-import Button from "components/common/button/Button";
-import ProfileDropdown from "components/ProfileDropdown";
-import SearchInput from "components/common/SearchInput";
+import Button from "components/button/Button";
+import ProfileDropdown from "./ProfileDropdown";
+import SearchInput from "components/inputs/SearchInput";
 import Login from "assets/img/login-avatar.svg";
 import SignUp from "assets/img/registration.svg"
 
@@ -31,6 +31,7 @@ function Nav() {
         <div className={`navbar-mobile ${isOpen ? "active" : ""}`}>
           <ul>
             <li>
+
               <Link
                 to="#hoewerktstupu" // Replace href with to
                 onClick={(e) => handleScrollTo(e, "hoewerktstupu")}
