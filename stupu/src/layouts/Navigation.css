@@ -127,4 +127,14 @@
         transition: all .25s ease-in;
     }
 
+    .navbar-menu ul {
+        justify-content: space-around;
+        width: 100%;
+        padding-left: 0;
+    }
+    .navbar-menu ul li {
+        margin-right: 0;
+      
+      }
+
 }

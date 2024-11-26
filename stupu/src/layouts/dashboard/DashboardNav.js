@@ -41,7 +41,7 @@ function DashNav() {
         </div>
       </div>
       <div className="navbar-menu flex justify-content-center p-3">
-        <ul>
+        <ul className="">
           <li>
             <a href="/dashboard">
               {widthScreen ? <OverviewIcon /> : "Overview"}
