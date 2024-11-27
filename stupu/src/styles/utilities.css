@@ -47,6 +47,9 @@
     align-items: end;
   }
   
+  .space-around{
+    justify-content: space-around;
+  }
 
   
   .w-100{

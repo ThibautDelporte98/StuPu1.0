@@ -97,7 +97,7 @@ const Register = () => {
               <p className={error ? "error-message" : "hide-message"}>
                 {error}
               </p>
-              <form className="login-form" onSubmit={handleSubmit}>
+              <form className="login-form" onSubmit={handleSubmit} method="POST" >
                 <InputField
                   id="username"
                   label="Gebruikersnaam"

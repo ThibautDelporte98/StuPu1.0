@@ -3,13 +3,12 @@ import DashNav from "layouts/dashboard/DashboardNav";
 import useChangeBackground from "utils/changeBackground";
 import Button from "components/button/button2";
 import ProfileInfo from "components/dashboard/ProfileInfo";
+import "./MyProfile.css";
 import PopUp from "components/popup/PopUp";
 import Avatar from "assets/img/defaultprofile.webp";
 import InputField from "components/inputs/InputField";
 import TextareaField from "components/inputs/TextArea";
 import Profile from "components/dashboard/Profile";
-import "./MyProfile.css";
-
 
 const MyProfile = () => {
   useChangeBackground("/mijn-profiel", "#59b2a5");
@@ -24,33 +23,13 @@ const MyProfile = () => {
     email: { value: "school@example.com", type: "text" },
     address: { value: "123 Main St, 1000 City", type: "text" },
     hobbies: { value: "Voetbal", type: "text" },
-    language: {
-      value: "Nederlands",
-      type: "options",
-      options: ["Dutch", "English", "French", "German"],
-    },
-    favoriteCourse: {
-      value: "Wiskunde",
-      type: "options",
-      options: ["Wiskunde", "Nederlands", "Engels", "Ander"],
-    },
+    language: { value: "Nederlands", type: "options", options: ["Dutch", "English", "French", "German"] },
+    favoriteCourse: { value: "Wiskunde", type: "options", options: ["Wiskunde", "Nederlands", "Engels", "Ander"] },
     school: { value: "Howest", type: "text" },
-    education: {
-      value: "Onderwijs",
-      type: "options",
-      options: ["Basisonderwijs", "Secundair Onderwijs", "Hoger Onderwijs"],
-    },
-    educationLevel: {
-      value: "VWO",
-      type: "options",
-      options: ["VWO", "HAVO", "MBO", "HBO", "WO"],
-    },
+    education: { value: "Onderwijs", type: "options", options: ["Basisonderwijs", "Secundair Onderwijs", "Hoger Onderwijs"] },
+    educationLevel: { value: "VWO", type: "options", options: ["VWO", "HAVO", "MBO", "HBO", "WO"] },
     studyDirection: { value: "Wiskunde", type: "text" },
-    why: {
-      value:
-        "Ik volg bijles voor extra ondersteuning in wiskunde binnen mijn TSO-opleiding Houtbewerking. Mijn doel is om beter te worden in rekenvaardigheden die ik nodig heb voor mijn vakken en toekomstige werk.",
-      type: "textarea",
-    },
+    why: { value: "Ik volg bijles voor extra ondersteuning in wiskunde binnen mijn TSO-opleiding Houtbewerking. Mijn doel is om beter te worden in rekenvaardigheden die ik nodig heb voor mijn vakken en toekomstige werk.", type: "textarea" },
   });
 
   const handleEditClick = () => {
@@ -87,45 +66,37 @@ const MyProfile = () => {
               case "email":
               case "date":
                 return (
-                  <div key={key} className="popup-field ptb-05">
+                  <div key={key} className="popup-field">
                     <InputField
                       id={key}
+                      label={key}
                       name={key}
-                      label={field.label || key} // Use a default if no label is provided
                       defaultValue={field.value}
-                      autoComplete={key}
                     />
                   </div>
                 );
               case "radio":
                 return (
-                  <div key={key} className="popup-field ptb-05">
-                    <span>{field.label || key}</span>
-                    <div className="flex">
-                      {field.options.map((option) => {
-                        const optionId = `${key}-${option}`;
-                        return (
-                          <div className="p-1" key={optionId}>
-                            <input
-                              type="radio"
-                              id={optionId}
-                              name={key}
-                              value={option}
-                              defaultChecked={field.value === option}
-                            />
-                            <label htmlFor={optionId}>{option}</label>
-                          </div>
-                        );
-                      })}                      
-                    </div>
-
+                  <div key={key} className="popup-field">
+                    <label>{key}</label>
+                    {field.options.map((option) => (
+                      <label key={option}>
+                        <input
+                          type="radio"
+                          name={key}
+                          value={option}
+                          defaultChecked={field.value === option}
+                        />
+                        {option}
+                      </label>
+                    ))}
                   </div>
                 );
               case "options":
                 return (
-                  <div key={key} className="popup-field ptb-05">
-                    <label htmlFor={key}>{field.label || key}</label>
-                    <select id={key} name={key} defaultValue={field.value}>
+                  <div key={key} className="popup-field">
+                    <label>{key}</label>
+                    <select name={key} defaultValue={field.value}>
                       {field.options.map((option) => (
                         <option key={option} value={option}>
                           {option}
@@ -136,13 +107,12 @@ const MyProfile = () => {
                 );
               case "textarea":
                 return (
-                  <div key={key} className="popup-field ptb-05">
-                    <label htmlFor={key}>{field.label || key}</label>
+                  <div key={key} className="popup-field">
                     <TextareaField
                       id={key}
+                      label={key}
                       name={key}
                       defaultValue={field.value}
-                      autoComplete={key}
                     />
                   </div>
                 );

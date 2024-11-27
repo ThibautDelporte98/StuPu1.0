@@ -7,18 +7,46 @@
   font-size: 2rem;
 }
 
+.picture{
+  height: 10rem;
+}
+.profile-details{
+  height: 20rem;
+}
+
+
 .picture-img{
-  width: 50%;
+  width: 12.5rem;
   height: auto;
   object-fit: cover;
   border-radius: 50%;
 }
 
 @media screen and (max-width: 992px) {
+
     .lesson-amount{
       font-size: 1.5rem;
     }
     .lesson-amount .score{
       font-size: 2.5rem;
     }
+
+    .profile-details{
+      margin-top: 3rem;
+      height: auto;
+    }
+    .profile-details ul{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+  .picture-img{
+    width: 10rem;
+  }
+  
 }
