@@ -26,6 +26,37 @@
   height: auto;
 }
 
+
+
+.image-upload{
+  position: relative;
+  display: flex;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  color: var(--secondary-color);
+  background-color: white;
+}
+
+.top-element{
+  position: absolute;
+}
+
+.image-preview{
+  position: absolute;
+  top: 0;
+  z-index: 0;
+
+}
+
+
+.image-preview img{
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 @media screen and (max-width:992px) {
     .Profile{
       max-height: unset;

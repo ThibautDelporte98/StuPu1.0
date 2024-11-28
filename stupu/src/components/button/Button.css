@@ -65,10 +65,15 @@
 }
 
 .button-delete{
-    display: flex;
+
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    padding: .45rem .45rem;
 }
 
 .button-cancel{

@@ -39,14 +39,27 @@ const MyProfile = () => {
   const handleSave = (event) => {
     event.preventDefault();
     const updatedInfo = {};
+    let isDateValid = true;
+  
     new FormData(event.target).forEach((value, key) => {
       if (personalInfo[key]) {
+        if (key === "birthDate") {
+          const date = new Date(value);
+          if (isNaN(date.getTime())) {
+            alert("Invalid date. Please use the format YYYY-MM-DD.");
+            isDateValid = false;
+          }
+        }
         updatedInfo[key] = { ...personalInfo[key], value };
       }
     });
-    setPersonalInfo({ ...personalInfo, ...updatedInfo });
-    setPopUpVisible(false);
+  
+    if (isDateValid) {
+      setPersonalInfo({ ...personalInfo, ...updatedInfo });
+      setPopUpVisible(false);
+    }
   };
+  
 
   const handleClosePopUp = () => {
     setPopUpVisible(false);

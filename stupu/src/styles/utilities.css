@@ -51,7 +51,14 @@
     justify-content: space-around;
   }
 
-  
+  .space-between{
+    justify-content: space-between;
+  }
+
+  .sticky-element{
+    position: sticky;
+    top: 0;
+  }
   .w-100{
     width: 100%;
   }
