@@ -5,6 +5,7 @@ import AppShell from './AppShell';
 import { FetchProvider } from './hooks/FetchContext';
 import "./styles/index.css";
 import Admin from 'pages/dashboard/admin';
+import Calender from 'pages/dashboard/tutor/Calender';
 
 
 const Home = lazy(() => import("./pages/home"));
@@ -37,7 +38,7 @@ const UnauthenticatedRoutes = () => (
     <Route path='/voltooide-lessen' element={<CompletedLessonDetail />} />
     <Route path='/mijn-profiel' element={<MyProfile />} />
     <Route path='/dashboard' element={<Dashboard />} />
-
+    <Route path='/mijn-beschikbaarheid' element={<Calender />} />
     <Route path="*" element={<Navigate to="/" />} /> 
   </Routes>
 );
@@ -73,7 +74,7 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
-        {/* <Route path="/dashboard" element={<StudentRoute><Dashboard /></StudentRoute>} /> */}
+        <Route path="/dashboard" element={<StudentRoute><Dashboard /></StudentRoute>} />
         <Route path="/admin" element={<AdminRoute><Admin/></AdminRoute>} />
         <Route path="/*" element={<UnauthenticatedRoutes />} /> 
       </Routes>

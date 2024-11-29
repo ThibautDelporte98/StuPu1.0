@@ -16,7 +16,7 @@ const MyProfile = () => {
 
   const [isPopUpVisible, setPopUpVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null); // State for storing selected image
-  const [personalInfo, setPersonalInfo] = useState({
+  const [personalInfo] = useState({
     profileImage: { value: Avatar, type: "file" },
     name: { value: "John Doe", type: "text" },
     gender: { value: "Man", type: "radio", options: ["Man", "Vrouw", "Ander"] },
