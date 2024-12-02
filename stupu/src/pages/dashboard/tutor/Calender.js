@@ -1,64 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
+import Button from "components/button/button2";
+import CloseIcon from "components/button/CloseIcon";
+import InputField from "components/inputs/InputField";
+import DashNav from "layouts/dashboard/DashboardNav";
+import React, { useState } from "react";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+import "./Calender.css";
 
 const CustomDateInfo = () => {
   const [selectedRange, setSelectedRange] = useState(null);
   const [eventInfo, setEventInfo] = useState({});
   const [newEvent, setNewEvent] = useState({
-    title: '',
-    info: '',
-    startTime: '',
-    endTime: '',
+    info: "",
+    startTime: "",
+    endTime: "",
   });
 
   // Format the date as YYYY-MM-DD
   const formatDate = (date) => {
     if (!date) return null;
-    return date.toLocaleDateString('en-CA'); // Format as YYYY-MM-DD
-  };
-
-  // Fetch event data from the backend (GET request)
-  const fetchEventData = async () => {
-    try {
-      const response = await fetch('http://your-backend-api.com/events'); // Replace with your backend API URL
-      const data = await response.json();
-      const events = {};
-
-      data.forEach((event) => {
-        const eventDate = event.date;
-        if (!events[eventDate]) {
-          events[eventDate] = [];
-        }
-        events[eventDate].push(event);
-      });
-
-      setEventInfo(events);
-    } catch (error) {
-      console.error('Error fetching event data:', error);
-    }
-  };
-
-  // Send event data to the backend (POST request)
-  const sendEventDataToBackend = async (newEventInfo) => {
-    try {
-      const response = await fetch('http://your-backend-api.com/events', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newEventInfo),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save event data.');
-      }
-
-      // Optionally, you can fetch the latest event data after successfully saving it
-      fetchEventData();
-    } catch (error) {
-      console.error('Error sending event data:', error);
-    }
+    return date.toLocaleDateString("en-CA"); // Format as YYYY-MM-DD
   };
 
   // Handle adding event data to selected dates
@@ -69,15 +30,15 @@ const CustomDateInfo = () => {
       const startDate = range.from;
       const endDate = range.to;
 
-      // If there's no title, info, or time, don't proceed
-      if (!newEvent.title || !newEvent.info || !newEvent.startTime || !newEvent.endTime) {
-        alert('Please enter all event details including title, information, and time.');
+      if (!newEvent.startTime || !newEvent.endTime) {
+        alert(
+          "Please enter all event details including title, information, and time."
+        );
         return;
       }
 
       // Prepare the new event
       const newEventDetails = {
-        title: newEvent.title,
         info: newEvent.info,
         startTime: newEvent.startTime,
         endTime: newEvent.endTime,
@@ -96,10 +57,10 @@ const CustomDateInfo = () => {
       }
 
       setEventInfo(newEventInfo); // Update state with new event info
-      setNewEvent({ title: '', info: '', startTime: '', endTime: '' }); // Clear input fields
+      setNewEvent({ title: "", info: "", startTime: "", endTime: "" }); // Clear input fields
 
       // Send the updated event data to the backend
-      sendEventDataToBackend(newEventInfo);
+      // sendEventDataToBackend(newEventInfo);
     }
   };
 
@@ -109,85 +70,173 @@ const CustomDateInfo = () => {
     setNewEvent((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Fetch event data from the backend (GET request)
+  // const fetchEventData = async () => {
+  //   try {
+  //     const response = await fetch("http://your-backend-api.com/events"); // Replace with your backend API URL
+  //     const data = await response.json();
+  //     const events = {};
+
+  //     data.forEach((event) => {
+  //       const eventDate = event.date;
+  //       if (!events[eventDate]) {
+  //         events[eventDate] = [];
+  //       }
+  //       events[eventDate].push(event);
+  //     });
+
+  //     setEventInfo(events);
+  //   } catch (error) {
+  //     console.error("Error fetching event data:", error);
+  //   }
+  // };
+
+  // // Send event data to the backend (POST request)
+  // const sendEventDataToBackend = async (newEventInfo) => {
+  //   try {
+  //     const response = await fetch("http://your-backend-api.com/events", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(newEventInfo),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to save event data.");
+  //     }
+
+  //     // Optionally, you can fetch the latest event data after successfully saving it
+  //     fetchEventData();
+  //   } catch (error) {
+  //     console.error("Error sending event data:", error);
+  //   }
+  // };
+
   // Fetch event data when the component is first rendered
-  useEffect(() => {
-    fetchEventData();
-  }, []);
+  // useEffect(() => {
+  //   fetchEventData();
+  // }, []);
 
   return (
-    <div>
-      <h2>Create New Event</h2>
-      <div>
-        <input
-          type="text"
-          name="title"
-          value={newEvent.title}
-          onChange={handleInputChange}
-          placeholder="Event Title"
-        />
-      </div>
-      <div>
-        <textarea
-          name="info"
-          value={newEvent.info}
-          onChange={handleInputChange}
-          placeholder="Event Information"
-        />
-      </div>
-      <div>
-        <input
-          type="time"
-          name="startTime"
-          value={newEvent.startTime}
-          onChange={handleInputChange}
-          placeholder="Start Time"
-        />
-        <input
-          type="time"
-          name="endTime"
-          value={newEvent.endTime}
-          onChange={handleInputChange}
-          placeholder="End Time"
-        />
-      </div>
-
-      <button onClick={() => handleRangeSelect(selectedRange)}>
-        Add Event to Selected Dates
-      </button>
-
-      <DayPicker
-        mode="range"
-        selected={selectedRange}
-        onSelect={setSelectedRange}
-        footer={
-          selectedRange
-            ? `Selected range: ${selectedRange.from.toLocaleDateString()} to ${selectedRange.to.toLocaleDateString()}`
-            : 'Pick a date range.'
-        }
-      />
-
-      <div style={{ marginTop: '20px', fontSize: '16px' }}>
-        {selectedRange ? (
-          <div>
-            <p>
-              <strong>Events for the selected range:</strong>
-            </p>
-            {Object.keys(eventInfo).map((date, index) => (
-              <div key={index}>
-                <strong>{date}:</strong>
-                <ul>
-                  {eventInfo[date].map((event, idx) => (
-                    <li key={idx}>
-                      <strong>{event.title}:</strong> {event.info} (From: {event.startTime} To: {event.endTime})
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+    <div className="cstm-container">
+      <DashNav />
+      <div className="calender flex align-items-start ptb-1">
+        <article className="time-slot">
+          <DayPicker
+            mode="range"
+            selected={selectedRange}
+            onSelect={setSelectedRange}
+          />
+          <div className="mt-1">
+            <h2>Voeg een tijdslot toe:</h2>
+            <div className="flex  mt-1">
+              <InputField
+                type={"time"}
+                name={"startTime"}
+                value={newEvent.startTime}
+                onChange={handleInputChange}
+                placeholder={"Start time"}
+              />
+              <InputField
+                type={"time"}
+                name={"endTime"}
+                value={newEvent.endTime}
+                onChange={handleInputChange}
+                placeholder={"End time"}
+              />
+            </div>
+            <div className="mt-1">
+              <textarea
+                name="info"
+                value={newEvent.info}
+                onChange={handleInputChange}
+                placeholder="notitie (optioneel)"
+              />
+            </div>
+            <Button
+              className={"custom-button mt-1"}
+              onClick={() => handleRangeSelect(selectedRange)}
+              text={"Voeg Toe"}
+            />
           </div>
-        ) : (
-          <p>Select a date range to see the events.</p>
-        )}
+        </article>
+        <article className="my-lesson-content">
+          <div>
+            {selectedRange ? (
+              <>
+                <h2>
+                  Jouw Beschikbaarheid:{" "}
+                  <span className="medium">
+                    {selectedRange.from.toLocaleDateString()} tot{" "}
+                    {selectedRange.to.toLocaleDateString()}
+                  </span>
+                </h2>
+                <div className=" flex-wrap"> 
+                  {(() => {
+                    // Filter events based on the selected range
+                    const filteredDates = Object.keys(eventInfo).filter(
+                      (date) => {
+                        if (
+                          !selectedRange ||
+                          !selectedRange.from ||
+                          !selectedRange.to
+                        )
+                          return false;
+
+                        const eventDate = new Date(date);
+                        const startDate = new Date(selectedRange.from);
+                        const endDate = new Date(selectedRange.to);
+                        endDate.setDate(endDate.getDate() + 1); // Add 1 day to the end date
+
+                        return eventDate >= startDate && eventDate < endDate; // Inclusive range
+                      }
+                    );
+
+                    if (filteredDates.length === 0) {
+                      return (
+                        <div className="my-lesson-default flex justify-content-center">
+                          <p>
+                            Geen beschikbaarheid gevonden voor de geselecteerde
+                            datum.
+                          </p>
+                        </div>
+                      );
+                    }
+
+                    return filteredDates.map((date, index) => (
+                        <div className="my-lesson-item" key={index}>
+                          <h3>
+                            {new Intl.DateTimeFormat("nl-NL", {
+                              weekday: "long",
+                              day: "numeric",
+                              month: "numeric",
+                            }).format(new Date(date))}
+                            :
+                          </h3>{" "}
+                          <ul >
+                            {eventInfo[date].map((event, idx) => (
+                              <li className="my-lesson-time flex space-between" key={idx}>
+                                <div className="">
+                                  {event.startTime} - {event.endTime}{" "}
+                                  {event.info}                                  
+                                </div>
+                                <Button className={"button-cancel"} icon={<CloseIcon strokeColor="red" width={10} height={10} />} />               
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                    ));
+                  })()}
+                </div>
+              </>
+            ) : (
+              <div className="my-lesson-default flex justify-content-center">
+                <p>Selecteer een datum om jouw beschikbaarheid te beheren.</p>
+              </div>
+            )}
+          </div>
+        </article>
       </div>
     </div>
   );

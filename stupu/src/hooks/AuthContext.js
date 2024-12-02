@@ -1,67 +1,71 @@
-import React, { createContext, useState, useEffect, useCallback, startTransition } from 'react';
+import React, { createContext, useState,startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+// import { useHistory } from 'react-router-dom';
 
 const AuthContext = createContext();
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
-  const navigate = useNavigate();
 
+  const userInfo = localStorage.getItem('userInfo');
+  const expiresAt = localStorage.getItem('expiresAt');
+  const token = userInfo ? JSON.parse(userInfo).token : null;
+
+  const navigate = useNavigate();
   const [authState, setAuthState] = useState({
-    token: Cookies.get('token') || null,
-    expiresAt: Cookies.get('expiresAt') ? parseInt(Cookies.get('expiresAt')) : null,
-    userInfo: Cookies.get('userInfo') ? JSON.parse(Cookies.get('userInfo')) : {},
+    token,
+    expiresAt,
+    userInfo: userInfo ? JSON.parse(userInfo) : {}
   });
 
-  useEffect(() => {
-    
-    if (authState.token && authState.expiresAt) {
-      Cookies.set('userInfo', JSON.stringify(authState.userInfo), { path: '/', secure: true, sameSite: 'Strict' });
-      Cookies.set('expiresAt', authState.expiresAt, { path: '/', secure: true, sameSite: 'Strict' });
-    }
-  }, [authState]);
-
-
-  const isAuthenticated = () => {
-    if (!authState.token || !authState.expiresAt) return false;
-    return new Date().getTime() / 1000 < authState.expiresAt;
-  };
-
-  const setAuthInfo = useCallback(({ token, userInfo, expiresAt }) => {
+  
+  const setAuthInfo = ({ token, userInfo, expiresAt }) => {
     startTransition(() => {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      localStorage.setItem('expiresAt', expiresAt);
+  
       setAuthState({
         token,
         userInfo,
-        expiresAt,
+        expiresAt
       });
-      Cookies.set('token', token, { path: '/', secure: true, sameSite: 'Strict' });
-      Cookies.set('userInfo', JSON.stringify(userInfo), { path: '/', secure: true, sameSite: 'Strict' });
-      Cookies.set('expiresAt', expiresAt, { path: '/', secure: true, sameSite: 'Strict' });
     });
-  }, []);
+  };
 
-  const logout = useCallback(() => {
-    Cookies.remove('token', { path: '/' });
-    Cookies.remove('userInfo', { path: '/' });
-    Cookies.remove('expiresAt', { path: '/' });
-    setAuthState({
-      token: null,
-      userInfo: {},
-      expiresAt: null,
-    });
+  const logout = () => {
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('expiresAt');
+    setAuthState({});
     navigate('/aanmelden');
-  }, [navigate]);
+  };
 
-  const isAdmin = () => authState.userInfo.role === 'admin';
-  const isStudent = () => authState.userInfo.role === 'student';
-  const isTeacher = () => authState.userInfo.role === 'teacher';
+  const isAuthenticated = () => {
+    if (!authState.token || !authState.expiresAt) {
+      return false;
+    }
+    return (
+      new Date().getTime() / 1000 < authState.expiresAt
+    );
+  };
+
+  const isAdmin = () => {
+    return authState.userInfo.role === 'admin';
+  };
+  
+
+  const isStudent = () => {
+    return authState.userInfo.role === 'student';
+  }
+
+  const isTeacher = () => {
+    return authState.userInfo.role === 'teacher'
+  }
 
   return (
     <Provider
       value={{
         authState,
-        setAuthState: setAuthInfo,
+        setAuthState: authInfo => setAuthInfo(authInfo),
         logout,
         isAuthenticated,
         isAdmin,
@@ -75,3 +79,4 @@ const AuthProvider = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
+

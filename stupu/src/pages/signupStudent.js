@@ -1,263 +1,176 @@
-import { useState, useContext } from "react";
-import { AuthContext } from "hooks/AuthContext";
-import { FetchContext } from "hooks/FetchContext";
-import Nav from "layouts/Navigation";
-import Button from "components/button/Button";
-import EmailVerification from "./EmailVerification";
-import Loader from "components/loader/Loader";
-import InputField from "components/inputs/InputField";
-import PasswordInput from "components/inputs/PasswordInput";
-import {
-  isUsernameValid,
-  isNameValid,
-  isEmailValid,
-  isPasswordValid,
-  isPasswordMatch,
-  isStreetValid,
-  isZipCodeValid,
-  isBirthDateValid,
-  isFieldValid,
-} from "utils/validations";
-import { Link } from "react-router-dom";
-import "./SignUp.css";
+import React, { useState } from 'react';
 
-const Register = () => {
-  // Fetch data
-  const { authAxios } = useContext(FetchContext);
-  const authContext = useContext(AuthContext);
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    street: '',
+    municipality: '',
+    zipCode: '',
+    birthPlace: '',
+    birthDate: '', // Date string in 'YYYY-MM-DD' format
+    university: '',
+    major: '',
+  });
 
-  // input states
-  const [username, setUsername] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [street, setStreet] = useState("");
-  const [zipCode, setZipCode] = useState(0);
-  const [birthDate, setBirthDate] = useState("");
-  const [birthPlace, setBirthPlace] = useState("");
-  const [municipality, setMunicipality] = useState("");
-  const [university, setUniversity] = useState("");
-  const [major, setMajor] = useState("");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-  // after submit states
-  const [isLoading, setIsLoading] = useState(false);
-  const [succes, setSucces] = useState(false);
-  const [error, setError] = useState(false);
-
-  // handleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const zipCodeInt = parseInt(zipCode, 10);
-
-    const payload = {
-      userName: username,
-      firstName: firstname,
-      lastName: lastname,
-      email,
-      password,
-      street,
-      municipality,
-      zipCode: isNaN(zipCodeInt) ? 0 : zipCodeInt,
-      birthPlace,
-      birthDate,
-      university,
-      major,
-    };
+    // Basic validation (you can add more as needed)
+    if (formData.password === '') {
+      alert('Password is required');
+      return;
+    }
 
     try {
-      const response = await authAxios.post("/api/Auth/Register", payload);
-      authContext.setAuthState(response.data);
-      setSucces(true);
-    } catch (err) {
-      console.error(err);
-      const errorMessage =
-        err.response?.data?.message ||
-        "Registratie mislukt. Probeer later opnieuw.";
-      setError(errorMessage);
-    } finally {
-      setIsLoading(false);
+      // Sending the registration request to the API using normal fetch
+      const response = await fetch('https://stupu-webapp.azurewebsites.net/api/Auth/Register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Registration failed');
+      }
+
+      const responseData = await response.json();
+      console.log('Registration successful', responseData);
+      
+      // Handle the response (e.g., save token, redirect, etc.)
+    } catch (error) {
+      console.error('Registration failed', error);
+      alert('Registration failed, please try again');
     }
-    console.log(payload)
   };
 
   return (
-    <div className="Login">
-      <div className="Login-header">
-        <div className="cstm-container">
-          <Nav />
-          {succes ? (
-            <EmailVerification />
-          ) : (
-            <div className="login-box register-box">
-              <h1 className="title">Registreer vandaag!</h1>
-              <p className={error ? "error-message" : "hide-message"}>
-                {error}
-              </p>
-              <form className="login-form" onSubmit={handleSubmit} method="POST" >
-                <InputField
-                  id="username"
-                  label="Gebruikersnaam"
-                  value={username}
-                  placeholder={"John123"}
-                  onChange={(e) => setUsername(e.target.value)}
-                  isValid={isUsernameValid(username)}
-                  validationMessage="Moet 4 - 24 karakters bevatten."
-                  showValidation={!!username}
-                />
-                <InputField
-                  id="firstName"
-                  label="Voornaam"
-                  value={firstname}
-                  placeholder={"John"}
-                  onChange={(e) => setFirstname(e.target.value)}
-                  isValid={isNameValid(firstname)}
-                  validationMessage="Moet met een hoofdletter beginnen en mag geen spacies bevatten."
-                  showValidation={!!firstname}
-                />
-                <InputField
-                  id="lastName"
-                  label="Achternaam"
-                  value={lastname}
-                  placeholder={"Doe"}
-                  onChange={(e) => setLastname(e.target.value)}
-                  isValid={isNameValid(lastname)}
-                  validationMessage="Moet met een hoofdletter beginnen en mag geen spacies bevatten."
-                  showValidation={!!lastname}
-                />
-                <InputField
-                  id="email"
-                  label="Email"
-                  type="email"
-                  value={email}
-                  placeholder={"JohnDoe@outlook.be"}
-                  onChange={(e) => setEmail(e.target.value)}
-                  isValid={isEmailValid(email)}
-                  validationMessage="Vul een geldig emailadres in."
-                  showValidation={!!email}
-                />
-                <PasswordInput
-                  id="password"
-                  label="Wachtwoord"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  isValid={isPasswordValid(password)}
-                  validationMessage="Moet 8-24 karakters bevatten, min. 1 hoofdletter, kleine letters, een cijfer en een speciaal teken.(@$!%*?&) "
-                  showValidation={!!password}
-                />
-                <PasswordInput
-                  id="confirmPassword"
-                  label="Bevestig Wachtwoord"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  isValid={isPasswordMatch(password, confirmPassword)}
-                  validationMessage="Wachtwoorden komen niet overeen."
-                  showValidation={!!confirmPassword}
-                />
-                <InputField
-                  id="birthPlace"
-                  label="Geboorteplaats"
-                  value={birthPlace}
-                  placeholder={"Mechelen"}
-                  onChange={(e) => setBirthPlace(e.target.value)}
-                  isValid={isFieldValid(birthPlace)}
-                  validationMessage="Geboorteplaats is verplicht."
-                />
-                <InputField
-                  id="birthDate"
-                  label="Geboortedatum"
-                  type="date"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  isValid={isBirthDateValid(birthDate)}
-                  validationMessage="Je moet minimum 5 jaar zijn."
-                  showValidation={!!birthDate}
-                />
-                <InputField
-                  id="street"
-                  label="Straat"
-                  value={street}
-                  placeholder={"Straatnaam + nummer"}
-                  onChange={(e) => setStreet(e.target.value)}
-                  isValid={isStreetValid(street)}
-                  validationMessage="Straat mag niet leeg zijn."
-                  showValidation={street.length > 0}
-                />
-                <InputField
-                  id="zipCode"
-                  label="Postcode"
-                  type="number"
-                  placeholder={"9999"}
-                  value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value.replace(/[^0-9]/g, ""))}
-                  isValid={isZipCodeValid(zipCode)}
-                  validationMessage="Postcode moet 4-5 cijfer lang zijn."
-                  showValidation={zipCode.length > 0}
-                />
-                <InputField
-                  id="municipality"
-                  label="Gemeente"
-                  value={municipality}
-                  placeholder={"Kortrijk"}
-                  onChange={(e) => setMunicipality(e.target.value)}
-                  isValid={isFieldValid(municipality)}
-                  validationMessage="Gemeente mag niet leeg zijn."
-                  showValidation={municipality.length > 0}
-                />
-                <InputField
-                  id="university"
-                  label="School"
-                  placeholder={"Mijn school"}
-                  value={university}
-                  onChange={(e) => setUniversity(e.target.value)}
-                  isValid={isFieldValid(university)}
-                  validationMessage="School is verplicht."
-                  showValidation={university.length > 0}
-                />
-                <InputField
-                  id="major"
-                  label="Studierichting"
-                  placeholder={"Mijn opleiding"}
-                  value={major}
-                  onChange={(e) => setMajor(e.target.value)}
-                  isValid={isFieldValid(major)}
-                  validationMessage="Studierichting is verplicht."
-                  showValidation={major.length > 0}
-                />
-                <Button
-                className={"mt-2"}
-                  type="submit"
-                  text="aanmelden"
-                  disabled={
-                    !isUsernameValid(username) ||
-                    !isNameValid(firstname) ||
-                    !isNameValid(lastname) ||
-                    !isEmailValid(email) ||
-                    !isPasswordValid(password) ||
-                    !isPasswordMatch(password, confirmPassword) ||
-                    !isStreetValid(street) ||
-                    !isZipCodeValid(zipCode) ||
-                    !isFieldValid(birthPlace) ||
-                    !isBirthDateValid(birthDate) ||
-                    !isFieldValid(municipality) ||
-                    !isFieldValid(university) ||
-                    !isFieldValid(major)
-                  }
-                />
-
-                {isLoading ? <Loader /> : ""}
-              </form>
-              <p>Heb je al een account?</p>
-              <Link to={"/aanmelden"}>Log in</Link>
-            </div>
-          )}
-        </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
       </div>
-    </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Street</label>
+        <input
+          type="text"
+          name="street"
+          value={formData.street}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Municipality</label>
+        <input
+          type="text"
+          name="municipality"
+          value={formData.municipality}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Zip Code</label>
+        <input
+          type="number"
+          name="zipCode"
+          value={formData.zipCode}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Birth Place</label>
+        <input
+          type="text"
+          name="birthPlace"
+          value={formData.birthPlace}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Birth Date</label>
+        <input
+          type="date"
+          name="birthDate"
+          value={formData.birthDate}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>University</label>
+        <input
+          type="text"
+          name="university"
+          value={formData.university}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Major</label>
+        <input
+          type="text"
+          name="major"
+          value={formData.major}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <button type="submit">Register</button>
+    </form>
   );
 };
 
-export default Register;
+export default RegistrationForm;

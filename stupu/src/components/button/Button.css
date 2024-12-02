@@ -68,7 +68,6 @@
 
     width: 2.5rem;
     height: 2.5rem;
-    background-color: transparent;
     border: none;
     cursor: pointer;
     border-radius: 50%;
@@ -77,6 +76,8 @@
 }
 
 .button-cancel{
+    width: 0;
+    padding: 0 0.5rem;
     color: var(--secondary-color);
     border: none;
 }

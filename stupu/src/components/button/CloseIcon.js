@@ -1,5 +1,5 @@
 
-const CloseIcon = ({ strokeColor = "#59B2A5", width = 26, height = 26 }) => {
+const CloseIcon = ({ strokeColor = "white", width = 26, height = 26 }) => {
   return (
     <svg
     width={width}
@@ -10,14 +10,14 @@ const CloseIcon = ({ strokeColor = "#59B2A5", width = 26, height = 26 }) => {
   >
     <path
       d="M9.01562 9.01562L27.0468 27.0468"
-      stroke="white"
+      stroke={strokeColor}
       strokeWidth="4"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M9.01562 27.0469L27.0468 9.01565"
-      stroke="white"
+      stroke={strokeColor}
       strokeWidth="4"
       strokeLinecap="round"
       strokeLinejoin="round"

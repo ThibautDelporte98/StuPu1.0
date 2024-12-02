@@ -25,7 +25,7 @@ const LessonDetail = () => {
   return (
     <div className="cstm-container">
       <DashNav />
-      <div className="flex-wrap">
+      <div>
         <section className="my-lesson-detail">
             <h1>Bijles Wiskunde 24/10</h1>
           <div

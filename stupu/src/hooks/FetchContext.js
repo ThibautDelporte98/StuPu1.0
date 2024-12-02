@@ -11,7 +11,6 @@ const FetchProvider = ({ children }) => {
     baseURL: process.env.REACT_APP_API_URL,
   });
 
-  authAxios.defaults.headers.post['Content-Type'] = 'application/json';
 
   // Interceptor to add token to headers and withCredentials flag
   authAxios.interceptors.request.use(
