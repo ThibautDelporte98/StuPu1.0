@@ -62,34 +62,34 @@ const MyLessonsStudent = () => {
     },
   ];
 
-  const renderLesson = (lesson, index) => (
-    <LessonView
-      index={index}
-      type={lesson.type}
-      date={lesson.date}
-      time={lesson.time}
-      title={lesson.title}
-      tutor={lesson.tutor}
-      handleDetail={handleDetail}
-    >
-      <Button
-        type={"submit"}
-        text={"CONTACTEER DOCENT"}
-        className={"custom-button button-border-sec-color"}
-      />
-      <Button
-        type={"submit"}
-        text={"DETAILS"}
-        className={"custom-button button-choiceSec mt-05"}
-        onClick={handleDetail}
-      />
-      <Button
-        type={"submit"}
-        text={"ANNULEREN"}
-        className={"custom-button button-cancel mt-05"}
-      />
-    </LessonView>
-  );
+  // const renderLesson = (lesson, index) => (
+  //   <LessonView
+  //     index={index}
+  //     type={lesson.type}
+  //     date={lesson.date}
+  //     time={lesson.time}
+  //     title={lesson.title}
+  //     tutor={lesson.tutor}
+  //     handleDetail={handleDetail}
+  //   >
+  //     <Button
+  //       type={"submit"}
+  //       text={"CONTACTEER DOCENT"}
+  //       className={"custom-button button-border-sec-color"}
+  //     />
+  //     <Button
+  //       type={"submit"}
+  //       text={"DETAILS"}
+  //       className={"custom-button button-choiceSec mt-05"}
+  //       onClick={handleDetail}
+  //     />
+  //     <Button
+  //       type={"submit"}
+  //       text={"ANNULEREN"}
+  //       className={"custom-button button-cancel mt-05"}
+  //     />
+  //   </LessonView>
+  // );
 
   const reschedualLesson = (lesson, index) => (
     <LessonView

@@ -5,53 +5,53 @@ import Calender from "layouts/dashboard/Calender";
 
 const AvailabilityManager = () => {
 
-  const lessons = [
-    {
-      type: "online",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-    {
-      type: "aan huis",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-    {
-      type: "op locatie",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-    {
-      type: "online",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-    {
-      type: "online",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-  ];
+  // const lessons = [
+  //   {
+  //     type: "online",
+  //     tutor: "Jan-Willem Vandenborre",
+  //     title: "Wiskunde",
+  //     date: "7/11/2024",
+  //     time: "17:00 - 19:00",
+  //     phone: "+32492447788",
+  //     email: "Janwillem@gmail.com",
+  //   },
+  //   {
+  //     type: "aan huis",
+  //     tutor: "Jan-Willem Vandenborre",
+  //     title: "Wiskunde",
+  //     date: "7/11/2024",
+  //     time: "17:00 - 19:00",
+  //     phone: "+32492447788",
+  //     email: "Janwillem@gmail.com",
+  //   },
+  //   {
+  //     type: "op locatie",
+  //     tutor: "Jan-Willem Vandenborre",
+  //     title: "Wiskunde",
+  //     date: "7/11/2024",
+  //     time: "17:00 - 19:00",
+  //     phone: "+32492447788",
+  //     email: "Janwillem@gmail.com",
+  //   },
+  //   {
+  //     type: "online",
+  //     tutor: "Jan-Willem Vandenborre",
+  //     title: "Wiskunde",
+  //     date: "7/11/2024",
+  //     time: "17:00 - 19:00",
+  //     phone: "+32492447788",
+  //     email: "Janwillem@gmail.com",
+  //   },
+  //   {
+  //     type: "online",
+  //     tutor: "Jan-Willem Vandenborre",
+  //     title: "Wiskunde",
+  //     date: "7/11/2024",
+  //     time: "17:00 - 19:00",
+  //     phone: "+32492447788",
+  //     email: "Janwillem@gmail.com",
+  //   },
+  // ];
 
   useChangeBackground("/mijn-beschikbaarheid", "#59b2a5");
 

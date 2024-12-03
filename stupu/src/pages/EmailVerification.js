@@ -8,7 +8,7 @@ import Loader from "components/loader/Loader";
 import axios from "axios";
 
 const EmailVerification = () => {
-  const { authAxios } = useContext(FetchContext);
+  // const { authAxios } = useContext(FetchContext);
   const [code, setCode] = useState("");
   const [email, setEmail] = useState("");
 
