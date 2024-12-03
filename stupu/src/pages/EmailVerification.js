@@ -1,5 +1,5 @@
-import React, { useState, useContext, startTransition } from "react";
-import { FetchContext } from "hooks/FetchContext";
+import React, { useState, startTransition } from "react";
+// import { FetchContext } from "hooks/FetchContext";
 import { useNavigate } from "react-router-dom";
 import "./EmailVerification.css";
 import InputField from "components/inputs/InputField";
