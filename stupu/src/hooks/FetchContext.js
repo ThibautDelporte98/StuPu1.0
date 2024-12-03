@@ -12,7 +12,6 @@ const FetchProvider = ({ children }) => {
   });
 
 
-  // Interceptor to add token to headers and withCredentials flag
   authAxios.interceptors.request.use(
     (config) => {
       const token = Cookies.get('token'); 

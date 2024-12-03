@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    street: '',
-    municipality: '',
-    zipCode: '',
-    birthPlace: '',
-    birthDate: '', // Date string in 'YYYY-MM-DD' format
-    university: '',
-    major: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    street: "",
+    municipality: "",
+    zipCode: "",
+    birthPlace: "",
+    birthDate: "", // Date string in 'YYYY-MM-DD' format
+    university: "",
+    major: "",
   });
 
   const handleChange = (e) => {
@@ -27,40 +27,53 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     // Basic validation (you can add more as needed)
-    if (formData.password === '') {
-      alert('Password is required');
+    if (formData.password === "") {
+      alert("Password is required");
       return;
     }
+    formData.zipCode = Number(formData.zipCode);
+
+    // Log the payload to see the data being sent
+    console.log("Payload:", JSON.stringify(formData, null, 2)); // Pretty print the payload
 
     try {
-      // Sending the registration request to the API using normal fetch
-      const response = await fetch('https://stupu-webapp.azurewebsites.net/api/Auth/Register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // Sending the registration request to the API using fetch
+      const response = await fetch(
+        "https://stupu-webapp.azurewebsites.net/api/Auth/Register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Registration failed');
+        const textResponse = await response.text();
+        console.error("API Error Response:", textResponse);
+        throw new Error(textResponse || "Registration failed");
+        
       }
 
+      // If the registration is successful, log the response
       const responseData = await response.json();
-      console.log('Registration successful', responseData);
-      
+      console.log("Registration successful", responseData);
+
       // Handle the response (e.g., save token, redirect, etc.)
     } catch (error) {
-      console.error('Registration failed', error);
-      alert('Registration failed, please try again');
+      // Handle errors gracefully and show the error to the user
+      console.error("Registration failed:", error.message);
+      alert(`Registration failed: ${error.message || "Please try again"}`);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>First Name</label>
+        <label htmlFor={"firstName"}>First Name</label>
         <input
+          id="firstName"
           type="text"
           name="firstName"
           value={formData.firstName}
@@ -69,8 +82,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Last Name</label>
+        <label htmlFor={"lastName"}>Last Name</label>
         <input
+          id="lastName"
           type="text"
           name="lastName"
           value={formData.lastName}
@@ -79,18 +93,21 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Email</label>
+        <label htmlFor={"e-mail"}>Email</label>
         <input
+          id="e-mail"
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
+          autoComplete="e-mail"
           required
         />
       </div>
       <div>
-        <label>Password</label>
+        <label htmlFor={"password"}>Password</label>
         <input
+          id="password"
           type="password"
           name="password"
           value={formData.password}
@@ -99,8 +116,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Street</label>
+        <label htmlFor={"street"}>Street</label>
         <input
+          id="street"
           type="text"
           name="street"
           value={formData.street}
@@ -109,8 +127,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Municipality</label>
+        <label htmlFor={"municipality"}>Municipality</label>
         <input
+          id="municipality"
           type="text"
           name="municipality"
           value={formData.municipality}
@@ -119,8 +138,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Zip Code</label>
+        <label htmlFor={"zipCode"}>Zip Code</label>
         <input
+          id="zipCode"
           type="number"
           name="zipCode"
           value={formData.zipCode}
@@ -129,8 +149,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Birth Place</label>
+        <label htmlFor={"birthPlace"}>Birth Place</label>
         <input
+          id="birthPlace"
           type="text"
           name="birthPlace"
           value={formData.birthPlace}
@@ -139,8 +160,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Birth Date</label>
+        <label htmlFor={"birthDate"}>Birth Date</label>
         <input
+          id="birthDate"
           type="date"
           name="birthDate"
           value={formData.birthDate}
@@ -149,8 +171,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>University</label>
+        <label htmlFor={"university"}>University</label>
         <input
+          id="university"
           type="text"
           name="university"
           value={formData.university}
@@ -159,8 +182,9 @@ const RegistrationForm = () => {
         />
       </div>
       <div>
-        <label>Major</label>
+        <label htmlFor={"major"}>Major</label>
         <input
+          id="major"
           type="text"
           name="major"
           value={formData.major}

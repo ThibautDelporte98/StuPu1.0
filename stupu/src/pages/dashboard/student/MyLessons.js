@@ -7,7 +7,7 @@ import Button from "components/button/Button";
 import DashNav from "layouts/dashboard/DashboardNav";
 import useChangeBackground from "utils/changeBackground";
 import LessonView from "components/dashboard/MyLesson";
-
+import Calender from "layouts/dashboard/Calender";
 const MyLessonsStudent = () => {
   const navigate = useNavigate();
 
@@ -135,17 +135,7 @@ const MyLessonsStudent = () => {
       <div className="box-top">
         <h1>Mijn Bijlessen</h1>
       </div>
-      <div className="box-top ptb-1-05">
-        <h2>Geplande lessen</h2>
-        <DashFilter />
-      </div>
-      <div className="my-lessons flex justify-content-center ptb-1-05">
-        {lessons.length > 3 || isSmallScreen ? (
-          <Slider items={lessons.map(renderLesson)} initialItemsToShow={3} />
-        ) : (
-          lessons.map(renderLesson)
-        )}
-      </div>
+      <Calender />
       <div className="box-top ptb-1-05">
         <h2>Herboek voltooide lessen</h2>
         <DashFilter />

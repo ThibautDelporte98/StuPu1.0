@@ -17,10 +17,7 @@ const ProfileDropdown = ({ onLogout }) => {
     if (onLogout) onLogout();
   };
 
-  // Determine if we're on the dashboard
   const isDashboard = location.pathname === "/dashboard"; // Adjust the path accordingly
-
-  // Class name logic based on current page
   const backgroundClass = isDashboard ? " dashboard-background" : "default-background";
 
   return (
@@ -29,10 +26,10 @@ const ProfileDropdown = ({ onLogout }) => {
         <img
           className="user-img"
           src={Avatar}
-          alt={`user: ${authState.userInfo?.firstName || ""} ${authState.userInfo?.lastName || ""}`}
+          alt={`user: ${authState.username || ""}`}
         />
         <div className="user-name">
-          {authState.userInfo?.firstName} {authState.userInfo?.lastName}
+          {authState.username}
         </div>
         <div className={`dropdown-menu-toggle ${isOpen ? "close" : ""}`} onClick={toggleDropdown}>
           <svg
@@ -92,13 +89,18 @@ const ProfileDropdown = ({ onLogout }) => {
             </li>
           )}
           <li>
-            <Link to="/" onClick={() => setIsOpen(false)}>
+            <Link to="/mijn-bijlessen" onClick={() => setIsOpen(false)}>
               Mijn Lessen
             </Link>
           </li>
           <li>
-            <Link to="/mijn-lessen" onClick={() => setIsOpen(false)}>
+            <Link to="/mijn-profiel" onClick={() => setIsOpen(false)}>
               Mijn Profiel
+            </Link>
+          </li>
+          <li>
+            <Link to="/mijn-beschikbaarheid" onClick={() => setIsOpen(false)}>
+              Mijn beschikbaarheid
             </Link>
           </li>
           <li>

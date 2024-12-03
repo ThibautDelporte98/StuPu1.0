@@ -5,10 +5,13 @@ import "./EmailVerification.css";
 import InputField from "components/inputs/InputField";
 import Button from "components/button/Button";
 import Loader from "components/loader/Loader";
+import axios from "axios";
 
-const EmailVerification = ({ email }) => {
+const EmailVerification = () => {
   const { authAxios } = useContext(FetchContext);
   const [code, setCode] = useState("");
+  const [email, setEmail] = useState("");
+
   const [isVerified, setIsVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +26,7 @@ const EmailVerification = ({ email }) => {
     setErrorMessage("");
 
     try {
-      const response = await authAxios.post("/api/Auth/EmailVerification", {
+      const response = await axios.post("https://stupu-webapp.azurewebsites.net/api/Auth/EmailVerification", {
         email,
         code,
       });
@@ -71,6 +74,14 @@ const EmailVerification = ({ email }) => {
       {errorMessage && <p className="error-message  mt-2">{errorMessage}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <div>
+          <InputField 
+           label={"verificatiecode:"}
+           type="email"
+           id="email"
+           name="email"
+           value={email}
+           onChange={(e) => setEmail(e.target.value)}
+          />
           <InputField
             label={"verificatiecode:"}
             type="text"

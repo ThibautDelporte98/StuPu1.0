@@ -1,76 +1,72 @@
-import React, { createContext, useState,startTransition } from 'react';
+import React, { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 
 const AuthContext = createContext();
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
-
-  const userInfo = localStorage.getItem('userInfo');
-  const expiresAt = localStorage.getItem('expiresAt');
-  const token = userInfo ? JSON.parse(userInfo).token : null;
+  const token = localStorage.getItem('token') || null;
+  const username = localStorage.getItem('userName') || null;
 
   const navigate = useNavigate();
-  const [authState, setAuthState] = useState({
-    token,
-    expiresAt,
-    userInfo: userInfo ? JSON.parse(userInfo) : {}
-  });
+  const [authState, setAuthState] = useState({ token, username });
 
-  
-  const setAuthInfo = ({ token, userInfo, expiresAt }) => {
-    startTransition(() => {
-      localStorage.setItem('userInfo', JSON.stringify(userInfo));
-      localStorage.setItem('expiresAt', expiresAt);
-  
-      setAuthState({
-        token,
-        userInfo,
-        expiresAt
-      });
-    });
+  const setAuthInfo = (token, username) => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userName', username);
+    setAuthState({ token, username });
   };
 
   const logout = () => {
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('expiresAt');
-    setAuthState({});
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    setAuthState({ token: null, username: null });
     navigate('/aanmelden');
   };
 
   const isAuthenticated = () => {
-    if (!authState.token || !authState.expiresAt) {
+    if (!authState.token) return false;
+
+    try {
+      const payload = JSON.parse(atob(authState.token.split('.')[1]));
+      return payload.exp > Date.now() / 1000; // Token should not be expired
+    } catch (e) {
+      console.error('Invalid token format', e);
       return false;
     }
-    return (
-      new Date().getTime() / 1000 < authState.expiresAt
-    );
   };
 
-  const isAdmin = () => {
-    return authState.userInfo.role === 'admin';
+  const makeAuthenticatedRequest = async (url, options = {}) => {
+    if (!authState.token) {
+      throw new Error('No authentication token available');
+    }
+
+    const headers = {
+      ...options.headers,
+      Authorization: `Bearer ${authState.token}`,
+      'Content-Type': 'application/json',
+    };
+
+    const response = await fetch(url, {
+      ...options,
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    return response.json();
   };
-  
-
-  const isStudent = () => {
-    return authState.userInfo.role === 'student';
-  }
-
-  const isTeacher = () => {
-    return authState.userInfo.role === 'teacher'
-  }
 
   return (
     <Provider
       value={{
         authState,
-        setAuthState: authInfo => setAuthInfo(authInfo),
+        setAuthState: setAuthInfo,
         logout,
         isAuthenticated,
-        isAdmin,
-        isStudent,
-        isTeacher,
+        makeAuthenticatedRequest,
       }}
     >
       {children}
@@ -79,4 +75,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
-

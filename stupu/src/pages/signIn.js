@@ -1,11 +1,10 @@
 import React, { useState, useContext, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../hooks/AuthContext";
 import { publicFetch } from "../utils/fetch";
 import Nav from "layouts/Navigation";
 import InputField from "components/inputs/InputField";
 import PasswordInput from "components/inputs/PasswordInput";
-import EmailVerification from "./EmailVerification";
 import Button from "components/button/Button";
 import Loader from "components/loader/Loader";
 import "./SignUp.css";
@@ -15,33 +14,47 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const passwordRef = useRef(); // Updated to use useRef for password
   const [loginError, setLoginError] = useState(null);
-  const [succes, setSucces] = useState(false);
   const [loading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    setIsLoading(true);
-
-    // Retrieve the password value from the ref
+    setIsLoading(true); // Show loading indicator
+  
+    // Retrieve credentials from form inputs
     const credentials = { 
-      email, 
+      userName: email, // Note: API expects "userName", not "username"
       password: passwordRef.current.value // Access password from the ref
     };
-
+  
     try {
-      const { data } = await publicFetch.post("authenticate", credentials);
-
-      // Update auth context state
-      authContext.setAuthState(data);
-      setSucces(true);
-      setIsLoading(false);
-      console.log("Logged in successfully");
+      const response = await publicFetch.post("api/Auth/Login", credentials);
+  
+      // Extract token and username from the response
+      const { token, userName } = response.data || {};
+  
+      if (token && userName) {
+        // Save token and username to localStorage and context
+        authContext.setAuthState(token, userName);
+        localStorage.setItem("token", token);
+        localStorage.setItem("userName", userName);
+  
+        navigate("/dashboard");
+        console.log("Logged in successfully");
+      } else {
+        throw new Error("Token or username not received from server");
+      }
     } catch (error) {
-      setLoginError(error.response?.data?.message || "Login failed");
-      setIsLoading(false);
-      console.error("Login error:", error);
+      // Display error message
+      const errorMessage = error.response?.data?.message || "Login failed";
+      setLoginError(errorMessage);
+      console.error("Login error:", errorMessage);
+    } finally {
+      setIsLoading(false); // Hide loading indicator
     }
   };
+  
+  
 
   return (
     <>
@@ -49,9 +62,6 @@ const SignIn = () => {
         <div className="Login-header">
           <div className="cstm-container">
             <Nav />
-            {succes ? (
-              <EmailVerification />
-            ) : (
               <div className="login-box">
                 <h1 className="title">Meld u aan!</h1>
                 <p className={loginError ? "error-message" : "hide-message"}>
@@ -84,7 +94,6 @@ const SignIn = () => {
                   <Link to={"/registratie"}>Registreer</Link>
                 </div>
               </div>
-            )}
           </div>
         </div>
       </div>
