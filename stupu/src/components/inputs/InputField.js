@@ -8,6 +8,7 @@ const InputField = ({
   label,
   type = "text",
   value,
+  uniqueName,
   defaultValue,
   placeholder,
   onChange,
@@ -38,6 +39,7 @@ const InputField = ({
       <input
         id={id}
         type={type}
+        name={uniqueName}
         value={value}
         defaultValue={defaultValue}
         onChange={onChange}

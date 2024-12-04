@@ -131,7 +131,6 @@ const MyLessonsStudent = () => {
   return (
     <div className="cstm-container">
       <DashNav />
-      {/* <MyLessons /> */}
       <div className="box-top">
         <h1>Mijn Bijlessen</h1>
       </div>
@@ -164,3 +163,4 @@ const MyLessonsStudent = () => {
 };
 
 export default MyLessonsStudent;
+  

@@ -10,8 +10,9 @@ import EmailVerification from "pages/EmailVerification";
 const Home = lazy(() => import("./pages/home"));
 const Dashboard = lazy(() => import("./pages/dashboard/student/Overview"));
 const SignIn = lazy(() => import("./pages/signIn"));
-const Signup = lazy(() => import("./pages/signupStudent"));
+const Signup = lazy(() => import("./pages/signupStudent3"));
 const SignUpTutor = lazy(() => import("./pages/signupStudent"));
+
 const SignUpChoice = lazy(() => import("./pages/signupChoice"));
 const Loader = lazy(() => import("./components/loader/Loader"));
 const MyLessonsStudent = lazy(() =>
@@ -36,7 +37,7 @@ const LoadingFallback = () => (
 
 const UnauthenticatedRoutes = () => (
   <Routes>
-    <Route path="/emailerfication" element={<EmailVerification />} />
+    <Route path="/email-verficatie" element={<EmailVerification />} />
     <Route path="/registratie" element={<SignUpChoice />} />
     <Route path="/registratie-lesgever" element={<SignUpTutor />} />
     <Route path="/registratie-lesvolger" element={<Signup />} />

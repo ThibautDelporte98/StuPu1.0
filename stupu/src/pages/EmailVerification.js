@@ -1,16 +1,14 @@
-import React, { useState, startTransition } from "react";
-// import { FetchContext } from "hooks/FetchContext";
+import React, { useState, startTransition,useContext } from "react";
+import { FetchContext } from "hooks/FetchContext";
 import { useNavigate } from "react-router-dom";
 import "./EmailVerification.css";
 import InputField from "components/inputs/InputField";
 import Button from "components/button/Button";
 import Loader from "components/loader/Loader";
-import axios from "axios";
 
-const EmailVerification = () => {
-  // const { authAxios } = useContext(FetchContext);
+const EmailVerification = ({ email }) => {
+  const { authAxios } = useContext(FetchContext);
   const [code, setCode] = useState("");
-  const [email, setEmail] = useState("");
 
   const [isVerified, setIsVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,18 +17,17 @@ const EmailVerification = () => {
 
   const handleLoginClick = () => navigate("/aanmelden");
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setErrorMessage("");
 
     try {
-      const response = await axios.post("https://stupu-webapp.azurewebsites.net/api/Auth/EmailVerification", {
+      const response = await authAxios.post("/api/Auth/EmailVerification", {
         email,
         code,
       });
-      console.log("Email verified:", response.data);
+      console.log("Email verified:", response.data);  
       startTransition(() => {
         setIsVerified(true);
         setErrorMessage("");
@@ -43,7 +40,7 @@ const EmailVerification = () => {
 
       startTransition(() => {
         setErrorMessage(
-          error.response?.data?.message || "Verification failed. Please try again."
+          error.response?.data?.message || "Verificatie mislukt probeer opnieuw."
         );
       });
     } finally {
@@ -80,7 +77,6 @@ const EmailVerification = () => {
            id="email"
            name="email"
            value={email}
-           onChange={(e) => setEmail(e.target.value)}
           />
           <InputField
             label={"verificatiecode:"}

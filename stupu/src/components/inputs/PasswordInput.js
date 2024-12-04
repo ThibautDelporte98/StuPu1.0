@@ -12,6 +12,7 @@ const PasswordInput = forwardRef(
       id,
       label,
       value,
+      uniqueName,
       onChange,
       onBlur,
       isValid,
@@ -42,6 +43,7 @@ const PasswordInput = forwardRef(
           id={id}
           type={passwordType} // Dynamically set the input type
           value={value}
+          name={uniqueName}
           onChange={onChange}
           onBlur={onBlur}
           aria-invalid={!isValid}
