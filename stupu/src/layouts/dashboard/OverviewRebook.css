@@ -1,3 +1,6 @@
+.lesson-compleet{
+  margin: 1rem;
+}
 .quick-item {
   height: 7rem; /* Adjust the height to ensure each item fits properly */
   padding: 10px;
@@ -7,4 +10,17 @@
 .scroll-container {
   max-height: calc(3 * 7rem + 2rem); /* Adjust height to fit 2 items */
   overflow-y: auto;
+  position: relative; /* For proper layering */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%); /* Start fading just before the end */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%); /* Start fading just before the end */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+@media screen and (max-width:576px) {
+  .scroll-container {
+    max-height: 100vh; /* Adjust height to fit 2 items */
+    padding: 1rem 0;
+  }
 }

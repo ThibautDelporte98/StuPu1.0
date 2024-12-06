@@ -59,6 +59,8 @@ const AuthProvider = ({ children }) => {
     return response.json();
   };
 
+  
+
   return (
     <Provider
       value={{

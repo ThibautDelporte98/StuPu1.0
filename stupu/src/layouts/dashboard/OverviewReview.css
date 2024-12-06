@@ -1,3 +1,6 @@
+.review{
+  padding: 1.5rem;
+}
 .review-tutor h3{
     margin-left: 1rem;
 }
@@ -18,3 +21,8 @@
   background-color: #F2F2F7;
 }
 
+@media screen and (max-width: 576px) {
+   .review{
+    margin-top: 2rem;
+   }
+}

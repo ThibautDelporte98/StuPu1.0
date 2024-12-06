@@ -1,17 +1,30 @@
-import Avatar2 from "assets/img/defaultprofile.webp";
+import React, { useState } from "react";
+import Avatar from "assets/img/defaultprofile.webp";
 import Verified from "assets/img/verified.png";
 import ProfileInfo from "components/dashboard/ProfileInfo";
 import "./OverviewProfile.css";
 
 const OverviewProfile = () => {
-  const personalInfo = [
-    { label: "Geslacht", value: "Man" },
-    { label: "Geboortedatum", value: "01/01/2000" },
-    { label: "Hobbies", value: "Voetbal, lezen" },
-  ];
+  const [personalInfo] = useState({
+    profileImage: { value: Avatar, type: "file" },
+    name: { value: "John Doe", type: "text" },
+    gender: { value: "Man", type: "radio", options: ["Man", "Vrouw", "Ander"] },
+    birthDate: { value: "1998-04-06", type: "date" },
+    phone: { value: "+3292538149", type: "tel" },
+    email: { value: "school@example.com", type: "email" },
+    address: { value: "123 Main St, 1000 City", type: "text" },
+    hobbies: { value: "Voetbal", type: "text" },
+    language: { value: "Nederlands", type: "options", options: ["Dutch", "English", "French", "German"] },
+    favoriteCourse: { value: "Wiskunde", type: "options", options: ["Wiskunde", "Nederlands", "Engels", "Ander"] },
+    school: { value: "Howest", type: "text" },
+    education: { value: "Onderwijs", type: "options", options: ["Basisonderwijs", "Secundair Onderwijs", "Hoger Onderwijs"] },
+    educationLevel: { value: "VWO", type: "options", options: ["Niet van toepassing", "VWO", "HAVO", "MBO", "HBO", "WO"] },
+    studyDirection: { value: "Wiskunde", type: "text" },
+    why: { value: "Ik volg bijles voor extra ondersteuning in wiskunde...", type: "textarea" },
+  });
 
   return (
-    <section className="box box-border box-2 w-100 ">
+    <section className="box profile box-border box-1">
       <div className="box-top flex">
         <h2>Profiel</h2>
         <button className="button">
@@ -34,21 +47,45 @@ const OverviewProfile = () => {
       </div>
       <div className="profile-img">
         <div className="picture">
-          <img className="picture-img" src={Avatar2} alt="default" />
+          <img className="picture-img" src={personalInfo.profileImage.value} alt="default" />
         </div>
       </div>
-      <div className="ptb-1">
+      <div>
         <div className="name mt-1">
-            Dhr. John Doe
+          Dhr. John Doe
           <span className="verified">
             <img className="verified-img" src={Verified} alt="default" />
           </span>
         </div>
-        <ProfileInfo infoList={personalInfo} />
+        <ProfileInfo title={"Bio"}>
+          <p className="profile-bio">
+            Als leerkracht ben ik gepassioneerd over het creëren van een
+            positieve en ondersteunende leeromgeving waarin mijn studenten zich
+            kunnen ontwikkelen. Ik geloof in een persoonlijke aanpak, waarbij ik
+            rekening houd met de unieke leerstijlen en behoeften van elke
+            leerling. Mijn doel is niet alleen om kennis over te brengen, maar
+            ook om mijn studenten te inspireren om kritisch te denken en
+            vertrouwen te krijgen in hun eigen capaciteiten.
+          </p>
+        </ProfileInfo>
       </div>
-      <div className="ptb-1">
-        <h2>Persoonlijke informatie:</h2>
-        <ProfileInfo infoList={personalInfo} />
+      <div>        
+        <ProfileInfo title={"Persoonlijke informatie"}>
+        <ul>
+              <li className="flex ptb-05">
+                <div className="bold mr-1">Telefoon:</div>
+                <div>{personalInfo.phone.value}</div>
+              </li>
+              <li className="flex ptb-05">
+                <div className="bold mr-1">Email:</div>
+                <div>{personalInfo.email.value}</div>
+              </li>
+              <li className="flex ptb-05">
+                <div className="bold mr-1">Adres:</div>
+                <div>{personalInfo.address.value}</div>
+              </li>
+            </ul>
+        </ProfileInfo>
       </div>
     </section>
   );

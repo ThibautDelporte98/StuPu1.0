@@ -1,12 +1,14 @@
 import "./Filter.css";
 
-const DashFilter = ({title }) => {
+const DashFilter = ({id}) => {
+    
+
   return (
-    <div className="box-top flex">
-    <h2>{title}</h2>
+
+    <div className="flex justify-content-end">
     <div className="filter flex">
-      <label htmlFor="filter-options">Filter op:</label>
-      <select id="filter-options">
+      <label htmlFor={id}>Filter:</label>
+      <select id={id}>
         <option value="all">Alle</option>
         <option value="popular">Wiskunde</option>
         <option value="recent">Nederlands</option>

@@ -10,7 +10,7 @@ const OverviewReview = () => {
   const reviews = [{ tutor: "John" }, { tutor: "Lisa" }, { tutor: "Karen" }];
 
   return (
-    <section className="box box-4 w-100 ">
+    <section className="box review box-3 w-100 ">
       <div className="flex-colomn pb-2">
         <h2>Beoordeel jouw docent!</h2>
         <span>Geef jouw docenten een score op 5.</span>
@@ -50,11 +50,11 @@ const OverviewReview = () => {
             </div>
             <div className=" ptb-1">
               <div className="input flex-colomn align-items-end  ">
-                <label htmlFor="number">Score:</label>
+                <label htmlFor={`age-${index}`}>Score:</label>
                 <input
                   className="score box-shadow"
                   type="number"
-                  id="age"
+                  id={`age-${index}`}
                   name="age"
                   min="1"
                   max="5"
@@ -62,10 +62,10 @@ const OverviewReview = () => {
                 />
               </div>
               <div className="input textarea flex-colomn ">
-                <label htmlFor="comments">Bericht:</label>
+                <label htmlFor={`comments-${index}`}>Bericht:</label>
                 <textarea
                   className="box-shadow"
-                  id="comments"
+                  id={`comments-${index}`}
                   name="comments"
                   rows="4"
                   cols="50"

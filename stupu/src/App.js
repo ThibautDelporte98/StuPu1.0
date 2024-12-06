@@ -10,7 +10,7 @@ import EmailVerification from "pages/EmailVerification";
 const Home = lazy(() => import("./pages/home"));
 const Dashboard = lazy(() => import("./pages/dashboard/student/Overview"));
 const SignIn = lazy(() => import("./pages/signIn"));
-const Signup = lazy(() => import("./pages/signupStudent3"));
+const Signup = lazy(() => import("./pages/signupStudent"));
 const SignUpTutor = lazy(() => import("./pages/signupStudent"));
 
 const SignUpChoice = lazy(() => import("./pages/signupChoice"));

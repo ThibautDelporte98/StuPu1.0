@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 const FetchContext = createContext();
 const { Provider } = FetchContext;
@@ -14,7 +13,8 @@ const FetchProvider = ({ children }) => {
 
   authAxios.interceptors.request.use(
     (config) => {
-      const token = Cookies.get('token'); 
+      const token = localStorage.getItem("token");
+
       if (token) { 
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -36,5 +36,6 @@ const FetchProvider = ({ children }) => {
     </Provider>
   );
 };
+
 
 export { FetchContext, FetchProvider };
