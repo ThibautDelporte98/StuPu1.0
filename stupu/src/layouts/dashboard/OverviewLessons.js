@@ -22,9 +22,8 @@ const OverviewLessons = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const handleDetail = () => navigate("/mijn-bijles-detail");
-  
+
   const lessons = [
     {
       type: "online",
@@ -75,9 +74,15 @@ const OverviewLessons = () => {
 
   return (
     <section className="box box-transparent box-3 w-100 ">
-      <div className={windowWidth > 576 ? 'flex space-between subtitle' : 'subtitle'}>
-      <h2 className={windowWidth < 576 ? 'subtitle mt-2' : ''} >Mijn bijlessen</h2>
-      <DashFilter id={'lesson-overview'} />        
+      <div
+        className={
+          windowWidth > 576 ? "flex space-between subtitle" : "subtitle"
+        }
+      >
+        <h2 className={windowWidth < 576 ? "subtitle mt-2" : ""}>
+          Mijn bijlessen
+        </h2>
+        <DashFilter id={"lesson-overview"} />
       </div>
       <Slider
         items={lessons.map((lesson, index) => (

@@ -8,6 +8,16 @@ import DashNav from "layouts/dashboard/DashboardNav";
 import useChangeBackground from "utils/changeBackground";
 import LessonView from "components/dashboard/MyLesson";
 import Calender from "layouts/dashboard/Calender";
+
+const groupLessonsByDate = (lessons) => {
+  return lessons.reduce((acc, lesson) => {
+    const { date, ...rest } = lesson;
+    if (!acc[date]) acc[date] = [];
+    acc[date].push(rest);
+    return acc;
+  }, {});
+};
+
 const MyLessonsStudent = () => {
   const navigate = useNavigate();
 
@@ -16,83 +26,45 @@ const MyLessonsStudent = () => {
 
   const lessons = [
     {
+      id: 241201,
       type: "online",
       tutor: "Jan-Willem Vandenborre",
       title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
+      date: "2024-12-02",
+      startTime: "17:00",
+      endTime: "19:00",
       phone: "+32492447788",
       email: "Janwillem@gmail.com",
     },
     {
+      id: 241201,
       type: "aan huis",
       tutor: "Jan-Willem Vandenborre",
       title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
+      date: "2024-12-02",
+      startTime: "17:00",
+      endTime: "19:00",
       phone: "+32492447788",
       email: "Janwillem@gmail.com",
     },
     {
-      type: "op locatie",
+      id: 241201,
+      type: "aan huis",
       tutor: "Jan-Willem Vandenborre",
       title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-    {
-      type: "online",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
-      phone: "+32492447788",
-      email: "Janwillem@gmail.com",
-    },
-    {
-      type: "online",
-      tutor: "Jan-Willem Vandenborre",
-      title: "Wiskunde",
-      date: "7/11/2024",
-      time: "17:00 - 19:00",
+      date: "2024-12-03",
+      startTime: "17:00",
+      endTime: "19:00",
       phone: "+32492447788",
       email: "Janwillem@gmail.com",
     },
   ];
 
-  // const renderLesson = (lesson, index) => (
-  //   <LessonView
-  //     index={index}
-  //     type={lesson.type}
-  //     date={lesson.date}
-  //     time={lesson.time}
-  //     title={lesson.title}
-  //     tutor={lesson.tutor}
-  //     handleDetail={handleDetail}
-  //   >
-  //     <Button
-  //       type={"submit"}
-  //       text={"CONTACTEER DOCENT"}
-  //       className={"custom-button button-border-sec-color"}
-  //     />
-  //     <Button
-  //       type={"submit"}
-  //       text={"DETAILS"}
-  //       className={"custom-button button-choiceSec mt-05"}
-  //       onClick={handleDetail}
-  //     />
-  //     <Button
-  //       type={"submit"}
-  //       text={"ANNULEREN"}
-  //       className={"custom-button button-cancel mt-05"}
-  //     />
-  //   </LessonView>
-  // );
+  const groupedLessons = groupLessonsByDate(lessons);
 
   const reschedualLesson = (lesson, index) => (
     <LessonView
+      key={lesson.date + index}
       index={index}
       type={lesson.type}
       date={lesson.date}
@@ -107,7 +79,7 @@ const MyLessonsStudent = () => {
         className={"custom-button button-border-sec-color mt-05"}
         onClick={handleDetail}
       />
-    <Button
+      <Button
         type={"submit"}
         text={"DETAILS"}
         className={"custom-button button-choiceSec mt-05"}
@@ -132,15 +104,17 @@ const MyLessonsStudent = () => {
     <div className="cstm-container">
       <DashNav />
       <div className="box-top">
-        <h1>Mijn Bijlessen</h1>
+        <div className="title">
+          <h1>Mijn Bijlessen</h1>
+        </div>
       </div>
-      <Calender />
+      <Calender initialEvents={groupedLessons} lesson={true} />
       <div className="box-top ptb-1-05">
         <h2>Herboek voltooide lessen</h2>
         <DashFilter />
       </div>
       <div className="my-lessons flex justify-content-center ptb-1-05">
-        {lessons.length > 3 || isSmallScreen ? (
+        {lessons.length >= 3 || isSmallScreen ? (
           <Slider
             items={lessons.map(reschedualLesson)}
             initialItemsToShow={3}
@@ -163,4 +137,3 @@ const MyLessonsStudent = () => {
 };
 
 export default MyLessonsStudent;
-  

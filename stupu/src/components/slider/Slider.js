@@ -1,3 +1,4 @@
+import ArrowIcon from "components/button/ArrowIcon";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   handleDragStart,
@@ -8,7 +9,7 @@ import {
 } from "utils/sliderUtils";
 import "./Slider.css";
 
-const Slider = ({ items, initialItemsToShow, draggable = true, itemClassName = "" }) => {
+const Slider = ({ items, initialItemsToShow, draggable = true, itemClassName = "" , btnColorChange }) => {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState(0);
@@ -19,7 +20,7 @@ const Slider = ({ items, initialItemsToShow, draggable = true, itemClassName = "
   const updateItemsToShow = useCallback(() => {
     if (window.innerWidth <= 768) {
       setItemsToShow(1);
-    } else if (window.innerWidth <= 992) {
+    } else if (window.innerWidth <= 1080) {
       setItemsToShow(2);
     } else {
       setItemsToShow(initialItemsToShow);
@@ -46,7 +47,7 @@ const Slider = ({ items, initialItemsToShow, draggable = true, itemClassName = "
     <div className="slider-container p-1">
       <div
         ref={sliderRef}
-        className="lessons"
+        className="items"
         style={{
           transform: `translateX(calc(-${window.innerWidth <= 768 ? currentPosition * 100 : (currentPosition * 100) / (itemsToShow === 1 ? 2 : itemsToShow)}%  + ${dragDistance}px))`,
           transition: isDragging ? "none" : "transform 0.3s ease",
@@ -89,17 +90,19 @@ const Slider = ({ items, initialItemsToShow, draggable = true, itemClassName = "
       <div className="flex justify-content-center">
         <button
           onClick={prevSlide}
-          disabled={currentPosition === 0}
-          className="button button-slide"
+          disabled={currentPosition === 0 || items.length <= itemsToShow}
+          className="button button-slide "
+
         >
-          Vorige
+        <ArrowIcon width={24} height={24} fill={btnColorChange} direction={'left'} />
+
         </button>
         <button
           onClick={nextSlide}
           disabled={currentPosition === maxPosition}
           className="button button-slide"
         >
-          Volgende
+          <ArrowIcon width={24} height={24} fill={btnColorChange} />
         </button>
       </div>
     </div>

@@ -79,6 +79,7 @@ const OverviewReview = () => {
         initialItemsToShow={2}
         itemClassName="slide-w-50"
         draggable={false}
+        btnColorChange={'#59b2a5'}
       />
     </section>
   );

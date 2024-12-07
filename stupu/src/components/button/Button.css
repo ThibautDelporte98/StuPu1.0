@@ -64,6 +64,11 @@
     height: 100%;
 }
 
+.button-decline{
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
 .button-delete{
 
     width: 2.5rem;
@@ -85,6 +90,13 @@
 
 .button-slide{
     margin: 1rem;
+    transition: opacity .5s ease;
+    opacity: 1;
+}
+
+.button-slide:disabled{
+    transition: opacity .5s ease;
+    opacity: .5;
 }
 
 
