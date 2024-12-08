@@ -29,8 +29,8 @@ const LessonDetail = () => {
             <h1>Bijles Wiskunde 24/10</h1>
           </div>
           <div
-            className={`flex  align-items-start  ${
-              isSmallScreen ? "flex-colomn ptb-1 mt-2" : "flex-reverse p-1"
+            className={`flex  align-items-start ptb-1  ${
+              isSmallScreen ? "flex-colomn mt-2" : "flex-reverse"
             }`}
           >
             <TutorCard buttonText={"CONTACTEER JOHN"} />
