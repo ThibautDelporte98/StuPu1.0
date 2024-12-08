@@ -98,9 +98,6 @@
 
 
     .dropdown-menu li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-size: 2rem;
       font-weight: 800;
       padding: 1rem 0;
@@ -113,11 +110,6 @@
       top: 2rem;
     }
 
-    .mobile-logout{
-    position: absolute;
-    right: 2rem;
-    bottom: 2rem;
-    }
 
 
   }
