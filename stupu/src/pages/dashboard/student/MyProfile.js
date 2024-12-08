@@ -25,13 +25,32 @@ const MyProfile = () => {
     email: { value: "school@example.com", type: "email" },
     address: { value: "123 Main St, 1000 City", type: "text" },
     hobbies: { value: "Voetbal", type: "text" },
-    language: { value: "Nederlands", type: "options", options: ["Dutch", "English", "French", "German"] },
-    favoriteCourse: { value: "Wiskunde", type: "options", options: ["Wiskunde", "Nederlands", "Engels", "Ander"] },
+    language: {
+      value: "Nederlands",
+      type: "options",
+      options: ["Dutch", "English", "French", "German"],
+    },
+    favoriteCourse: {
+      value: "Wiskunde",
+      type: "options",
+      options: ["Wiskunde", "Nederlands", "Engels", "Ander"],
+    },
     school: { value: "Howest", type: "text" },
-    education: { value: "Onderwijs", type: "options", options: ["Basisonderwijs", "Secundair Onderwijs", "Hoger Onderwijs"] },
-    educationLevel: { value: "VWO", type: "options", options: ["Niet van toepassing", "VWO", "HAVO", "MBO", "HBO", "WO"] },
+    education: {
+      value: "Onderwijs",
+      type: "options",
+      options: ["Basisonderwijs", "Secundair Onderwijs", "Hoger Onderwijs"],
+    },
+    educationLevel: {
+      value: "VWO",
+      type: "options",
+      options: ["Niet van toepassing", "VWO", "HAVO", "MBO", "HBO", "WO"],
+    },
     studyDirection: { value: "Wiskunde", type: "text" },
-    why: { value: "Ik volg bijles voor extra ondersteuning in wiskunde...", type: "textarea" },
+    why: {
+      value: "Ik volg bijles voor extra ondersteuning in wiskunde...",
+      type: "textarea",
+    },
   });
 
   const handleEditClick = () => {
@@ -51,12 +70,12 @@ const MyProfile = () => {
 
   const handleSave = (event) => {
     event.preventDefault();
-    
+
     const formData = new FormData(event.target);
-    
+
     // Convert formData to a plain object
     const updatedInfo = {};
-    
+
     formData.forEach((value, key) => {
       if (key === "profileImage") {
         updatedInfo[key] = value;
@@ -68,9 +87,9 @@ const MyProfile = () => {
     // Make API request (POST) to send the form data to the backend
     const apiUrl = "https://your-api-endpoint.com/update-profile"; // Replace with your API endpoint
     const requestOptions = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'multipart/form-data', // or 'application/json' if you are sending JSON
+        "Content-Type": "multipart/form-data", // or 'application/json' if you are sending JSON
         // You can also add authorization headers if needed
       },
       body: updatedInfo,
@@ -79,13 +98,13 @@ const MyProfile = () => {
     console.log(updatedInfo);
 
     fetch(apiUrl, requestOptions)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Handle success response
         console.log("Profile updated successfully:", data);
         setPopUpVisible(false);
       })
-      .catch(error => {
+      .catch((error) => {
         // Handle error response
         console.error("Error updating profile:", error);
       });
@@ -93,53 +112,51 @@ const MyProfile = () => {
 
   const handleClosePopUp = () => {
     setPopUpVisible(false);
-
   };
 
   const renderPopUp = () => {
     if (!isPopUpVisible) return null;
-
+  
     return (
       <PopUp title="Bewerk Profiel" onClick={handleClosePopUp}>
         <form onSubmit={handleSave}>
-          {Object.keys(personalInfo).map((key) => {
+          {Object.keys(personalInfo).map((key, index) => {
             const field = personalInfo[key];
+            const uniqueId = `${key}-${index}`; // Unique ID using key and index
+  
             switch (field.type) {
               case "file":
                 return (
-                  <div className="popup-field ptb-05">
-                  <label
-                    className="image-upload flex justify-content-center"
-                    htmlFor="imageUpload"
-                  >
-                  {selectedImage && (
-                    <div className="image-preview">
-                      <img src={selectedImage} alt="Selected Preview" />
-                    </div>
-                  )}
-                    <PlusIcon  className={"top-element"} />
-                  </label>
-                  <input
-                    type="file"
-                    id="imageUpload"
-                    name="profileImage"
-                    accept="image/*"
-                    style={{ display: "none" }}
-                    onChange={handleImageChange} // Trigger handleImageChange when a file is selected
-                  />
-                  
-                  {/* If an image is selected, display it */}
-
-                </div>
+                  <div key={uniqueId} className="popup-field ptb-05">
+                    <label
+                      className="image-upload flex justify-content-center"
+                      htmlFor={uniqueId} // Unique ID for the file input
+                    >
+                      {selectedImage && (
+                        <div className="image-preview">
+                          <img src={selectedImage} alt="Selected Preview" />
+                        </div>
+                      )}
+                      <PlusIcon className="top-element" />
+                    </label>
+                    <input
+                      type="file"
+                      id={uniqueId}
+                      name="profileImage"
+                      accept="image/*"
+                      style={{ display: "none" }}
+                      onChange={handleImageChange}
+                    />
+                  </div>
                 );
               case "text":
               case "tel":
               case "email":
               case "date":
                 return (
-                  <div key={key} className="popup-field ptb-05">
+                  <div key={uniqueId} className="popup-field ptb-05">
                     <InputField
-                      id={key}
+                      id={uniqueId} // Unique ID for the input field
                       name={key}
                       type={field.type}
                       label={field.label || key}
@@ -150,11 +167,11 @@ const MyProfile = () => {
                 );
               case "radio":
                 return (
-                  <div key={key} className="popup-field ptb-05">
+                  <div key={uniqueId} className="popup-field ptb-05">
                     <span>{field.label || key}</span>
                     <div className="flex">
                       {field.options.map((option) => {
-                        const optionId = `${key}-${option}`;
+                        const optionId = `${uniqueId}-${option}`; // Unique ID for radio inputs
                         return (
                           <div className="p-1" key={optionId}>
                             <input
@@ -173,9 +190,9 @@ const MyProfile = () => {
                 );
               case "options":
                 return (
-                  <div key={key} className="popup-field ptb-05">
-                    <label htmlFor={key}>{field.label || key}</label>
-                    <select id={key} name={key} defaultValue={field.value}>
+                  <div key={uniqueId} className="popup-field ptb-05">
+                    <label htmlFor={uniqueId}>{field.label || key}</label>
+                    <select id={uniqueId} name={key} defaultValue={field.value}>
                       {field.options.map((option) => (
                         <option key={option} value={option}>
                           {option}
@@ -186,10 +203,10 @@ const MyProfile = () => {
                 );
               case "textarea":
                 return (
-                  <div key={key} className="popup-field ptb-05">
-                    <label htmlFor={key}>{field.label || key}</label>
+                  <div key={uniqueId} className="popup-field ptb-05">
+                    <label htmlFor={uniqueId}>{field.label || key}</label>
                     <TextareaField
-                      id={key}
+                      id={uniqueId} // Unique ID for textarea
                       name={key}
                       defaultValue={field.value}
                       autoComplete={key}
@@ -208,29 +225,23 @@ const MyProfile = () => {
       </PopUp>
     );
   };
+  
 
   return (
     <div className="cstm-container">
       <DashNav />
-      
-      <div className="box-top">
+      <div className="title flex justify-content-center ptb-1">
         <h1>Mijn Profiel</h1>
       </div>
-      <div className="grid-overview">
-        <section className="Profile box box-border box-2">
+      <div className="flex-colomn align-items-center">
+        <section className="Profile box box-border mt-2">
           <Profile
             profileImage={personalInfo.profileImage.value}
             name={personalInfo.name.value}
-            gender={personalInfo.gender.value}
-            birthDate={personalInfo.birthDate.value}
-            language={personalInfo.language.value}
-            hobby={personalInfo.hobbies.value}
-            favoriteCourse={personalInfo.favoriteCourse.value}
             onEditClick={handleEditClick}
           />
         </section>
-
-        <section className="box box-transparent box-3 flex-colomn justify-content-center">
+        <section className="box box-transparent flex-colomn justify-content-center">
           <ProfileInfo title={"Contact gegevens"}>
             <ul>
               <li className="flex ptb-05">
@@ -268,11 +279,11 @@ const MyProfile = () => {
             </ul>
           </ProfileInfo>
           <ProfileInfo title={"Waarom volg ik bijles"}>
-              <p>{personalInfo.why.value}</p>
+            <p>{personalInfo.why.value}</p>
           </ProfileInfo>
         </section>
       </div>
-      
+
       {renderPopUp()}
     </div>
   );

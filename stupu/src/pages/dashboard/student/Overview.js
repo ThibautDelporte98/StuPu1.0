@@ -7,6 +7,7 @@ import OverviewRebook from "layouts/dashboard/OverviewRebook";
 import OverviewReview from "layouts/dashboard/OverviewReview";
 import useChangeBackground from "utils/changeBackground";
 import"./Overview.css";
+import Loader from "components/loader/Loader";
 
 
 const Dashboard = () => {
@@ -16,16 +17,16 @@ const Dashboard = () => {
   const currentHour = new Date().getHours();
 
   let greeting = 'Goeieavond';
-  if (currentHour > 6 && currentHour < 12){
+  if (currentHour >= 6 && currentHour < 12){
     greeting = 'Goeiemorgen';
-  }else if (currentHour > 12 && currentHour < 18){
+  }else if (currentHour >= 12 && currentHour < 18){
     greeting = 'Goeiemiddag'
   }
 
   let motivation = 'Laten we sterk afsluiten.';
-  if (currentHour > 6 && currentHour < 12){
+  if (currentHour >= 6 && currentHour < 12){
     motivation = 'De dag is van jou.';
-  }else if (currentHour > 12 && currentHour < 18){
+  }else if (currentHour >= 12 && currentHour < 18){
     motivation = 'Je bent al halverwege de dag.'
   }
 
@@ -36,7 +37,6 @@ const Dashboard = () => {
         <h1>{greeting} {authState.username} !</h1>
         <p>{motivation}</p>        
       </div>
-
       <div className="grid-overview flex-wrap">
         <OverviewProfile />
         <OverviewLessons />

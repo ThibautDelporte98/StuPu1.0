@@ -16,7 +16,7 @@
   width: 50%;
   max-width: 500px;
   max-height: calc(100vh - 2rem);
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   padding: 1rem 2rem 2rem 2rem;
   border-radius: 20px;
   overflow-x: hidden;
@@ -30,6 +30,11 @@
   right: 0;
   border-radius: 50%;
   z-index: 1001 ;
+}
+
+.popup form{
+  padding: 3rem 0;
+  height: 100%;
 }
 
   
