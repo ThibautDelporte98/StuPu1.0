@@ -12,10 +12,10 @@
 }
 
 .popup {
-    position: relative;
+  position: relative;
   width: 50%;
   max-width: 500px;
-  max-height: calc(100vh - 2rem);
+  max-height: calc(100vh - 6rem);
   /* background-color: var(--primary-color); */
   padding: 1rem 2rem 2rem 2rem;
   border-radius: 20px;
