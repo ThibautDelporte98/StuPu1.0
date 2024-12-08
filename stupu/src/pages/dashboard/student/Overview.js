@@ -7,7 +7,6 @@ import OverviewRebook from "layouts/dashboard/OverviewRebook";
 import OverviewReview from "layouts/dashboard/OverviewReview";
 import useChangeBackground from "utils/changeBackground";
 import"./Overview.css";
-import Loader from "components/loader/Loader";
 
 
 const Dashboard = () => {
