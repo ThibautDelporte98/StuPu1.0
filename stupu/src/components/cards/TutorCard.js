@@ -35,7 +35,7 @@ const TutorCard = ({ buttonText, children }) => {
       <Button
         type={"submit"}
         text={"Annuleer"}
-        className={" button-cancel mtb-1 white-text"}
+        className={" button-decline mtb-1 white-text"}
       />
     </div>
   );

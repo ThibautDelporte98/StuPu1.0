@@ -1,13 +1,11 @@
 
-const LessonAbout = ({title, text}) => {
+const LessonAbout = ({title, text, children}) => {
 
   return (
 
           <div className="about">
             <h2 className="mt-2">{title}</h2>
-            <p className="ptb-1">
-              {text}
-            </p>
+                {children}
           </div>
   );
 };

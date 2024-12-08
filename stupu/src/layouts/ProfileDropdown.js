@@ -17,8 +17,9 @@ const ProfileDropdown = ({ onLogout }) => {
     if (onLogout) onLogout();
   };
 
-  const isDashboard = location.pathname === "/dashboard"; // Adjust the path accordingly
-  const backgroundClass = isDashboard ? " dashboard-background" : "default-background";
+  const dashboardPaths = ["/dashboard", "/mijn-profiel", "/mijn-bijlessen", "/mijn-beschikbaarheid"]; // Add more paths as needed
+  const isDashboard = dashboardPaths.includes(location.pathname); 
+  const backgroundClass = isDashboard ? "dashboard-background" : "default-background";
 
   return (
     <div className="dropdown">
