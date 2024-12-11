@@ -1,26 +1,25 @@
 import React, { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
 const AuthContext = createContext();
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
-  const token = Cookies.get('token') || null;
-  const username = Cookies.get('username') || null;
+  const token = localStorage.getItem('token') || null;
+  const username = localStorage.getItem('userName') || null;
 
   const navigate = useNavigate();
   const [authState, setAuthState] = useState({ token, username });
 
   const setAuthInfo = (token, username) => {
-    Cookies.set('token', token, { secure: true, sameSite: 'strict' });
-    Cookies.set('username', username, { secure: true, sameSite: 'strict' });
+    localStorage.setItem('token', token);
+    localStorage.setItem('userName', username);
     setAuthState({ token, username });
   };
 
   const logout = () => {
-    Cookies.remove('token');
-    Cookies.remove('username');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
     setAuthState({ token: null, username: null });
     navigate('/aanmelden');
   };
@@ -59,6 +58,8 @@ const AuthProvider = ({ children }) => {
 
     return response.json();
   };
+
+  
 
   return (
     <Provider

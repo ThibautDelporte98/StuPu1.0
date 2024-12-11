@@ -7,6 +7,8 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import "./Calender.css";
 import LessonView from "components/dashboard/MyLesson";
+import { nl } from 'date-fns/locale'; // Import Dutch locale
+
 
 const Calender = ({
   addButtonText = "Voeg Toe",
@@ -80,6 +82,8 @@ const Calender = ({
           mode="range"
           selected={selectedRange}
           onSelect={setSelectedRange}
+          locale={nl} // Set the Dutch locale
+
         />
         {!lesson ? (
           <div className="mt-1">

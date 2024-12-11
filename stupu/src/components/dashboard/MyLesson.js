@@ -1,10 +1,10 @@
 import Avatar from "assets/img/defaultprofile.webp";
 import "./MyLesson.css";
 
-const LessonView = ({ index, type, date, time, title, tutor, children }) => {
+const LessonView = ({ index, location, date, time, type, tutor, children }) => {
   return (
     <div className="box lesson" key={index}>
-      {type && <div className="lesson-type box-shadow">{type}</div>}
+      {type && <div className="lesson-type box-shadow">{location}</div>}
       {tutor && (
         <div className="lesson-teacher flex pb-1">
           <img className="avatar-small box-shadow" src={Avatar} alt="avatar" />
@@ -18,14 +18,14 @@ const LessonView = ({ index, type, date, time, title, tutor, children }) => {
           </p>
         </div>
       )}
-      {title && (
+      {type && (
         <div className="list-information ptb-1-05">
           <ul>
           <li className="flex ptb-05">
               <div className="medium mr-1">Onderwijsvorm:</div> Middelbareschool
             </li>
             <li className="flex ptb-05">
-              <div className="medium mr-1">Vak:</div> {title}
+              <div className="medium mr-1">Vak:</div> {type}
             </li>
             <li className="flex ptb-05">
               <div className="medium mr-1">Locatie:</div> Teams meeting

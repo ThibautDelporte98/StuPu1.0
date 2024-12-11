@@ -108,7 +108,7 @@ const MyLessonsStudent = () => {
           <h1>Mijn Bijlessen</h1>
         </div>
       </div>
-      <Calender initialEvents={groupedLessons} lesson={true} />
+      <Calender initialEvents={groupedLessons} lesson={true} noAvailabilityText={"Geen bijles gevonden voor de geselecteerde datum."} />
       <div className="box-top ptb-1-05">
         <h2>Herboek voltooide lessen</h2>
         <DashFilter />
